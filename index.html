@@ -18,30 +18,45 @@ main{width:min(1120px,100%);margin:auto;padding:30px 20px 58px}
 .hero:before,.hero:after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none}.hero:before{width:270px;height:270px;right:8%;top:-155px;border:1px solid #7be8ff33;box-shadow:0 0 0 28px #7be8ff08,0 0 0 58px #7be8ff05}.hero:after{width:180px;height:180px;right:22%;bottom:-130px;background:#48c8ff1a;filter:blur(6px)}
 .eyebrow{color:var(--bright);font-size:11px;letter-spacing:2px;font-weight:900}.hero h1{margin:14px 0;font-size:clamp(39px,6vw,66px);line-height:.99;letter-spacing:-2.7px}.gradient{color:var(--bright);text-shadow:0 0 26px #48c8ff3d}.hero p{max-width:520px;color:#c1cee5;margin:0}.badges{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}.badge{border:1px solid #ffffff22;border-radius:999px;padding:6px 10px;color:#dceaff;font-size:11px;background:#ffffff0a}.orb{text-align:center;font-size:clamp(76px,12vw,142px);filter:drop-shadow(0 0 28px #48c8ff59);animation:float 4s ease-in-out infinite}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .section{margin-top:34px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:15px}.step{color:var(--blue);font-size:11px;font-weight:900;letter-spacing:1.4px}.heading{margin:0;font-size:clamp(20px,3vw,24px);letter-spacing:-.6px}.sub{margin:4px 0 0;color:var(--muted);font-size:13px}
-.games{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:12px;
-  align-items:stretch;
+.game {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #222;
+  border: 1px solid #343434;
+  text-align: center;
 }
 
-.game{
-  overflow:hidden;
+.game img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  margin: 0;
 }
 
-.game .gicon{
-  width:100%;
-  height:100px;
-  object-fit:contain;
-}.game,.pack{position:relative;min-width:0;text-align:left;color:var(--ink);background:linear-gradient(145deg,#101a30fc,#0c1427fc);border:1px solid var(--line);border-radius:17px;padding:16px;cursor:pointer;transition:border-color .18s,transform .18s,box-shadow .18s,background .18s}.game:hover,.pack:hover{border-color:#48c8ffb3;transform:translateY(-2px);box-shadow:0 0 28px #3ab7ff24}.game.active,.pack.active{border-color:var(--blue);background:linear-gradient(145deg,#15345a,#151d3c);box-shadow:inset 0 0 0 1px #48c8ff29,0 0 22px #48c8ff1a}.game.active:after{content:"✓";position:absolute;top:9px;right:10px;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;color:#06101c;background:var(--bright);font-size:12px;font-weight:950}.gicon{display:block;font-size:28px;margin-bottom:10px}.game strong{display:block;font-size:13px;line-height:1.35}.game small,.pack small{display:block;color:var(--muted);font-size:11px;margin-top:5px}
-.fieldgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{min-width:0;background:#101a30e0;border:1px solid var(--line);border-radius:16px;padding:16px}.field label{display:block;color:#c3d0e8;font-size:12px;font-weight:750;margin-bottom:8px}.field input,.field select{width:100%;min-width:0;padding:12px 13px;border-radius:10px;background:#080f20;color:var(--ink);border:1px solid #8bb3e633;outline:none;transition:border-color .18s,box-shadow .18s}.field input::placeholder{color:#7183a5}.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #48c8ff1a}.muted{color:var(--muted);font-size:12px}.field .muted{display:block;margin-top:8px;line-height:1.45}
-.packages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.pack{min-height:125px}.pack .qty{font-size:16px;font-weight:900;overflow-wrap:anywhere}.pack .price{font-size:17px;font-weight:950;color:var(--bright);margin-top:14px}.pack.active{border-color:var(--purple);box-shadow:inset 0 0 0 1px #8877ff33,0 0 24px #8877ff1f}
-.checkout{display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;margin-top:22px;padding:22px;background:linear-gradient(115deg,#102c4cfa,#1c1943fa);border:1px solid #48c8ff38;border-radius:20px;box-shadow:0 0 28px #3ab7ff24}.total-label{color:#b9c9e4;font-size:11px;font-weight:850;letter-spacing:1.3px}.total{margin:2px 0 3px;font-size:clamp(27px,4vw,34px);line-height:1.2;font-weight:950;color:var(--bright);text-shadow:0 0 22px #48c8ff33}
-.btn{min-height:49px;border:0;border-radius:12px;padding:14px 21px;color:#05111e;background:linear-gradient(100deg,#48c8ff,#83f0ff);box-shadow:0 7px 22px #48c8ff2e;font-weight:950;cursor:pointer;transition:transform .18s,box-shadow .18s,filter .18s}.btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 28px #48c8ff4d;filter:brightness(1.04)}.btn:disabled{opacity:.55;cursor:not-allowed;box-shadow:none}
-.alert{display:none;margin-top:15px;padding:13px 15px;border-radius:12px;color:#ffd9e1;background:#741c373d;border:1px solid #ff7d9c59;overflow-wrap:anywhere}.alert.show{display:block}.note{color:#92a4c4;font-size:12px;margin-top:15px}footer{border-top:1px solid var(--line);text-align:center;color:#7e91b5;padding:24px 16px;font-size:12px}
-@media(max-width:760px.game .gicon){
-  height:85px;
-{header{padding:12px 16px}main{padding:20px 14px 42px}.hero{grid-template-columns:1fr;min-height:0;gap:5px;border-radius:22px}.orb{padding:7px 0 0;font-size:84px}.games{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.packages{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.fieldgrid{grid-template-columns:1fr;gap:10px}.checkout{grid-template-columns:1fr;gap:16px;padding:18px}.btn{width:100%}}
+.game strong {
+  display: block;
+  padding: 10px 5px 0;
+  font-size: 12px;
+}
+
+.game small {
+  display: block;
+  padding: 0 5px 12px;
+  font-size: 10px;
+}
+
+@media (max-width: 760px) {
+  .games {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .game img {
+    height: 190px;
+  }
+}
 @media(max-width:360px){.logo{font-size:19px}.status{font-size:10px;padding:5px 8px}.game,.pack{padding:13px}.hero h1{letter-spacing:-1.8px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 .gicon{
