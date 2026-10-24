@@ -1,2 +1,2 @@
-# Diamondku
-Website Top up game diamondku
+# EMBA Store
+Website Top up game Emba store
