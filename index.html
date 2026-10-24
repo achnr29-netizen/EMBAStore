@@ -7,65 +7,159 @@
 <meta name="description" content="EMBA Store — top up game dengan mudah dan aman.">
 <title>EMBA Store — Top Up Game</title>
 <style>
-:root{color-scheme:dark;--bg:#070b18;--panel:#101a30;--panel2:#142443;--ink:#f4f8ff;--muted:#a8b8d6;--blue:#48c8ff;--bright:#7be8ff;--purple:#8877ff;--line:rgba(111,190,255,.18)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% 0%,#1366be38,transparent 32rem),radial-gradient(ellipse at 90% 8%,#5f41dc29,transparent 30rem),var(--bg);color:var(--ink);font:15px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
-button,input,select{font:inherit}button{-webkit-tap-highlight-color:transparent}
-header{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px max(5%,calc((100% - 1120px)/2));background:#070b18e8;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.logo{font-size:22px;font-weight:950;letter-spacing:-.9px;white-space:nowrap}.mark{display:inline-grid;place-items:center;width:34px;height:34px;margin-right:7px;border:1px solid #48c8ff70;border-radius:11px;background:linear-gradient(145deg,#173b66,#171a3d);box-shadow:0 0 22px #48c8ff2b;vertical-align:middle}.logo span:last-child{color:var(--bright)}
-.status{display:inline-flex;align-items:center;gap:8px;border:1px solid #3de1a744;border-radius:999px;padding:6px 11px;color:#83f3c5;background:#1dbe8212;font-size:11px;font-weight:800;white-space:nowrap}.dot{width:7px;height:7px;border-radius:50%;background:#4de0a4;box-shadow:0 0 10px #4de0a4}
-main{width:min(1120px,100%);margin:auto;padding:30px 20px 58px}
-.hero{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;min-height:300px;padding:clamp(25px,5vw,52px);border:1px solid #68beff3d;border-radius:28px;background:linear-gradient(115deg,#112f55f5,#141b43f5 58%,#251950f5);box-shadow:0 0 28px #3ab7ff24}
-.hero:before,.hero:after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none}.hero:before{width:270px;height:270px;right:8%;top:-155px;border:1px solid #7be8ff33;box-shadow:0 0 0 28px #7be8ff08,0 0 0 58px #7be8ff05}.hero:after{width:180px;height:180px;right:22%;bottom:-130px;background:#48c8ff1a;filter:blur(6px)}
-.eyebrow{color:var(--bright);font-size:11px;letter-spacing:2px;font-weight:900}.hero h1{margin:14px 0;font-size:clamp(39px,6vw,66px);line-height:.99;letter-spacing:-2.7px}.gradient{color:var(--bright);text-shadow:0 0 26px #48c8ff3d}.hero p{max-width:520px;color:#c1cee5;margin:0}.badges{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}.badge{border:1px solid #ffffff22;border-radius:999px;padding:6px 10px;color:#dceaff;font-size:11px;background:#ffffff0a}.orb{text-align:center;font-size:clamp(76px,12vw,142px);filter:drop-shadow(0 0 28px #48c8ff59);animation:float 4s ease-in-out infinite}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.section{margin-top:34px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:15px}.step{color:var(--blue);font-size:11px;font-weight:900;letter-spacing:1.4px}.heading{margin:0;font-size:clamp(20px,3vw,24px);letter-spacing:-.6px}.sub{margin:4px 0 0;color:var(--muted);font-size:13px}
-.game {
-  padding: 0;
-  overflow: hidden;
-  border-radius: 18px;
-  background: #222;
-  border: 1px solid #343434;
-  text-align: center;
+{
+  box-sizing: border-box;
 }
 
-.game img {
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 20px 14px 42px;
+}
+
+/* Kartu pilihan game */
+#games.games {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 10px;
+  width: 100%;
+}
+
+#games .game {
   display: block;
   width: 100%;
-  height: 190px;
-  object-fit: cover;
-  margin: 0;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 16px;
 }
 
-.game strong {
+#games .game img.gicon {
+  display: block;
+  width: 100%;
+  height: 135px;
+  margin: 0;
+  object-fit: cover;
+}
+
+#games .game strong {
   display: block;
   padding: 10px 5px 0;
   font-size: 12px;
+  overflow-wrap: anywhere;
 }
 
-.game small {
+#games .game small {
   display: block;
-  padding: 0 5px 12px;
+  padding: 0 4px 12px;
   font-size: 10px;
 }
 
-@media (max-width: 760px) {
-  .games {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
+/* Form data pemain */
+.fieldgrid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 12px;
+  width: 100%;
+}
+
+.field {
+  width: 100%;
+  min-width: 0;
+  padding: 14px;
+}
+
+.field label {
+  display: block !important;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.field input,
+.field select {
+  display: block;
+  width: 100% !important;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 11px 12px;
+  font-size: 15px;
+  border-radius: 10px;
+  background: #080f20;
+  color: #f4f8ff;
+  border: 1px solid #34506f;
+}
+
+.field .muted {
+  display: block;
+  margin-top: 8px;
+}
+
+/* Kartu paket diamond */
+#packages.packages {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px;
+  width: 100%;
+}
+
+#packages .pack {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 125px;
+  padding: 14px 10px;
+  border-radius: 14px;
+  background: #101a30;
+  color: #f4f8ff;
+  border: 1px solid rgba(111, 190, 255, .25);
+}
+
+#packages .pack .qty {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+#packages .pack .price {
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+
+/* Ringkasan dan tombol checkout */
+.checkout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 14px;
+  width: 100%;
+  padding: 16px;
+}
+
+.checkout .btn {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 360px) {
+  #games .game img.gicon {
+    height: 110px;
   }
 
-  .game img {
-    height: 190px;
+  #packages.packages {
+    gap: 8px;
   }
-}
-@media(max-width:360px){.logo{font-size:19px}.status{font-size:10px;padding:5px 8px}.game,.pack{padding:13px}.hero h1{letter-spacing:-1.8px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
-.gicon{
-  display:block;
-  width:100%;
-  height:100px;
-  object-fit:contain;
-  font-size:14px;
-  margin-bottom:10px;
+
+  #packages .pack {
+    padding: 10px 7px;
+  }
 	}
 	
 </style>
