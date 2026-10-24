@@ -7,22 +7,21 @@
 <meta name="description" content="EMBA Store — top up game dengan mudah dan aman.">
 <title>EMBA Store — Top Up Game</title>
 <style>
-	/* FIX MOBILE LAYOUT */
 *, *::before, *::after {
   box-sizing: border-box;
 }
-
-html {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-body {
+	
+html, body {
   width: 100%;
   max-width: 100%;
   margin: 0;
   overflow-x: hidden;
+}
+
+body {
   font-family: Inter, system-ui, Arial, sans-serif;
+  background: #070b18;
+  color: #f4f8ff;
 }
 
 header {
@@ -33,46 +32,73 @@ main {
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 20px 14px 42px;
+  padding: 24px 16px 42px;
 }
 
 .hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
   width: 100%;
   min-width: 0;
-  grid-template-columns: 1fr;
 }
 
 .games {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 12px;
+  width: 100%;
 }
 
 .game {
+  display: block;
   width: 100%;
   min-width: 0;
+  padding: 0;
   overflow: hidden;
-  padding: 10px;
+  text-align: center;
+  border-radius: 16px;
 }
 
 .game .gicon {
   display: block;
   width: 100%;
   height: 125px;
+  margin: 0;
   object-fit: cover;
   object-position: center;
-  margin: 0 0 10px;
-  border-radius: 10px;
+}
+
+.game strong {
+  display: block;
+  padding: 10px 5px 0;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.game small {
+  display: block;
+  padding: 4px 5px 12px;
+  font-size: 11px;
 }
 
 .fieldgrid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 10px;
+  gap: 12px;
+  width: 100%;
 }
 
 .field {
+  width: 100%;
   min-width: 0;
+  padding: 14px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
 }
 
 .field input,
@@ -81,33 +107,69 @@ main {
   width: 100%;
   max-width: 100%;
   min-width: 0;
+  min-height: 46px;
+  padding: 11px 12px;
+  border: 1px solid #34506f;
+  border-radius: 10px;
+  background: #080f20;
+  color: #f4f8ff;
+  font-size: 15px;
+}
+
+.field .muted {
+  display: block;
+  margin-top: 8px;
 }
 
 .packages {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
+  width: 100%;
 }
 
 .pack {
+  display: block;
   width: 100%;
   min-width: 0;
-  min-height: 110px;
+  min-height: 120px;
+  padding: 14px 10px;
   overflow-wrap: anywhere;
+  border: 1px solid rgba(111, 190, 255, .25);
+  border-radius: 14px;
+  background: #101a30;
+  color: #f4f8ff;
+}
+
+.pack .qty {
+  font-size: 14px;
+}
+
+.pack .price {
+  margin-top: 8px;
+  font-size: 16px;
 }
 
 .checkout {
+  display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 14px;
+  width: 100%;
+  padding: 16px;
 }
 
 .checkout .btn {
   width: 100%;
+  min-width: 0;
+}
+
+img {
+  max-width: 100%;
 }
 
 @media (min-width: 761px) {
   .hero {
-    grid-template-columns: 1.15fr .85fr;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
   }
 
   .games {
@@ -125,162 +187,31 @@ main {
   .checkout {
     grid-template-columns: minmax(0, 1fr) auto;
   }
-}
-{
-  box-sizing: border-box;
-}
 
-html,
-body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-main {
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 20px 14px 42px;
-}
-
-/* Kartu pilihan game */
-#games.games {
-  display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  gap: 10px;
-  width: 100%;
-}
-
-#games .game {
-  display: block;
-  width: 100%;
-  min-width: 0;
-  padding: 0;
-  overflow: hidden;
-  text-align: center;
-  border-radius: 16px;
-}
-
-#games .game img.gicon {
-  display: block;
-  width: 100%;
-  height: 135px;
-  margin: 0;
-  object-fit: cover;
-}
-
-#games .game strong {
-  display: block;
-  padding: 10px 5px 0;
-  font-size: 12px;
-  overflow-wrap: anywhere;
-}
-
-#games .game small {
-  display: block;
-  padding: 0 4px 12px;
-  font-size: 10px;
-}
-
-/* Form data pemain */
-.fieldgrid {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1fr) !important;
-  gap: 12px;
-  width: 100%;
-}
-
-.field {
-  width: 100%;
-  min-width: 0;
-  padding: 14px;
-}
-
-.field label {
-  display: block !important;
-  margin-bottom: 8px;
-  font-size: 13px;
-}
-
-.field input,
-.field select {
-  display: block;
-  width: 100% !important;
-  max-width: 100%;
-  min-width: 0;
-  min-height: 46px;
-  padding: 11px 12px;
-  font-size: 15px;
-  border-radius: 10px;
-  background: #080f20;
-  color: #f4f8ff;
-  border: 1px solid #34506f;
-}
-
-.field .muted {
-  display: block;
-  margin-top: 8px;
-}
-
-/* Kartu paket diamond */
-#packages.packages {
-  display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 10px;
-  width: 100%;
-}
-
-#packages .pack {
-  display: block;
-  width: 100%;
-  min-width: 0;
-  min-height: 125px;
-  padding: 14px 10px;
-  border-radius: 14px;
-  background: #101a30;
-  color: #f4f8ff;
-  border: 1px solid rgba(111, 190, 255, .25);
-}
-
-#packages .pack .qty {
-  font-size: 14px;
-  overflow-wrap: anywhere;
-}
-
-#packages .pack .price {
-  font-size: 16px;
-  overflow-wrap: anywhere;
-}
-
-/* Ringkasan dan tombol checkout */
-.checkout {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1fr) !important;
-  gap: 14px;
-  width: 100%;
-  padding: 16px;
-}
-
-.checkout .btn {
-  width: 100%;
-  min-width: 0;
+  .checkout .btn {
+    width: auto;
+  }
 }
 
 @media (max-width: 360px) {
-  #games .game img.gicon {
-    height: 110px;
+  main {
+    padding-right: 12px;
+    padding-left: 12px;
   }
 
-  #packages.packages {
+  .games,
+  .packages {
     gap: 8px;
   }
 
-  #packages .pack {
+  .game .gicon {
+    height: 110px;
+  }
+
+  .pack {
     padding: 10px 7px;
   }
-	}
-	
+}	
 </style>
 </head>
 <body>
