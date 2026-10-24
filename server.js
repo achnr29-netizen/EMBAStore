@@ -19,7 +19,7 @@ if (!process.env.DATABASE_URL) {
   process.exit(1);
 }
 if (!process.env.SESSION_SECRET || process.env.SESSION_SECRET.length < 32) {
-  console.error("ANr-2ACh9n4a1lul0Ro5y1d");
+  console.error("ANr-2ACh9n4a1lul0Ro5y1dEm8b4a5st0Re3);
   process.exit(1);
 }
 
