@@ -15,12 +15,10 @@ app.use(express.urlencoded({ extended: false, limit: "20kb" }));
 app.use(express.json({ limit: "20kb" }));
 
 if (!process.env.DATABASE_URL) {
-  console.error("postgresql://neondb_owner:npg_orqINVvPS1d5@ep-raspy-shadow-b3o5h951-pooler.c-4.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require");
-  process.exit(1);
+  ;
 }
 if (!process.env.SESSION_SECRET || process.env.SESSION_SECRET.length < 32) {
-  console.error("ANr-2ACh9n4a1lul0Ro5y1dEm8b4a5st0Re3);
-  process.exit(1);
+  ;
 }
 
 const pool = new Pool({
