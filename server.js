@@ -14,7 +14,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json({ limit: '30kb' }));
 app.use('/api/', rateLimit({ windowMs: 60_000, limit: 90, standardHeaders: true, legacyHeaders: false }));
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(__dirname));
 const now = () => new Date().toISOString();
 const publicOrder = o => ({ id:o.id, game:o.game, product_name:o.product_name, amount:o.amount, price_idr:o.price_idr, payment_method:o.payment_method, payment_status:o.payment_status, fulfillment_status:o.fulfillment_status, created_at:o.created_at });
 
