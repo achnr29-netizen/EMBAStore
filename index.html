@@ -1023,4 +1023,20 @@ $('orderBtn').addEventListener('click', async () => {
 
     if (!paymentData.payment_url) {
       throw new Error(
-        'Tautan pemb
+        window.location.href = paymentData.payment_url;
+
+  } catch (error) {
+    alertMsg(error.message || 'Terjadi kesalahan. Silakan coba lagi.');
+
+  } finally {
+    button.disabled = false;
+    button.innerHTML = 'Buat pesanan <span aria-hidden="true">→</span>';
+  }
+});
+
+/* JALANKAN SAAT HALAMAN DIBUKA */
+load();
+</script>
+
+</body>
+</html>
