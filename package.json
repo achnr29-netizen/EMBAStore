@@ -5,7 +5,7 @@
   "description": "Starter website top-up game DiamondKu dengan proses manual",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "engines": {
     "node": ">=20"
