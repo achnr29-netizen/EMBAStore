@@ -802,7 +802,7 @@ function render() {
   const list = products.filter(product => normalizeGame(product.game) === normalizeGame(game));
   $('packages').innerHTML = '';
   selected = null;
-  $('total').textContent = 'Rp0';
+  $('total').textContent = money(0);
   $('summary').textContent = 'Pilih paket untuk melihat ringkasan.';
 
   if (!list.length) {
