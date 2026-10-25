@@ -176,7 +176,6 @@ app.post('/api/webhooks/midtrans', (req, res) => {
     });
   }
 }); 
-  res.json({ received:true });
 app.get('/api/orders/:id', (req,res) => {
   const order = db.prepare('SELECT * FROM orders WHERE id=?').get(req.params.id);
   if (!order) return res.status(404).json({ error:'Pesanan tidak ditemukan.' });
