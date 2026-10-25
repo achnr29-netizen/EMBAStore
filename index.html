@@ -396,12 +396,16 @@ $('games').addEventListener('click', function(event) {
     $('checkoutSection').hidden = false;
     clearAlert();
     render();
-	  // Geser layar ke formulir pembelian
-    $('playerSection').scrollIntoView({
+	  if (playerSection) {
+  playerSection.hidden = false;
+
+  setTimeout(() => {
+    playerSection.scrollIntoView({
       behavior: 'smooth',
       block: 'start'
-  });
-});
+    });
+  }, 100);
+}
 
 $('orderBtn').addEventListener('click', async () => {
   clearAlert();
