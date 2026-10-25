@@ -750,6 +750,9 @@ THB: '🇹🇭'
 
 document.querySelector('.dk-currency > span').textContent =
 flags[currentCurrency];
+	if (flagElement) {
+  flagElement.textContent = flags[currentCurrency] || '🌐';
+	}
 
 updatePrices();
 clearAlert();
