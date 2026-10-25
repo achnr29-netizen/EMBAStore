@@ -380,12 +380,12 @@ function render() {
   });
 }
 
-$('games').addEventListener('click', function(event) {
+$('games').addEventListener('click', async function(event) {
   const button = event.target.closest('button.game');
   if (!button) return;
 
-  // Tandai game yang dipilih
-  document.querySelectorAll('.game').forEach(item => {
+  // Tandai kartu game yang dipilih
+  document.querySelectorAll('#games .game').forEach(item => {
     item.classList.remove('active');
     item.setAttribute('aria-pressed', 'false');
   });
@@ -394,33 +394,31 @@ $('games').addEventListener('click', function(event) {
   button.setAttribute('aria-pressed', 'true');
   game = button.dataset.game;
 
-  // Cari bagian berdasarkan HTML yang sudah ada
-  const playerSection =
-    document.querySelector('section[aria-labelledby="player-title"]');
-  const packagesSection =
-    document.querySelector('section[aria-labelledby="packages-title"]');
-  const checkoutSection =
-    document.querySelector('section.checkout');
-
-  // Tampilkan formulir dan checkout
-  if (playerSection) playerSection.hidden = false;
-  if (packagesSection) packagesSection.hidden = false;
-  if (checkoutSection) checkoutSection.hidden = false;
+  // Tampilkan ketiga bagian secara langsung
+  ['playersection', 'packagestitle', 'checkoutsection'].forEach(id => {
+    const section = $(id);
+    if (section) {
+      section.removeAttribute('hidden');
+      section.hidden = false;
+    }
+  });
 
   clearAlert();
   render();
 
-  // Gulir ke formulir data pemain
+  // Arahkan layar ke formulir pemain
+  const playerSection = $('playersection');
   if (playerSection) {
-    setTimeout(() => {
-      playerSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }, 100);
+    playerSection.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
   }
-});
 
+  console.log('Game dipilih:', game);
+  console.log('Form tampil:', !$('playersection').hidden);
+});
+	
 $('orderBtn').addEventListener('click', async () => {
   clearAlert();
   if (!selected) return alertMsg('Pilih paket terlebih dahulu.');
