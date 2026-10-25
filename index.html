@@ -718,6 +718,23 @@ $('total').textContent = money(selected.price_idr);
 }
 }
 
+loadExchangeRates().catch(() => {
+console.warn('Kurs mata uang belum berhasil dimuat.');
+});
+let products = [];
+let game = 'Mobile Legends';
+let selected = null;
+const $ = id => document.getElementById(id);
+
+$('currency').addEventListener('change', async event => {
+function alertMsg(message) {
+  $('alert').textContent = message;
+  $('alert').classList.add('show');
+}
+function clearAlert() {
+  $('alert').textContent = '';
+  $('alert').classList.remove('show');
+}
 $('currency').addEventListener('change', async event => {
 const newCurrency = event.target.value;
 
@@ -757,24 +774,7 @@ flags[currentCurrency];
 updatePrices();
 clearAlert();
 });
-
-loadExchangeRates().catch(() => {
-console.warn('Kurs mata uang belum berhasil dimuat.');
-});
-let products = [];
-let game = 'Mobile Legends';
-let selected = null;
-const $ = id => document.getElementById(id);
-
-$('currency').addEventListener('change', async event => {
-function alertMsg(message) {
-  $('alert').textContent = message;
-  $('alert').classList.add('show');
-}
-function clearAlert() {
-  $('alert').textContent = '';
-  $('alert').classList.remove('show');
-}
+	
 async function readJson(response) {
   try { return await response.json(); }
   catch { return {}; }
