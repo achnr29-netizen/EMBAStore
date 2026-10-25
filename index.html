@@ -651,7 +651,106 @@ img {
 </main><footer>© 2026 EMBA Store • Top up dengan aman, main dengan nyaman.</footer>
 <script>
 'use strict';
-const money = n => 'Rp' + Number(n).toLocaleString('id-ID');
+const currencyNames = {
+IDR: 'id-ID',
+MYR: 'ms-MY',
+SGD: 'en-SG',
+USD: 'en-US',
+PHP: 'en-PH',
+THB: 'th-TH'
+};
+
+let exchangeRates = { IDR: 1 };
+let currentCurrency = 'IDR';
+
+function money(amount) {
+const rate = exchangeRates[currentCurrency];
+
+if (!rate) {
+return new Intl.NumberFormat('id-ID', {
+style: 'currency',
+currency: 'IDR',
+maximumFractionDigits: 0
+}).format(amount);
+}
+
+return new Intl.NumberFormat(
+currencyNames[currentCurrency],
+{
+style: 'currency',
+currency: currentCurrency,
+maximumFractionDigits: currentCurrency === 'IDR' ? 0 : 2
+}
+).format(Number(amount) * rate);
+}
+
+async function loadExchangeRates() {
+const response = await fetch(
+'https://api.frankfurter.dev/v1/latest?base=IDR&symbols=MYR,SGD,USD,PHP,THB'
+);
+
+if (!response.ok) {
+throw new Error('Kurs mata uang tidak dapat dimuat.');
+}
+
+const data = await response.json();
+
+exchangeRates = {
+IDR: 1,
+...data.rates
+};
+}
+
+function updatePrices() {
+document.querySelectorAll('.pack .price').forEach(price => {
+price.textContent = money(price.dataset.priceIdr);
+});
+
+if (selected) {
+$('total').textContent = money(selected.price_idr);
+}
+}
+
+$('currency').addEventListener('change', async event => {
+const newCurrency = event.target.value;
+
+if (!exchangeRates[newCurrency]) {
+try {
+await loadExchangeRates();
+} catch (error) {
+event.target.value = currentCurrency;
+alertMsg('Kurs gagal dimuat. Periksa koneksi internet lalu coba lagi.');
+return;
+}
+}
+
+if (!exchangeRates[newCurrency]) {
+event.target.value = currentCurrency;
+alertMsg('Mata uang ini belum tersedia.');
+return;
+}
+
+currentCurrency = newCurrency;
+
+const flags = {
+IDR: '🇮🇩',
+MYR: '🇲🇾',
+SGD: '🇸🇬',
+USD: '🇺🇸',
+PHP: '🇵🇭',
+THB: '🇹🇭'
+};
+
+document.querySelector('.dk-currency > span').textContent =
+flags[currentCurrency];
+
+updatePrices();
+clearAlert();
+});
+
+loadExchangeRates().catch(() => {
+console.warn('Kurs mata uang belum berhasil dimuat.');
+});
 let products = [];
 let game = 'Mobile Legends';
 let selected = null;
@@ -717,13 +816,14 @@ function render() {
     button.className = 'pack';
     button.setAttribute('aria-pressed', 'false');
 
-    const quantity = document.createElement('div');
+const quantity = document.createElement('div');
     quantity.className = 'qty';
     quantity.textContent = '💎 ' + product.name;
-    const gameName = document.createElement('small');
+const gameName = document.createElement('small');
     gameName.textContent = product.game;
-    const price = document.createElement('div');
+const price = document.createElement('div');
     price.className = 'price';
+    price.dataset.priceIdr = product.price_idr;
     price.textContent = money(product.price_idr);
     button.append(quantity, gameName, price);
 
@@ -757,7 +857,7 @@ $('games').addEventListener('click', async function(event) {
   button.setAttribute('aria-pressed', 'true');
   game = button.dataset.game;
 
-  // Tampilkan ketiga bagian secara langsung
+  // Tampilkan ketiga gian secara langsung
   ['playersection', 'packagestitle', 'checkoutsection'].forEach(id => {
     const section = $(id);
     if (section) {
