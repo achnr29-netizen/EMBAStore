@@ -208,4 +208,6 @@ app.post('/api/admin/orders/:id/fulfill', requireAdmin, async (req,res) => {
 });
 app.use((err,_req,res,_next) => { console.error(err); res.status(500).json({ error:'Terjadi kesalahan pada server.' }); });
 const port = Number(process.env.PORT || 3000);
-app.listen(port, () => console.log(`DiamondKu running on ${process.env.BASE_URL || `http://localhost:${port}`}`));
+app.listen(port, '0.0.0.0', () => {
+  console.log(`EMBA Store running on port ${port}`);
+});
