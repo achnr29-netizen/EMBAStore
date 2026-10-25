@@ -18,11 +18,26 @@ export async function createMidtransPayment(order) {
       callbacks: { finish: `${process.env.BASE_URL}/?order=${encodeURIComponent(order.id)}` }
     })
   });
-  const data = await response.json().catch(() => ({}));
-  if (!response.ok || !data.token) throw new Error(`Midtrans gagal membuat pembayaran (${response.status}).`);
-  return { token: data.token, redirect_url: data.redirect_url };
-}
+  
+const data = await response.json().catch(() => ({}));
 
+if (!response.ok || !data.token || !data.redirect_url) {
+  const detail = Array.isArray(data.error_messages)
+    ? data.error_messages.join('; ')
+    : (data.message || data.error || 'Respons Midtrans tidak valid');
+  
+  console.error('Midtrans payment error:', {
+    status: response.status,
+    detail
+  });
+  throw new Error(
+    `Midtrans gagal (${response.status}): ${detail}`
+  );
+}
+return {
+  token: data.token,
+  redirect_url: data.redirect_url
+} 
 export function verifyMidtransNotification(body) {
   const serverKey = process.env.MIDTRANS_SERVER_KEY;
   if (!serverKey || !body?.signature_key || !body?.order_id || !body?.status_code || body?.gross_amount == null) return false;
