@@ -383,29 +383,43 @@ function render() {
 $('games').addEventListener('click', function(event) {
   const button = event.target.closest('button.game');
   if (!button) return;
-    document.querySelectorAll('.game').forEach(item => {
-      item.classList.remove('active');
-      item.setAttribute('aria-pressed', 'false');
-    });
-    button.classList.add('active');
-    button.setAttribute('aria-pressed', 'true');
-    game = button.dataset.game;
-	  // Tampilkan formulir setelah game dipilih
-    $('playerSection').hidden = false;
-    $('packagesSection').hidden = false;
-    $('checkoutSection').hidden = false;
-    clearAlert();
-    render();
-	  if (playerSection) {
-  playerSection.hidden = false;
 
-  setTimeout(() => {
-    playerSection.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
-  }, 100);
-}
+  // Tandai game yang dipilih
+  document.querySelectorAll('.game').forEach(item => {
+    item.classList.remove('active');
+    item.setAttribute('aria-pressed', 'false');
+  });
+
+  button.classList.add('active');
+  button.setAttribute('aria-pressed', 'true');
+  game = button.dataset.game;
+
+  // Cari bagian berdasarkan HTML yang sudah ada
+  const playerSection =
+    document.querySelector('section[aria-labelledby="player-title"]');
+  const packagesSection =
+    document.querySelector('section[aria-labelledby="packages-title"]');
+  const checkoutSection =
+    document.querySelector('section.checkout');
+
+  // Tampilkan formulir dan checkout
+  if (playerSection) playerSection.hidden = false;
+  if (packagesSection) packagesSection.hidden = false;
+  if (checkoutSection) checkoutSection.hidden = false;
+
+  clearAlert();
+  render();
+
+  // Gulir ke formulir data pemain
+  if (playerSection) {
+    setTimeout(() => {
+      playerSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, 100);
+  }
+});
 
 $('orderBtn').addEventListener('click', async () => {
   clearAlert();
