@@ -582,14 +582,63 @@ img {
     </div><button class="dk-icon-btn" id="menuBtn" type="button"
   aria-label="Buka menu" aria-expanded="false">☰</button>
 
+<!-- OVERLAY SIDEBAR EMBA STORE -->
+<div class="dk-overlay" id="dkOverlay"></div>
+
+<!-- SIDEBAR EMBA STORE -->
+<aside
+  class="dk-sidebar"
+  id="dkSidebar"
+  aria-label="Menu utama"
+  aria-hidden="true"
+  inert
+>
+  <div class="dk-sidebar-head">
+    <a class="dk-sidebar-brand" href="/" aria-label="EMBA Store">
+      <img src="/Images/emba-store.png" alt="Logo EMBA Store">
+      <span>EMBA <span>Store</span></span>
+    </a>
+
+    <button
+      type="button"
+      class="dk-sidebar-close"
+      id="dkClose"
+      aria-label="Tutup menu"
+    >×</button>
+  </div>
+
+  <nav class="dk-sidebar-nav">
+    <a href="#games-title">
+      <span>Beranda</span>
+      <span class="dk-sidebar-icon">♧</span>
+    </a>
+
+    <a href="#help">
+      <span>Cek Transaksi</span>
+      <span class="dk-sidebar-icon">⌕</span>
+    </a>
+
+    <a href="#masuk">
+      <span>Masuk</span>
+      <span class="dk-sidebar-icon">↪</span>
+    </a>
+
+    <a href="#daftar">
+      <span>Daftar</span>
+      <span class="dk-sidebar-icon">♙</span>
+	</a>
+	  
+	<a href="#help">
+      <span>Bantuan</span>
+      <span class="dk-sidebar-icon">⌕</span>
+
+    </a>
+  </nav>
+</aside>
+
   </div>
 </header>
-<nav id="dkMenu" class="dk-menu" hidden>
-  <a href="/">Beranda</a>
-  <a href="#games-title">Semua Game</a>
-  <a href="#playersection">Top Up</a>
-  <a href="#help">Bantuan</a>
-</nav>
+	
 <div class="dk-search-wrap">
   <label class="dk-search">
     <span aria-hidden="true">⌕</span>
@@ -953,20 +1002,51 @@ $('orderBtn').addEventListener('click', async () => {
     button.innerHTML = 'Buat pesanan <span aria-hidden="true">→</span>';
   }
 });
-$('menuBtn').addEventListener('click', () => {
-  const menu = $('dkMenu');
-  const isHidden = menu.hidden;
 
-  menu.hidden = !isHidden;
-  $('menuBtn').setAttribute('aria-expanded', String(isHidden));
-});
+const dkSidebar = document.getElementById('dkSidebar');
+const dkOverlay = document.getElementById('dkOverlay');
+const dkMenuButton = document.getElementById('menuBtn');
+const dkCloseButton = document.getElementById('dkClose');
 
-$('dkMenu').addEventListener('click', event => {
-  if (event.target.closest('a')) {
-    $('dkMenu').hidden = true;
-    $('menuBtn').setAttribute('aria-expanded', 'false');
-  }
-});
+function openSidebar() {
+  if (!dkSidebar || !dkOverlay || !dkCloseButton) return;
+
+  dkSidebar.classList.add('is-open');
+  dkOverlay.classList.add('is-open');
+  dkSidebar.removeAttribute('inert');
+  dkSidebar.setAttribute('aria-hidden', 'false');
+
+  document.body.classList.add('dk-menu-open');
+  dkMenuButton.setAttribute('aria-expanded', 'true');
+  dkCloseButton.focus();
+}
+
+function closeSidebar() {
+  if (!dkSidebar || !dkOverlay || !dkMenuButton) return;
+
+  dkSidebar.classList.remove('is-open');
+  dkOverlay.classList.remove('is-open');
+  dkSidebar.setAttribute('inert', '');
+  dkSidebar.setAttribute('aria-hidden', 'true');
+
+  document.body.classList.remove('dk-menu-open');
+  dkMenuButton.setAttribute('aria-expanded', 'false');
+  dkMenuButton.focus();
+}
+
+if (dkMenuButton && dkSidebar && dkOverlay && dkCloseButton) {
+  dkMenuButton.addEventListener('click', openSidebar);
+  dkCloseButton.addEventListener('click', closeSidebar);
+  dkOverlay.addEventListener('click', closeSidebar);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeSidebar();
+  });
+
+  dkSidebar.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeSidebar);
+  });
+}
 load();
 </script>
 </body>
