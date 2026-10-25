@@ -380,8 +380,9 @@ function render() {
   });
 }
 
-document.querySelectorAll('.game').forEach(button => {
-  button.addEventListener('click', () => {
+$('games').addEventListener('click', function(event) {
+  const button = event.target.closest('button.game');
+  if (!button) return;
     document.querySelectorAll('.game').forEach(item => {
       item.classList.remove('active');
       item.setAttribute('aria-pressed', 'false');
