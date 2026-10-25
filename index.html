@@ -766,6 +766,7 @@ let game = 'Mobile Legends';
 let selected = null;
 const $ = id => document.getElementById(id);
 
+$('currency').addEventListener('change', async event => {
 function alertMsg(message) {
   $('alert').textContent = message;
   $('alert').classList.add('show');
