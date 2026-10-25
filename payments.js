@@ -92,21 +92,23 @@ export function verifyMidtransNotification(body) {
 }
 
 export function normalizePaymentStatus(n) {
+  const status = n?.transaction_status;
+  const fraud = n?.fraud_status;
+
+  const fraudAccepted = !fraud || fraud === 'accept';
   if (
-    n.transaction_status === 'settlement' ||
-    (n.transaction_status === 'capture' && n.fraud_status === 'accept')
+    (status === 'settlement' || status === 'capture') &&
+    fraudAccepted
   ) {
-    return 'paid';
+return 'paid';
   }
-
-  if (['expire', 'cancel', 'deny'].includes(n.transaction_status)) {
-    return 'failed';
-  }
-
-  if (['refund', 'partial_refund'].includes(n.transaction_status)) {
-    return 'refunded';
-  }
-
-  return 'pending';
+  if (['expire', 'cancel', 'deny'].includes(status)) {
+return 'failed';
 }
+  if (['refund', 'partial_refund'].includes(status)) {
+return 'refunded';
+}
+return 'pending';
+}
+
   
