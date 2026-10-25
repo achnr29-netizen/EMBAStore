@@ -37,7 +37,8 @@ if (!response.ok || !data.token || !data.redirect_url) {
 return {
   token: data.token,
   redirect_url: data.redirect_url
-} 
+};
+}
 export function verifyMidtransNotification(body) {
   const serverKey = process.env.MIDTRANS_SERVER_KEY;
   if (!serverKey || !body?.signature_key || !body?.order_id || !body?.status_code || body?.gross_amount == null) return false;
