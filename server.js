@@ -48,24 +48,135 @@ app.post('/api/orders/:id/payment', async (req,res) => {
     res.json({ order_id:order.id, payment_url:payment.redirect_url, payment_token:payment.token });
   } catch (e) { res.status(503).json({ error:'Pembayaran belum tersedia.', detail:process.env.NODE_ENV==='development'?e.message:undefined }); }
 });
-app.post('/api/webhooks/midtrans', (req,res) => {
+
+app.post('/api/webhooks/midtrans', (req, res) => {
   const n = req.body;
-  if (!verifyMidtransNotification(n)) return res.status(401).json({ error:'Signature tidak valid.' });
-  const eventKey = crypto.createHash('sha256').update(JSON.stringify(n)).digest('hex');
-  const insert = db.prepare('INSERT OR IGNORE INTO webhook_events (event_key,received_at) VALUES (?,?)').run(eventKey,now());
-  if (!insert.changes) return res.json({ received:true, duplicate:true });
-  const order = db.prepare('SELECT * FROM orders WHERE id=?').get(n.order_id);
-  if (!order) return res.status(404).json({ error:'Pesanan tidak ditemukan.' });
-  // Reject any amount mismatch before trusting a paid notification.
-  if (Number(n.gross_amount) !== Number(order.price_idr)) return res.status(400).json({ error:'Nominal pembayaran tidak cocok.' });
-  const status = normalizePaymentStatus(n);
-  db.prepare('UPDATE orders SET payment_status=?,updated_at=? WHERE id=?').run(status,now(),order.id);
-  if (status === 'paid' && order.fulfillment_status === 'waiting_payment') {
-    db.prepare('UPDATE orders SET fulfillment_status=?,updated_at=? WHERE id=?').run('queued',now(),order.id);
-    // Production: enqueue a durable background job here; never make fulfillment depend on webhook latency.
+
+  // 1. Verifikasi bahwa notifikasi berasal dari Midtrans.
+  if (!verifyMidtransNotification(n)) {
+    return res.status(401).json({ error: 'Signature tidak valid.' });
   }
+
+  // 2. Pastikan order ID valid dan pesanan memang ada.
+  if (typeof n.order_id !== 'string' || !n.order_id) {
+    return res.status(400).json({ error: 'Order ID tidak valid.' });
+  }
+
+  const order = db.prepare(
+    'SELECT * FROM orders WHERE id=?'
+  ).get(n.order_id);
+
+  if (!order) {
+    return res.status(404).json({
+      error: 'Pesanan tidak ditemukan.'
+    });
+  }
+
+  // 3. Validasi nominal sebelum event dicatat.
+  const amount = Number(n.gross_amount);
+
+  if (
+    typeof n.gross_amount !== 'string' ||
+    !Number.isFinite(amount) ||
+    amount !== Number(order.price_idr)
+  ) {
+    return res.status(400).json({
+      error: 'Nominal pembayaran tidak cocok.'
+    });
+  }
+
+  const status = normalizePaymentStatus(n);
+
+  // Jangan menerima status paid jika status code tidak sukses.
+  if (status === 'paid' && n.status_code !== '200') {
+    return res.status(400).json({
+      error: 'Status kode pembayaran tidak valid.'
+    });
+  }
+
+  // Hash event untuk mengenali pengiriman notifikasi yang sama.
+  const eventKey = crypto
+    .createHash('sha256')
+    .update(JSON.stringify(n))
+    .digest('hex');
+
+  try {
+    const processNotification = db.transaction(() => {
+      const insert = db.prepare(`
+        INSERT OR IGNORE INTO webhook_events
+        (event_key, received_at)
+        VALUES (?, ?)
+      `).run(eventKey, now());
+
+      if (!insert.changes) {
+        return 'duplicate';
+      }
+
+      const current = db.prepare(
+        'SELECT * FROM orders WHERE id=?'
+      ).get(n.order_id);
+
+      if (!current) {
+        throw new Error('ORDER_NOT_FOUND');
+      }
+
+      const oldStatus = current.payment_status;
+      let nextStatus = oldStatus;
+
+      // Jangan biarkan notifikasi terlambat membatalkan pembayaran sah.
+      if (oldStatus === 'refunded') {
+        nextStatus = 'refunded';
+      } else if (status === 'refunded') {
+        nextStatus = 'refunded';
+      } else if (oldStatus === 'paid') {
+        nextStatus = 'paid';
+      } else if (status === 'paid') {
+        nextStatus = 'paid';
+      } else if (status === 'failed') {
+        nextStatus = 'failed';
+      } else if (oldStatus !== 'failed') {
+        nextStatus = 'pending';
+      }
+
+      const timestamp = now();
+
+      db.prepare(`
+        UPDATE orders
+        SET payment_status=?, updated_at=?
+        WHERE id=?
+      `).run(nextStatus, timestamp, current.id);
+
+      // Hanya pembayaran sah yang boleh masuk antrean.
+      if (
+        nextStatus === 'paid' &&
+        current.fulfillment_status === 'waiting_payment'
+      ) {
+        db.prepare(`
+          UPDATE orders
+          SET fulfillment_status='queued', updated_at=?
+          WHERE id=?
+            AND fulfillment_status='waiting_payment'
+        `).run(timestamp, current.id);
+      }
+
+      return 'processed';
+    });
+
+    const result = processNotification();
+
+    return res.status(200).json({
+      received: true,
+      duplicate: result === 'duplicate'
+    });
+  } catch (e) {
+    console.error('Midtrans webhook error:', e.message);
+
+    return res.status(500).json({
+      error: 'Notifikasi belum berhasil diproses.'
+    });
+  }
+}); 
   res.json({ received:true });
-});
 app.get('/api/orders/:id', (req,res) => {
   const order = db.prepare('SELECT * FROM orders WHERE id=?').get(req.params.id);
   if (!order) return res.status(404).json({ error:'Pesanan tidak ditemukan.' });
