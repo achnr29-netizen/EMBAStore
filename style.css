@@ -604,3 +604,56 @@ body { padding-bottom: 190px; }
   }
   body { padding-bottom: 40px; }
 }
+
+/* HEADER DAN PENCARIAN TETAP DI ATAS */
+.dk-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* Kolom pencarian tetap di bawah header */
+.dk-search-wrap {
+  position: fixed;
+  top: 90px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: #090d19;
+}
+
+/* Beri ruang agar konten tidak tertutup header */
+main {
+  padding-top: 150px;
+}
+
+/* Ringkasan pembayaran tetap di bawah */
+#checkoutsection {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1001;
+}
+
+/* Pastikan area utama tetap bisa digulir */
+body {
+  padding-bottom: 230px;
+}
+
+/* Penyesuaian layar HP */
+@media (max-width: 720px) {
+  .dk-header {
+    min-height: 90px;
+  }
+
+  .dk-search-wrap {
+    top: 90px;
+  }
+
+  main {
+    padding-top: 150px;
+  }
+}
