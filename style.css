@@ -657,3 +657,73 @@ body {
     padding-top: 150px;
   }
 }
+
+/* HEADER HP: PENCARIAN + IDR + MENU */
+@media (max-width: 720px) {
+  .dk-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px 14px;
+  }
+
+  .dk-brand {
+    flex: 1;
+    min-width: 0;
+    gap: 6px;
+  }
+
+  .dk-logo-img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+  }
+
+  .dk-brand > span {
+    font-size: 17px;
+    white-space: nowrap;
+  }
+
+  .dk-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+  }
+
+  /* Tombol pencarian lebih kecil */
+  .dk-search-toggle,
+  #searchBtn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  /* Pilihan IDR diperkecil */
+  .dk-currency {
+    max-width: 112px;
+    padding: 7px 8px;
+    gap: 4px;
+  }
+
+  .dk-currency select {
+    width: 72px;
+    min-width: 0;
+    padding: 4px 0;
+    font-size: 12px;
+  }
+
+  #menuBtn {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  /* Pencarian tetap berada di bawah header */
+  .dk-search-wrap {
+    top: 76px;
+  }
+}
