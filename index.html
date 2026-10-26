@@ -303,7 +303,6 @@ $('games').addEventListener('click', async function(event) {
   const button = event.target.closest('button.game');
   if (!button) return;
 
-  // Tandai kartu game yang dipilih
   document.querySelectorAll('#games .game').forEach(item => {
     item.classList.remove('active');
     item.setAttribute('aria-pressed', 'false');
@@ -313,31 +312,54 @@ $('games').addEventListener('click', async function(event) {
   button.setAttribute('aria-pressed', 'true');
   game = button.dataset.game;
 
-  // Tampilkan ketiga gian secara langsung
-  ['playersection', 'packagestitle', 'checkoutsection'].forEach(id => {
-    const section = $(id);
-    if (section) {
-      section.removeAttribute('hidden');
-      section.hidden = false;
-    }
-  });
+  // Sembunyikan daftar game dan tampilkan halaman pesanan
+  document.querySelector('.hero').hidden = true;
+  document.querySelector('#games-title')
+    .closest('.section').hidden = true;
+
+  ['playersection', 'packagestitle', 'checkoutsection']
+    .forEach(id => {
+      $(id).hidden = false;
+    });
+
+  // Ubah judul halaman sesuai game
+  $('player-title').textContent = 'Masukkan User ID — ' + game;
 
   clearAlert();
   render();
 
-  // Arahkan layar ke formulir pemain
-  const playerSection = $('playersection');
-  if (playerSection) {
-    playerSection.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
-  }
-
-  console.log('Game dipilih:', game);
-  console.log('Form tampil:', !$('playersection').hidden);
+  // Pindah ke bagian atas halaman pesanan, bukan ke kolom User ID
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 });
-	
+
+
+// Tambahkan tombol kembali ke daftar game
+const backButton = document.createElement('button');
+backButton.type = 'button';
+backButton.id = 'backToGames';
+backButton.className = 'btn back-game-btn';
+backButton.textContent = '← Kembali ke semua game';
+
+$('playersection').prepend(backButton);
+
+backButton.addEventListener('click', () => {
+  $('playersection').hidden = true;
+  $('packagestitle').hidden = true;
+  $('checkoutsection').hidden = true;
+
+  document.querySelector('.hero').hidden = false;
+  document.querySelector('#games-title')
+    .closest('.section').hidden = false;
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+			
 $('orderBtn').addEventListener('click', async () => {
   clearAlert();
   if (!selected) return alertMsg('Pilih paket terlebih dahulu.');
