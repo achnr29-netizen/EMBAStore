@@ -727,3 +727,86 @@ body {
     top: 76px;
   }
 }
+
+/* PENCARIAN SEJAJAR DENGAN IDR */
+.dk-header .dk-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dk-header .dk-search-wrap {
+  position: static;
+  width: 42px;
+  flex: 0 0 42px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+}
+
+.dk-header .dk-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.dk-header .dk-search input {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+}
+
+.dk-header .dk-search:focus-within {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: calc(100% + 8px);
+  width: auto;
+  z-index: 1002;
+  background: #121a2e;
+}
+
+.dk-header .dk-search:focus-within input {
+  width: 100%;
+  padding: 10px;
+  opacity: 1;
+}
+
+.dk-header .dk-currency {
+  max-width: 112px;
+  padding: 6px;
+}
+
+.dk-header .dk-currency select {
+  width: 68px;
+  min-width: 0;
+  font-size: 12px;
+}
+
+@media (max-width: 720px) {
+  .dk-header {
+    gap: 6px;
+    padding: 12px;
+  }
+
+  .dk-header .dk-brand {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .dk-header .dk-brand > span {
+    font-size: 16px;
+  }
+
+  .dk-header .dk-actions {
+    gap: 6px;
+  }
+}
