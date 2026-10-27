@@ -219,16 +219,9 @@ img {
 .dk-header {
   position: sticky;
   top: 0;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  z-index: 9999;
   width: 100%;
-  padding: 12px 16px;
-  background: rgba(7, 11, 24, 0.96);
-  border-bottom: 1px solid rgba(83, 231, 255, 0.2);
-  backdrop-filter: blur(14px);
+  background: #090d19;
 }
 
 .dk-brand {
