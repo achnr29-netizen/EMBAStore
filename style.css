@@ -710,3 +710,7 @@ h2 {
   margin-top: 16px;
   font-size: 32px;
 }
+/* Jarak setelah kotak pencarian */
+.dk-search-wrap {
+  margin-bottom: 20px;
+}
