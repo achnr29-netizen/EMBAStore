@@ -706,3 +706,6 @@ body.dk-menu-open { overflow:hidden; }
     margin-bottom: 20px;
   }
 }
+h2 {
+  margin-top: 16px;
+}
