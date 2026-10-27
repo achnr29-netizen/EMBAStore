@@ -367,6 +367,18 @@ img {
   cursor: pointer;
 }
 
+/* Sedikit perbesar kotak pencarian lama */
+.dk-search {
+  min-height: 54px;
+  padding: 0 18px;
+  border-radius: 15px;
+  border-width: 1.5px;
+}
+
+.dk-search input {
+  padding: 15px 0;
+}
+
 /* ===== KATALOG GAME ===== */
 .games {
   display: grid;
