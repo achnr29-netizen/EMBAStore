@@ -681,7 +681,7 @@ body.dk-menu-open { overflow:hidden; }
     height: 40px;
     min-height: 40px;
     padding: 0 8px;
-    margin: 0;
+    margin-left: 4px;
     border: 1px solid #53e7ff35;
     border-radius: 12px;
     box-sizing: border-box;
