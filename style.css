@@ -712,5 +712,8 @@ h2 {
 }
 /* Jarak setelah kotak pencarian */
 .dk-search-wrap {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
+.section[aria-labelledby="games-title"] {
+  margin-top: 24px;
+	}
 }
