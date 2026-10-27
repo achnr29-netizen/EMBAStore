@@ -701,7 +701,7 @@ body.dk-menu-open { overflow:hidden; }
   }
 
   .dk-actions .dk-search span {
-    font-size: 18px;
+    font-size: 22px;
     flex-shrink: 0;
   }
 }
