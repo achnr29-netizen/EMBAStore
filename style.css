@@ -717,3 +717,12 @@ h2 {
   margin-top: 24px;
 	}
 }
+.dk-logo-img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  opacity: 1;
+  visibility: visible;
+  flex-shrink: 0;
+}
