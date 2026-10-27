@@ -29,17 +29,29 @@
         <option value="THB">TH / THB</option>
       </select>
     </div>
-   <button class="dk-icon-btn" id="menuBtn" type="button"
-  aria-label="Buka menu" aria-expanded="false">☰</button>
-	   
+   
+<div class="dk-overlay" id="dkOverlay"></div>
+
+<aside class="dk-sidebar" id="dkSidebar"
+  aria-label="Menu utama" aria-hidden="true" inert>
+
+  <div class="dk-sidebar-head">
+    <div class="dk-sidebar-brand">
+      <img src="/Images/emba-store.png" alt="Logo EMBA Store">
+      <span>EMBA <span class="dk-gold">Store</span></span>
+    </div>
+
+    <button type="button" class="dk-sidebar-close"
+      id="dkClose" aria-label="Tutup menu">×</button>
   </div>
-</header>
-<nav id="dkMenu" class="dk-menu" hidden>
-  <a href="/">Beranda</a>
-  <a href="#games-title">Semua Game</a>
-  <a href="#playersection">Top Up</a>
-  <a href="#help">Bantuan</a>
-</nav>
+
+  <nav class="dk-sidebar-nav" aria-label="Navigasi utama">
+    <a href="#gameSection">Top Up</a>
+    <a href="#checkoutsection">Pesanan</a>
+    <a href="#games-title">Daftar Game</a>
+    <a href="#help">Bantuan</a>
+  </nav>
+</aside>
 <main>
 <section class="hero"><div><div class="eyebrow">GAME CURRENCY • FAST • SECURE</div><h1>Top up.<br><span class="gradient">Level up.</span></h1><p>Temukan paket game favoritmu. Periksa ID pemain sebelum membayar dan pantau status pesananmu.</p><div class="badges"><span class="badge">⚡ Proses praktis</span><span class="badge">🔐 Checkout aman</span><span class="badge">🎮 Banyak pilihan game</span></div></div><div class="orb" aria-hidden="true">💎🎮</div></section>
 <section class="section" aria-labelledby="games-title"><div class="section-head"><div><div class="step">LANGKAH 01</div><h2 class="heading" id="games-title">Pilih game</h2><p class="sub">Paket akan menyesuaikan game yang dipilih.</p></div></div>
