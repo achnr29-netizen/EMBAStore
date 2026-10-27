@@ -681,7 +681,7 @@ body.dk-menu-open { overflow:hidden; }
     height: 40px;
     min-height: 40px;
     padding: 0 8px;
-    margin-left: 4px;
+    margin: 0;
     border: 1px solid #53e7ff35;
     border-radius: 12px;
     box-sizing: border-box;
@@ -703,5 +703,7 @@ body.dk-menu-open { overflow:hidden; }
   .dk-actions .dk-search span {
     font-size: 26px;
     flex-shrink: 0;
+	position: relative;
+	left: 4px
   }
 }
