@@ -31,7 +31,7 @@
     </div>
    <button class="dk-icon-btn" id="menuBtn" type="button"
   aria-label="Buka menu" aria-expanded="false">☰</button>
-
+	   
   </div>
 </header>
 <nav id="dkMenu" class="dk-menu" hidden>
@@ -432,6 +432,31 @@ $('dkMenu').addEventListener('click', event => {
     $('menuBtn').setAttribute('aria-expanded', 'false');
   }
 });
+	
+const searchToggle = document.getElementById('searchToggle');
+const gameSearch = document.getElementById('gameSearch');
+
+if (searchToggle && gameSearch) {
+  searchToggle.addEventListener('click', () => {
+    gameSearch.style.display = 'block';
+    gameSearch.style.visibility = 'visible';
+    gameSearch.style.opacity = '1';
+
+    const searchWrap = gameSearch.closest('.dk-search-wrap');
+    if (searchWrap) {
+      searchWrap.style.display = 'block';
+      searchWrap.style.position = 'fixed';
+      searchWrap.style.top = '160px';
+      searchWrap.style.left = '16px';
+      searchWrap.style.right = '16px';
+      searchWrap.style.width = 'auto';
+      searchWrap.style.zIndex = '1005';
+    }
+
+    gameSearch.focus();
+  });
+}
+
 load();
 </script>
 </body>
