@@ -430,21 +430,48 @@ $('orderBtn').addEventListener('click', async () => {
     button.innerHTML = 'Buat pesanan <span aria-hidden="true">→</span>';
   }
 });
-$('menuBtn').addEventListener('click', () => {
-  const menu = $('dkMenu');
-  const isHidden = menu.hidden;
 
-  menu.hidden = !isHidden;
-  $('menuBtn').setAttribute('aria-expanded', String(isHidden));
-});
+const menuBtn = document.getElementById('menuBtn');
+const dkSidebar = document.getElementById('dkSidebar');
+const dkOverlay = document.getElementById('dkOverlay');
+const dkClose = document.getElementById('dkClose');
 
-$('dkMenu').addEventListener('click', event => {
-  if (event.target.closest('a')) {
-    $('dkMenu').hidden = true;
-    $('menuBtn').setAttribute('aria-expanded', 'false');
-  }
+function openDkMenu() {
+  if (!dkSidebar || !dkOverlay) return;
+
+  dkSidebar.classList.add('is-open');
+  dkOverlay.classList.add('is-open');
+  dkSidebar.removeAttribute('inert');
+  dkSidebar.setAttribute('aria-hidden', 'false');
+  if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+  document.body.classList.add('dk-menu-open');
+}
+
+function closeDkMenu() {
+  if (!dkSidebar || !dkOverlay) return;
+
+  dkSidebar.classList.remove('is-open');
+  dkOverlay.classList.remove('is-open');
+  dkSidebar.setAttribute('aria-hidden', 'true');
+  dkSidebar.setAttribute('inert', '');
+  if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+  document.body.classList.remove('dk-menu-open');
+}
+
+if (menuBtn) menuBtn.addEventListener('click', openDkMenu);
+if (dkClose) dkClose.addEventListener('click', closeDkMenu);
+if (dkOverlay) dkOverlay.addEventListener('click', closeDkMenu);
+
+if (dkSidebar) {
+  dkSidebar.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeDkMenu);
+  });
+}
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeDkMenu();
 });
-	
+		
 load();
 </script>
 </body>
