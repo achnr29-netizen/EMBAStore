@@ -11,10 +11,11 @@
 <body>
 
 <header class="dk-header">
-  <a class="dk-brand" href="/" aria-label="EMBA Store Beranda">
+  <div class="dk-brand" href="/" aria-label="EMBA Store>
     <img class="dk-logo-img" src="/Images/emba-store.png" alt="Logo EMBA Store">
     <span>EMBA<span class="dk-gold">Store</span></span>
-  </a>
+  </div>
+	
   <div class="dk-actions">
     <div class="dk-search-wrap">
       <label class="dk-search">
@@ -59,7 +60,7 @@
 </aside>
 <main>
 <section class="hero"><div><div class="eyebrow">GAME CURRENCY • FAST • SECURE</div><h1>Top up.<br><span class="gradient">Level up.</span></h1><p>Temukan paket game favoritmu. Periksa ID pemain sebelum membayar dan pantau status pesananmu.</p><div class="badges"><span class="badge">⚡ Proses praktis</span><span class="badge">🔐 Checkout aman</span><span class="badge">🎮 Banyak pilihan game</span></div></div><div class="orb" aria-hidden="true">💎🎮</div></section>
-<section class="section" aria-labelledby="games-title"><div class="section-head"><div><div class="step">LANGKAH 01</div><h2 class="heading" id="games-title">Pilih game</h2><p class="sub">Paket akan menyesuaikan game yang dipilih.</p></div></div>
+<section class="section" aria-labelledby="games-title"><div class="section-head"><div><h2 class="heading" id="games-title">Pilih game</h2><p class="sub">Paket akan menyesuaikan game yang dipilih.</p></div></div>
 <div class="games" id="games">
 
 <button type="button" class="game active" data-game="Mobile Legends" aria-pressed="true">
@@ -104,18 +105,18 @@
   <small>CP</small>
 </button>
 </div></section>
-<section class="section" id="playersection" aria-labelledby="player-title" hidden><div class="section-head"><div><div class="step">LANGKAH 02</div><h2 class="heading" id="player-title">Data pemain</h2><p class="sub">DiamondKu tidak pernah meminta password akun game.</p></div></div>
+<section class="section" id="playersection" aria-labelledby="player-title" hidden><div class="section-head"><div><h2 class="heading" id="player-title">Data pemain</h2><p class="sub">Emba store tidak pernah meminta password akun game.</p></div></div>
 <div class="fieldgrid">
 <div class="field"><label for="player">ID Pemain *</label><input id="player" maxlength="40" placeholder="Masukkan ID pemain" autocomplete="off" required></div>
-<div class="field"><label for="server">Server / Zone ID (jika diperlukan)</label><input id="server" maxlength="40" placeholder="Masukkan Server ID" autocomplete="off"></div>
-<div class="field"><label for="contact">Nomor WhatsApp (opsional)</label><input id="contact" maxlength="30" placeholder="08xxxxxxxxxx" inputmode="tel" autocomplete="tel"></div>
+<div class="field"><label for="server">Server / Zone ID </label><input id="server" maxlength="40" placeholder="Masukkan Server ID" autocomplete="off"></div>
+<div class="field"><label for="contact">Nomor WhatsApp </label><input id="contact" maxlength="30" placeholder="08xxxxxxxxxx" inputmode="tel" autocomplete="tel"></div>
 <div class="field"><label for="method">Metode pembayaran</label><select id="method"><option value="qris">QRIS</option><option value="bca">BCA / Transfer bank</option><option value="dana">DANA</option><option value="gopay">GoPay</option></select><small class="muted">Metode yang tersedia mengikuti aktivasi akun payment gateway.</small></div>
 </div></section>
-<section class="section" id="packagestitle" aria-labelledby="packages-title" hidden><div class="section-head"><div><div class="step">LANGKAH 03</div><h2 class="heading" id="packages-title">Pilih paket</h2><p class="sub">Pastikan harga dan isi paket sudah benar sebelum menerima pesanan.</p></div></div><div class="packages" id="packages" aria-live="polite"><p class="muted">Memuat paket…</p></div></section>
+<section class="section" id="packagestitle" aria-labelledby="packages-title" hidden><div class="section-head"><div><h2 class="heading" id="packages-title">Pilih paket</h2><p class="sub">Pastikan id sudah benar sebelum membuat pesanan.</p></div></div><div class="packages" id="packages" aria-live="polite"><p class="muted">Memuat paket…</p></div></section>
 <section class="checkout" id="checkoutsection"aria-label="Ringkasan pesanan" hidden><div><div class="total-label">TOTAL PEMBAYARAN</div><div class="total" id="total">Rp0</div><div class="muted" id="summary" aria-live="polite">Pilih paket untuk melihat ringkasan.</div></div><button type="button" class="btn" id="orderBtn">Buat pesanan <span aria-hidden="true">→</span></button></section>
 <div id="alert" class="alert" role="status" aria-live="polite"></div>
 <p class="note">Pembayaran diproses melalui penyedia pembayaran yang dikonfigurasi. Pesanan top up hanya dikirim setelah status pembayaran diverifikasi server. Jika pembayaran belum diaktifkan, checkout akan menampilkan pesan error.</p>
-</main><footer>© 2026 EMBA Store • Top up dengan aman, main dengan nyaman.</footer>
+</main><footer>© 2026 EMBA Store • All right reserved.</footer>
 <script>
 'use strict';
 const currencyNames = {
