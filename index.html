@@ -434,16 +434,17 @@ $('dkMenu').addEventListener('click', event => {
 });
 	
 const searchToggle = document.getElementById('searchToggle');
+const searchWrap = document.querySelector('.dk-search-wrap');
 const gameSearch = document.getElementById('gameSearch');
 
-if (searchToggle && gameSearch) {
-  searchToggle.addEventListener('click', () => {
-    gameSearch.style.display = 'block';
-    gameSearch.style.visibility = 'visible';
-    gameSearch.style.opacity = '1';
+if (searchToggle && searchWrap && gameSearch) {
+  searchToggle.addEventListener('click', function () {
+    const isOpen = searchWrap.dataset.open === 'true';
 
-    const searchWrap = gameSearch.closest('.dk-search-wrap');
-    if (searchWrap) {
+    if (isOpen) {
+      searchWrap.style.display = 'none';
+      searchWrap.dataset.open = 'false';
+    } else {
       searchWrap.style.display = 'block';
       searchWrap.style.position = 'fixed';
       searchWrap.style.top = '160px';
@@ -451,11 +452,13 @@ if (searchToggle && gameSearch) {
       searchWrap.style.right = '16px';
       searchWrap.style.width = 'auto';
       searchWrap.style.zIndex = '1005';
-    }
 
-    gameSearch.focus();
+      gameSearch.style.display = 'block';
+      gameSearch.focus();
+      searchWrap.dataset.open = 'true';
+    }
   });
-}
+  }
 
 load();
 </script>
