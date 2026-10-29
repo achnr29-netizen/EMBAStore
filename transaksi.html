@@ -20,6 +20,82 @@
 <style>
   .dk-header { position: fixed !important; top: 0 !important; left: 0; right: 0; width: 100%; z-index: 2000 !important; background: #10131d; }
   body { padding-top: 82px; }
+	transaction-game-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+    margin: 0 0 24px;
+    border: 1px solid rgba(0,195,255,.24);
+    border-radius: 0 0 22px 22px;
+    background: #111827;
+    isolation: isolate;
+  }
+  .transaction-game-hero::before {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    z-index: -2;
+    background-image: var(--game-art);
+    background-size: cover;
+    background-position: center 28%;
+    filter: blur(2px) brightness(.52);
+    transform: scale(1.04);
+  }
+  .transaction-game-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgba(7,11,24,.92), rgba(7,11,24,.35)), linear-gradient(0deg, rgba(7,11,24,.88), transparent 75%);
+  }
+  .transaction-game-banner {
+    height: 170px;
+    background-image: var(--game-art);
+    background-size: cover;
+    background-position: center 28%;
+    border-bottom: 1px solid rgba(0,195,255,.2);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    opacity: .9;
+  }
+  .transaction-game-info {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    padding: 0 20px 22px;
+    margin-top: -54px;
+  }
+  .transaction-game-icon {
+    width: 112px;
+    height: 112px;
+    flex: 0 0 112px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 2px solid rgba(0,195,255,.48);
+    box-shadow: 0 8px 24px rgba(0,0,0,.4);
+    background: #111827;
+  }
+  .transaction-game-info h1 {
+    margin: 0 0 6px;
+    color: #f4f7ff;
+    font-size: clamp(20px, 5vw, 28px);
+    line-height: 1.15;
+  }
+  .transaction-game-info p {
+    margin: 0;
+    color: #68dff5;
+    font-size: 14px;
+  }
+  body.transaction-view main > :not(.transaction-game-hero):not(#playersection):not(#packagestitle):not(#checkoutsection):not(#alert) {
+    display: none !important;
+  }
+  body.transaction-view .transaction-game-hero { display: block !important; }
+  body.transaction-view #playersection, body.transaction-view #packagestitle { display: block !important; }
+  @media (max-width: 600px) {
+    .transaction-game-hero { min-height: 230px; margin-top: -4px; }
+    .transaction-game-banner { height: 155px; }
+    .transaction-game-icon { width: 92px; height: 92px; flex-basis: 92px; border-radius: 16px; }
+    .transaction-game-info { gap: 12px; padding: 0 16px 18px; margin-top: -45px; }
+  }
   .emba-back-games { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 16px; padding: 10px 14px; color: #f5d6a0; background: #171d2b; border: 1px solid rgba(0,195,255,.35); border-radius: 12px; font: inherit; cursor: pointer; }
   @media (max-width: 600px) { body { padding-top: 76px; } .dk-header { min-height: 64px; } }
 </style>
