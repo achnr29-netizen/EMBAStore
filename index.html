@@ -366,41 +366,10 @@ const price = document.createElement('div');
 $('games').addEventListener('click', async function(event) {
   const button = event.target.closest('button.game');
   if (!button) return;
-
-  // Tandai kartu game yang dipilih
-  document.querySelectorAll('#games .game').forEach(item => {
-    item.classList.remove('active');
-    item.setAttribute('aria-pressed', 'false');
-  });
-
-  button.classList.add('active');
-  button.setAttribute('aria-pressed', 'true');
-  game = button.dataset.game;
-
-  // Tampilkan ketiga gian secara langsung
-  ['playersection', 'packagestitle', 'checkoutsection'].forEach(id => {
-    const section = $(id);
-    if (section) {
-      section.removeAttribute('hidden');
-      section.hidden = false;
-    }
-  });
-
-  clearAlert();
-  render();
-
-  // Arahkan layar ke formulir pemain
-  const playerSection = $('playersection');
-  if (playerSection) {
-    playerSection.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
-  }
-
-  console.log('Game dipilih:', game);
-  console.log('Form tampil:', !$('playersection').hidden);
-});
+	
+const selectedGame = button.dataset.game;
+  window.location.href = 'transaksi.html?game=' + encodeURIComponent(selectedGame);
+}); 
 	
 $('orderBtn').addEventListener('click', async () => {
   clearAlert();
