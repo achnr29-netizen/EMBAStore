@@ -105,6 +105,64 @@
 .emba-sticky-order .btn { display: flex; width: 100%; justify-content: center; align-items: center; gap: 8px; min-height: 52px; margin: 0; }
 body { padding-bottom: calc(92px + env(safe-area-inset-bottom)); }
 </style>
+	<style>
+/* EMBA Store: header tetap terlihat saat halaman digulir */
+.dk-header { position: fixed !important; top: 0; z-index: 2000; }
+/* Tombol pesan selalu menempel di bawah layar */
+.emba-sticky-order { position: fixed; left: 0; right: 0; bottom: 0; z-index: 1001; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); background: rgba(7, 11, 24, .96); border-top: 1px solid rgba(0, 195, 255, .22); backdrop-filter: blur(12px); }
+.emba-sticky-order .btn { display: flex; width: 100%; justify-content: center; align-items: center; gap: 8px; min-height: 52px; margin: 0; }
+body { padding-bottom: calc(92px + env(safe-area-inset-bottom)); }
+</style>
+
+<style id="emba-video-inspired-design">
+/* Gaya transaksi terinspirasi referensi video, tetap memakai identitas EMBA Store */
+:root{--emba-gold:#c6a57b;--emba-gold-light:#ead0a7;--emba-charcoal:#242629;--emba-card:#393c41;--emba-line:rgba(234,208,167,.18)}
+html{background:#242629}
+body{background:#242629!important;color:#f3f3f3!important;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.dk-header{background:rgba(27,28,30,.97)!important;border-bottom:1px solid var(--emba-line);backdrop-filter:blur(14px)}
+.dk-brand,.dk-sidebar-brand{color:#f4eadb!important}
+.dk-gold{color:var(--emba-gold-light)!important}
+.dk-icon-btn,.dk-currency select{background:#202124!important;border:1px solid #45474b!important;color:#f4f4f4!important;border-radius:9px}
+.dk-sidebar{background:#202124!important;border-left-color:var(--emba-gold)!important}
+.dk-sidebar-nav a:hover,.dk-sidebar-nav a:focus{background:#393c41!important;color:var(--emba-gold-light)!important}
+body.transaction-view main{max-width:760px;margin-inline:auto;padding-inline:12px}
+.transaction-game-hero{border:0;border-radius:12px;background:#303236;margin:0 0 16px;min-height:205px}
+.transaction-game-hero::after{background:linear-gradient(90deg,rgba(25,26,28,.92),rgba(25,26,28,.25)),linear-gradient(0deg,rgba(25,26,28,.92),transparent 80%)}
+.transaction-game-banner{height:150px;border-bottom:0}
+.transaction-game-icon{border:2px solid var(--emba-gold);border-radius:12px}
+.transaction-game-info p{color:var(--emba-gold-light)}
+.section,.checkout{background:#303236!important;border:1px solid rgba(255,255,255,.055)!important;border-radius:12px!important;padding:14px!important;margin:0 0 14px!important;box-shadow:0 5px 18px rgba(0,0,0,.12)}
+.heading,.section h2{color:#f7f5f1!important;font-size:17px!important}
+.sub,.muted,.field small{color:#b9b9bb!important}
+.field label{color:#e6e3df!important}
+.field input,.field select,.dk-search input{background:#45484d!important;color:#fff!important;border:1px solid #56595e!important;border-radius:8px!important;min-height:42px}
+.field input::placeholder{color:#b8b8b8}
+.packages{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px!important}
+.packages>*{min-width:0}
+.packages button,.packages .package,.packages .product,.packages [data-package]{background:#414449!important;color:#f4f4f4!important;border:1px solid #55585d!important;border-radius:10px!important}
+.packages button:hover,.packages button:focus,.packages .selected,.packages [aria-pressed="true"]{border-color:var(--emba-gold)!important;box-shadow:0 0 0 1px rgba(198,165,123,.22)!important}
+.price,.package-price,.packages strong{color:var(--emba-gold-light)!important}
+.btn,.emba-sticky-order .btn{background:var(--emba-gold)!important;color:#211d18!important;border:1px solid #d7b993!important;border-radius:9px!important;font-weight:750!important;box-shadow:none!important}
+.emba-sticky-order{background:rgba(31,32,34,.97)!important;border-top:1px solid var(--emba-line)!important;padding:9px 12px calc(9px + env(safe-area-inset-bottom))!important}
+.emba-sticky-order .btn{min-height:46px!important}
+.checkout{border-color:var(--emba-line)!important}
+.total{color:var(--emba-gold-light)!important}
+.emba-back-games{background:#393c41!important;color:var(--emba-gold-light)!important;border:1px solid var(--emba-line)!important}
+.alert{border-radius:9px}
+footer{background:#202124!important;color:#aaa!important;border-top:1px solid var(--emba-line)!important}
+@media(max-width:600px){
+ body{padding-top:72px!important}
+ body.transaction-view main{padding-inline:9px}
+ .transaction-game-hero{min-height:190px}
+ .transaction-game-banner{height:135px}
+ .transaction-game-info{padding-inline:13px}
+ .transaction-game-icon{width:78px;height:78px;flex-basis:78px}
+ .section,.checkout{padding:12px!important}
+ .packages{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+ .packages button,.packages .package,.packages .product,.packages [data-package]{padding:9px!important}
+}
+</style>
+	
 </head>
 <body>
 
