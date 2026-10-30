@@ -426,6 +426,12 @@ if (dkMenuButton && dkSidebar && dkOverlay && dkCloseButton) {
   });
   dkSidebar.querySelectorAll('a').forEach(link => link.addEventListener('click', closeSidebar));
 }
+	const backToGames = $('backToGames');
+if (backToGames) {
+  backToGames.addEventListener('click', () => {
+    window.location.href = 'index.html';
+  });
+}
 load();
 </script>
 </body>
