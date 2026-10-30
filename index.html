@@ -443,5 +443,61 @@ if (backToGames) {
 }
 load();
 </script>
+	<script>
+(function () {
+  function initEmbaMainMenu() {
+    const button = document.getElementById('menuBtn');
+    const sidebar = document.getElementById('dkSidebar');
+    const overlay = document.getElementById('dkOverlay');
+    const closeButton = document.getElementById('dkClose');
+
+    if (!button || !sidebar || !overlay || !closeButton) return;
+
+    // Remove any previous handlers from this fallback initializer before binding.
+    if (button.dataset.embaMenuReady === 'true') return;
+    button.dataset.embaMenuReady = 'true';
+
+    function openMenu() {
+      sidebar.classList.add('is-open');
+      overlay.classList.add('is-open');
+      sidebar.removeAttribute('inert');
+      sidebar.setAttribute('aria-hidden', 'false');
+      button.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('dk-menu-open');
+    }
+
+    function closeMenu() {
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      sidebar.setAttribute('inert', '');
+      sidebar.setAttribute('aria-hidden', 'true');
+      button.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('dk-menu-open');
+    }
+
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (sidebar.classList.contains('is-open')) closeMenu();
+      else openMenu();
+    });
+
+    closeButton.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeMenu();
+    });
+
+    sidebar.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEmbaMainMenu, { once: true });
+  } else {
+    initEmbaMainMenu();
+  }
+})();
 </body>
 </html>
