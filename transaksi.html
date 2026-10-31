@@ -116,40 +116,54 @@ body { padding-bottom: calc(92px + env(safe-area-inset-bottom)); }
 
 <style id="emba-video-inspired-design">
 /* Gaya transaksi terinspirasi referensi video, tetap memakai identitas EMBA Store */
-:root{--emba-gold:#c6a57b;--emba-gold-light:#ead0a7;--emba-charcoal:#242629;--emba-card:#393c41;--emba-line:rgba(234,208,167,.18)}
-html{background:#242629}
-body{background:#242629!important;color:#f3f3f3!important;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-.dk-header{background:rgba(27,28,30,.97)!important;border-bottom:1px solid var(--emba-line);backdrop-filter:blur(14px)}
-.dk-brand,.dk-sidebar-brand{color:#f4eadb!important}
-.dk-gold{color:var(--emba-gold-light)!important}
-.dk-icon-btn,.dk-currency select{background:#202124!important;border:1px solid #45474b!important;color:#f4f4f4!important;border-radius:9px}
-.dk-sidebar{background:#202124!important;border-left-color:var(--emba-gold)!important}
-.dk-sidebar-nav a:hover,.dk-sidebar-nav a:focus{background:#393c41!important;color:var(--emba-gold-light)!important}
+:root{
+ --emba-blue:#087bff;
+ --emba-blue-deep:#0754d8;
+ --emba-cyan:#18d9ff;
+ --emba-cyan-soft:#8beeff;
+ --emba-navy:#071326;
+ --emba-panel:#0d1d36;
+ --emba-card:#102442;
+ --emba-line:rgba(24,217,255,.28);
+}
+html{background:var(--emba-navy)}
+body{background:radial-gradient(ellipse at 50% 0%,#102b50 0%,var(--emba-navy) 48%,#050d1b 100%)!important;color:#f4f8ff!important;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.dk-header{background:rgba(5,15,31,.97)!important;border-bottom:1px solid var(--emba-line)!important;backdrop-filter:blur(14px)}
+.dk-brand,.dk-sidebar-brand{color:#f4f8ff!important}
+.dk-gold{color:var(--emba-cyan)!important}
+.dk-icon-btn,.dk-currency select{background:#0c1b32!important;border:1px solid rgba(8,123,255,.65)!important;color:#f4f8ff!important;border-radius:12px}
+.dk-icon-btn:focus-visible,.dk-currency select:focus-visible{outline:2px solid var(--emba-cyan)!important;outline-offset:2px}
+.dk-sidebar{background:#07172d!important;border-left:1px solid var(--emba-line)!important}
+.dk-sidebar-nav a{background:#0d203b!important;border-color:rgba(24,217,255,.16)!important}
+.dk-sidebar-nav a:hover,.dk-sidebar-nav a:focus{background:#12345b!important;color:var(--emba-cyan)!important;border-color:var(--emba-cyan)!important}
+.dk-sidebar-icon{color:var(--emba-cyan)!important}
 body.transaction-view main{max-width:760px;margin-inline:auto;padding-inline:12px}
-.transaction-game-hero{border:0;border-radius:12px;background:#303236;margin:0 0 16px;min-height:205px}
-.transaction-game-hero::after{background:linear-gradient(90deg,rgba(25,26,28,.92),rgba(25,26,28,.25)),linear-gradient(0deg,rgba(25,26,28,.92),transparent 80%)}
-.transaction-game-banner{height:150px;border-bottom:0}
-.transaction-game-icon{border:2px solid var(--emba-gold);border-radius:12px}
-.transaction-game-info p{color:var(--emba-gold-light)}
-.section,.checkout{background:#303236!important;border:1px solid rgba(255,255,255,.055)!important;border-radius:12px!important;padding:14px!important;margin:0 0 14px!important;box-shadow:0 5px 18px rgba(0,0,0,.12)}
-.heading,.section h2{color:#f7f5f1!important;font-size:17px!important}
-.sub,.muted,.field small{color:#b9b9bb!important}
-.field label{color:#e6e3df!important}
-.field input,.field select,.dk-search input{background:#45484d!important;color:#fff!important;border:1px solid #56595e!important;border-radius:8px!important;min-height:42px}
-.field input::placeholder{color:#b8b8b8}
+.transaction-game-hero{border:1px solid var(--emba-line)!important;border-radius:16px;background:linear-gradient(145deg,#102747,#08162b)!important;margin:0 0 16px;min-height:205px;box-shadow:0 10px 32px rgba(0,85,190,.14)}
+.transaction-game-hero::after{background:linear-gradient(90deg,rgba(4,15,32,.94),rgba(4,15,32,.3)),linear-gradient(0deg,rgba(4,15,32,.94),transparent 80%)}
+.transaction-game-banner{height:150px;border-bottom:1px solid rgba(24,217,255,.14)}
+.transaction-game-icon{border:2px solid var(--emba-cyan)!important;border-radius:14px;box-shadow:0 0 18px rgba(24,217,255,.18)}
+.transaction-game-info p{color:var(--emba-cyan-soft)!important}
+.section,.checkout{background:linear-gradient(145deg,#102442,#09182e)!important;border:1px solid rgba(24,217,255,.2)!important;border-radius:16px!important;padding:14px!important;margin:0 0 14px!important;box-shadow:0 8px 24px rgba(0,0,0,.2)!important}
+.heading,.section h2{color:#f4f8ff!important;font-size:17px!important}
+.sub,.muted,.field small{color:#a9c4e8!important}
+.field label{color:#e5f1ff!important}
+.field input,.field select,.dk-search input{background:#142b4a!important;color:#fff!important;border:1px solid rgba(24,150,255,.55)!important;border-radius:11px!important;min-height:46px}
+.field input:focus,.field select:focus,.dk-search input:focus{outline:2px solid var(--emba-cyan)!important;outline-offset:1px;border-color:var(--emba-cyan)!important}
+.field input::placeholder{color:#9bb6d9!important}
 .packages{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px!important}
 .packages>*{min-width:0}
-.packages button,.packages .package,.packages .product,.packages [data-package]{background:#414449!important;color:#f4f4f4!important;border:1px solid #55585d!important;border-radius:10px!important}
-.packages button:hover,.packages button:focus,.packages .selected,.packages [aria-pressed="true"]{border-color:var(--emba-gold)!important;box-shadow:0 0 0 1px rgba(198,165,123,.22)!important}
-.price,.package-price,.packages strong{color:var(--emba-gold-light)!important}
-.btn,.emba-sticky-order .btn{background:var(--emba-gold)!important;color:#211d18!important;border:1px solid #d7b993!important;border-radius:9px!important;font-weight:750!important;box-shadow:none!important}
-.emba-sticky-order{background:rgba(31,32,34,.97)!important;border-top:1px solid var(--emba-line)!important;padding:9px 12px calc(9px + env(safe-area-inset-bottom))!important}
-.emba-sticky-order .btn{min-height:46px!important}
+.packages button,.packages .package,.packages .product,.packages [data-package]{background:linear-gradient(145deg,#142d4e,#0b1c34)!important;color:#f4f8ff!important;border:1px solid rgba(24,150,255,.35)!important;border-radius:12px!important}
+.packages button:hover,.packages button:focus,.packages .selected,.packages [data-package].selected,.packages [aria-pressed="true"]{border-color:var(--emba-cyan)!important;box-shadow:0 0 0 1px rgba(24,217,255,.35),0 0 18px rgba(8,123,255,.18)!important}
+.price,.package-price,.packages strong{color:var(--emba-cyan)!important}
+.btn,.emba-sticky-order .btn{background:linear-gradient(100deg,#086bff 0%,#087bff 48%,#13cfff 100%)!important;color:#fff!important;border:1px solid #20d8ff!important;border-radius:13px!important;font-weight:800!important;box-shadow:0 5px 22px rgba(0,123,255,.28)!important}
+.btn:hover,.emba-sticky-order .btn:hover{filter:brightness(1.08)}
+.emba-sticky-order{background:rgba(5,15,31,.97)!important;border-top:1px solid var(--emba-line)!important;padding:10px 12px calc(10px + env(safe-area-inset-bottom))!important;backdrop-filter:blur(14px)}
+.emba-sticky-order .btn{min-height:52px!important}
 .checkout{border-color:var(--emba-line)!important}
-.total{color:var(--emba-gold-light)!important}
-.emba-back-games{background:#393c41!important;color:var(--emba-gold-light)!important;border:1px solid var(--emba-line)!important}
-.alert{border-radius:9px}
-footer{background:#202124!important;color:#aaa!important;border-top:1px solid var(--emba-line)!important}
+.total{color:var(--emba-cyan)!important}
+.emba-back-games{background:#102747!important;color:var(--emba-cyan)!important;border:1px solid rgba(24,217,255,.5)!important;border-radius:12px!important}
+.alert{border-radius:10px}
+footer{background:#07172d!important;color:#a9c4e8!important;border-top:1px solid var(--emba-line)!important}
 @media(max-width:600px){
  body{padding-top:72px!important}
  body.transaction-view main{padding-inline:9px}
@@ -160,7 +174,7 @@ footer{background:#202124!important;color:#aaa!important;border-top:1px solid va
  .section,.checkout{padding:12px!important}
  .packages{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
  .packages button,.packages .package,.packages .product,.packages [data-package]{padding:9px!important}
-}
+	}
 </style>
 	
 </head>
