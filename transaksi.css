@@ -405,3 +405,69 @@ footer{background:#07172d!important;color:#a9c4e8!important;border-top:1px solid
     margin-top: 16px !important;
   }
 }
+/* HEADER EMBA STORE - SEARCH SEJAJAR IDR */
+@media (max-width: 600px) {
+
+  .dk-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 3000 !important;
+
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto auto !important;
+    grid-template-areas: "brand currency menu" !important;
+
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 12px !important;
+    background: #070b18 !important;
+    box-sizing: border-box !important;
+  }
+
+  .dk-brand {
+    grid-area: brand !important;
+    min-width: 0 !important;
+  }
+
+  .dk-header .dk-actions {
+    display: contents !important;
+  }
+
+  .dk-search-wrap {
+    grid-area: brand !important;
+    justify-self: end !important;
+    width: 110px !important;
+    margin-right: 0 !important;
+    position: relative !important;
+  }
+
+  .dk-search {
+    width: 100% !important;
+    min-height: 40px !important;
+    display: flex !important;
+    background: #111f36 !important;
+    border: 1px solid #087bff !important;
+    border-radius: 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  .dk-search input {
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 11px !important;
+  }
+
+  .dk-currency {
+    grid-area: currency !important;
+  }
+
+  #menuBtn {
+    grid-area: menu !important;
+  }
+
+  body {
+    padding-top: 80px !important;
+  }
+}
