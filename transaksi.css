@@ -323,3 +323,85 @@ footer{background:#07172d!important;color:#a9c4e8!important;border-top:1px solid
 @media (min-width: 601px) {
   .dk-header .dk-actions { display: flex; }
 }
+/* HEADER EMBA STORE - MOBILE */
+@media (max-width: 600px) {
+
+  .dk-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 3000 !important;
+
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto auto !important;
+    grid-template-areas:
+      "brand currency menu"
+      "search search search" !important;
+
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 12px 16px !important;
+
+    background: #070b18 !important;
+    border-bottom: 1px solid rgba(24,217,255,.25);
+    box-sizing: border-box !important;
+  }
+
+  .dk-brand {
+    grid-area: brand !important;
+    min-width: 0 !important;
+  }
+
+  .dk-header .dk-actions {
+    display: contents !important;
+  }
+
+  .dk-search-wrap {
+    grid-area: search !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .dk-search {
+    width: 100% !important;
+    min-height: 54px !important;
+    display: flex !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    background: #111f36 !important;
+    border: 1px solid #087bff !important;
+    border-radius: 14px !important;
+  }
+
+  .dk-search input {
+    flex: 1 !important;
+    min-width: 0 !important;
+    background: transparent !important;
+    color: white !important;
+  }
+
+  .dk-currency {
+    grid-area: currency !important;
+  }
+
+  #menuBtn {
+    grid-area: menu !important;
+    z-index: 3010 !important;
+  }
+
+  /* TURUNKAN SELURUH KONTEN TRANSAKSI */
+  body {
+    padding-top: 170px !important;
+  }
+
+  main {
+    margin-top: 16px !important;
+    padding-top: 0 !important;
+  }
+
+  /* Jarak antar bagian transaksi */
+  main > section {
+    margin-top: 16px !important;
+  }
+}
