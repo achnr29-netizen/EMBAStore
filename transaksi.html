@@ -97,14 +97,6 @@
   .emba-back-games { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 16px; padding: 10px 14px; color: #f5d6a0; background: #171d2b; border: 1px solid rgba(0,195,255,.35); border-radius: 12px; font: inherit; cursor: pointer; }
   @media (max-width: 600px) { body { padding-top: 76px; } .dk-header { min-height: 64px; } }
 </style>
-<style>
-/* EMBA Store: header tetap terlihat saat halaman digulir */
-.dk-header { position: fixed !important; top: 0; z-index: 2000; }
-/* Tombol pesan selalu menempel di bawah layar */
-.emba-sticky-order { position: fixed; left: 0; right: 0; bottom: 0; z-index: 1001; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); background: rgba(7, 11, 24, .96); border-top: 1px solid rgba(0, 195, 255, .22); backdrop-filter: blur(12px); }
-.emba-sticky-order .btn { display: flex; width: 100%; justify-content: center; align-items: center; gap: 8px; min-height: 52px; margin: 0; }
-body { padding-bottom: calc(92px + env(safe-area-inset-bottom)); }
-</style>
 	<style>
 /* EMBA Store: header tetap terlihat saat halaman digulir */
 .dk-header { position: fixed !important; top: 0; z-index: 2000; }
