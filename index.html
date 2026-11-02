@@ -1,0 +1,37 @@
+<!doctype html> <html lang="id"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <meta name="theme-color" content="#070b18"> <meta name="description" content="EMBA Store — top up game dengan mudah dan aman."> <title>EMBA Store — Top Up Game</title> <link rel="stylesheet" href="style.css"> <style> .dk-header { position: fixed !important; top: 0 !important; left: 0; right: 0; width: 100%; height: 76px; z-index: 2000 !important; background: #10131d !important; }
+
+body { padding-top: 76px !important; margin: 0; }
+
+#playersection, #packagestitle, #checkoutsection { scroll-margin-top: 88px; }
+
+/* Fallback menu fix agar sidebar & tombol menu berfungsi normal */ #menuBtn { position: relative !important; z-index: 2010 !important; pointer-events: auto !important; touch-action: manipulation; } #dkOverlay { z-index: 2020 !important; } #dkSidebar { z-index: 2021 !important; } #dkSidebar.is-open { visibility: visible !important; pointer-events: auto !important; transform: translateX(0) !important; } #dkOverlay.is-open { visibility: visible !important; pointer-events: auto !important; } </style> </head> <body>
+
+<header class="dk-header"> <div class="dk-brand" aria-label="EMBA Store"> <img class="dk-logo-img" src="/Images/emba-store.png" alt="Logo EMBA Store"> <span>EMBA<span class="dk-gold">Store</span></span> </div>
+
+<div class="dk-actions"> <div class="dk-search-wrap"> <label class="dk-search"> <span aria-hidden="true">⌕</span> <input id="gameSearch" type="search" placeholder="Cari Mobile Legends, Free Fire..." autocomplete="on" aria-label="Cari game"> <button id="clearSearch" type="button" aria-label="Hapus pencarian" hidden>×</button> </label> </div> <div class="dk-currency"> <span id="currencyFlag" aria-hidden="true">🇮🇩</span> <select id="currency" aria-label="Negara dan mata uang"> <option value="IDR" selected>ID / IDR</option> <option value="MYR">MY / MYR</option> <option value="SGD">SG / SGD</option> <option value="USD">US / USD</option> <option value="PHP">PH / PHP</option> <option value="THB">TH / THB</option> </select> </div> <button class="dk-icon-btn" id="menuBtn" type="button" aria-label="Buka menu" aria-expanded="false">☰</button> </div> </header>
+
+<!-- Sidebar menu EMBA Store --> <div class="dk-overlay" id="dkOverlay"></div> <aside class="dk-sidebar" id="dkSidebar" aria-label="Menu utama" aria-hidden="true" inert> <div class="dk-sidebar-head"> <a class="dk-sidebar-brand" href="/" aria-label="EMBA Store Beranda"> <img src="/Images/emba-store.png" alt="Logo EMBA Store"> <span>EMBA <span class="dk-gold">Store</span></span> </a> <button type="button" class="dk-sidebar-close" id="dkClose" aria-label="Tutup menu">×</button> </div> <nav class="dk-sidebar-nav" aria-label="Navigasi EMBA Store"> <a href="#games-title"><span>Top Up</span><span class="dk-sidebar-icon" aria-hidden="true">♧</span></a> <a href="#help"><span>Cek Transaksi</span><span class="dk-sidebar-icon" aria-hidden="true">⌕</span></a> <a href="#leaderboard"><span>Leaderboard</span><span class="dk-sidebar-icon" aria-hidden="true">♙</span></a> <a href="#artikel"><span>Artikel</span><span class="dk-sidebar-icon" aria-hidden="true">♧</span></a> <a href="#kalkulator"><span>Kalkulator</span><span class="dk-sidebar-icon" aria-hidden="true">→</span></a> <a href="#masuk"><span>Masuk</span><span class="dk-sidebar-icon" aria-hidden="true">↪</span></a> <a href="#daftar"><span>Daftar</span><span class="dk-sidebar-icon" aria-hidden="true">♙</span></a> </nav> </aside>
+
+<main> <!-- EMBA STORE PROMO BANNER SLIDER --> <section class="emba-banner-section" aria-label="Promo EMBA Store"> <div class="emba-banner-slider" id="embaBannerSlider"> <div class="emba-banner-track" id="embaBannerTrack"> <a class="emba-banner-slide" href="#games-title"> <img src="Images/banner-1.png" alt="Promo EMBA Store 1"> </a> <a class="emba-banner-slide" href="#games-title"> <img src="Images/banner-2.png" alt="Promo EMBA Store 2"> </a> <a class="emba-banner-slide" href="#games-title"> <img src="Images/banner-3.png" alt="Promo EMBA Store 3"> </a> <a class="emba-banner-slide" href="#games-title"> <img src="Images/banner-4.png" alt="Promo EMBA Store 4"> </a> </div>
+
+<button class="emba-banner-arrow prev" type="button" id="embaBannerPrev" aria-label="Banner sebelumnya">‹</button> <button class="emba-banner-arrow next" type="button" id="embaBannerNext" aria-label="Banner berikutnya">›</button> </div>
+
+<div class="emba-banner-dots" id="embaBannerDots"> <button class="active" aria-label="Banner 1"></button> <button aria-label="Banner 2"></button> <button aria-label="Banner 3"></button> </div> </section> <!-- END EMBA STORE PROMO BANNER -->
+
+<section class="section" aria-labelledby="games-title"> <div class="section-head"> <div><h2 class="heading" id="games-title">Pilih game</h2></div> </div> <div class="games" id="games"> <button type="button" class="game active" data-game="Mobile Legends" aria-pressed="true"> <img class="gicon" src="Images/mobile-legends.png" alt="Mobile Legends"> <strong>Mobile Legends</strong> <small>Diamond</small> </button>
+
+<button type="button" class="game" data-game="Free Fire" aria-pressed="false"> <img class="gicon" src="Images/free-fire.png" alt="Free Fire"> <strong>Free Fire</strong> <small>Diamond</small> </button>
+
+<button type="button" class="game" data-game="PUBG Mobile" aria-pressed="false"> <img class="gicon" src="Images/pubg-mobile.png" alt="PUBG Mobile"> <strong>PUBG Mobile</strong> <small>UC</small> </button>
+
+<button type="button" class="game" data-game="Genshin Impact" aria-pressed="false"> <img class="gicon" src="Images/genshin-impact.png" alt="Genshin Impact"> <strong>Genshin Impact</strong> <small>Genesis Crystals</small> </button>
+
+<button type="button" class="game" data-game="Valorant" aria-pressed="false"> <img class="gicon" src="Images/valorant.png" alt="Valorant"> <strong>Valorant</strong> <small>VP</small> </button>
+
+<button type="button" class="game" data-game="Honor of Kings" aria-pressed="false"> <img class="gicon" src="Images/honor-of-kings.png" alt="Honor of Kings"> <strong>Honor of Kings</strong> <small>Tokens</small> </button>
+
+<button type="button" class="game" data-game="Call of Duty: Mobile" aria-pressed="false"> <img class="gicon" src="Images/cod-mobile.png" alt="Call of Duty: Mobile"> <strong>Call of Duty: Mobile</strong> <small>CP</small> </button> </div> </section> </main>
+
+<footer>© 2026 EMBA Store • All right reserved.</footer>
+
+<script src="index.js"></script> </body> </html>
