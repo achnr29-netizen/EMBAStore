@@ -253,21 +253,20 @@ footer{background:#07172d!important;color:#a9c4e8!important;border-top:1px solid
 body.transaction-view main > :not(.transaction-game-hero):not(.emba-steps):not(#playersection):not(#packagestitle):not(#paymentsection):not(#contactsection):not(#promosection):not(#checkoutsection):not(#alert) {
   display: none !important;
 }
-body.transaction-view .emba-steps,
+body.transaction-view .emba-steps {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+}
+
 body.transaction-view #playersection,
 body.transaction-view #packagestitle,
 body.transaction-view #paymentsection,
 body.transaction-view #contactsection,
 body.transaction-view #promosection,
 body.transaction-view #checkoutsection {
-  display: block !important;
-}
-body.transaction-view #playersection[hidden],
-body.transaction-view #packagestitle[hidden],
-body.transaction-view #paymentsection[hidden],
-body.transaction-view #contactsection[hidden],
-body.transaction-view #promosection[hidden],
-body.transaction-view #checkoutsection[hidden] {
   display: block !important;
 }
 body.transaction-view .transaction-game-hero { display:none !important; }
