@@ -246,262 +246,39 @@ footer{background:#07172d!important;color:#a9c4e8!important;border-top:1px solid
  .packages{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
  .packages button,.packages .package,.packages .product,.packages [data-package]{padding:9px!important}
 }
-
-/* =====================================================
-   HEADER MOBILE: SAMA DENGAN HALAMAN INDEX EMBA STORE
-   Baris 1: logo | mata uang | menu
-   Baris 2: kolom pencarian
-===================================================== */
-@media (max-width: 600px) {
-  .dk-header {
-    position: fixed !important;
-    inset: 0 0 auto 0 !important;
-    width: 100% !important;
-    min-height: 0 !important;
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) auto auto !important;
-    grid-template-areas:
-      "brand currency menu"
-      "search search search" !important;
-    align-items: center !important;
-    column-gap: 10px !important;
-    row-gap: 12px !important;
-    padding: 12px 16px !important;
-    box-sizing: border-box !important;
-    background: #070b18 !important;
-    border-bottom: 1px solid rgba(24,217,255,.22) !important;
-    z-index: 3000 !important;
-  }
-
-  .dk-brand {
-    grid-area: brand !important;
-    min-width: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-  }
-
-  .dk-header .dk-actions { display: contents !important; }
-
-  .dk-search-wrap {
-    grid-area: search !important;
-    display: block !important;
-    width: 100% !important;
-    min-width: 0 !important;
-  }
-
-  .dk-search {
-    display: flex !important;
-    align-items: center !important;
-    width: 100% !important;
-    min-height: 54px !important;
-    box-sizing: border-box !important;
-    padding: 0 14px !important;
-    background: #111f36 !important;
-    border: 1px solid rgba(24,217,255,.55) !important;
-    border-radius: 15px !important;
-    box-shadow: 0 0 14px rgba(8,123,255,.10) !important;
-  }
-
-  .dk-search input {
-    flex: 1 1 auto !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    color: #f3f8ff !important;
-    background: transparent !important;
-    border: 0 !important;
-    outline: 0 !important;
-  }
-
-  .dk-search input::placeholder { color: #a9b8d2 !important; }
-  .dk-currency { grid-area: currency !important; }
-  #menuBtn { grid-area: menu !important; z-index: 3010 !important; }
-
-  body { padding-top: 145px !important; }
-  body.transaction-view main { padding-top: 0 !important; }
-}
-
-@media (min-width: 601px) {
-  .dk-header .dk-actions { display: flex; }
-}
-/* HEADER EMBA STORE - MOBILE */
-@media (max-width: 600px) {
-
-  .dk-header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 3000 !important;
-
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) auto auto !important;
-    grid-template-areas:
-      "brand currency menu"
-      "search search search" !important;
-
-    align-items: center !important;
-    gap: 12px !important;
-    padding: 12px 16px !important;
-
-    background: #070b18 !important;
-    border-bottom: 1px solid rgba(24,217,255,.25);
-    box-sizing: border-box !important;
-  }
-
-  .dk-brand {
-    grid-area: brand !important;
-    min-width: 0 !important;
-  }
-
-  .dk-header .dk-actions {
-    display: contents !important;
-  }
-
-  .dk-search-wrap {
-    grid-area: search !important;
-    display: block !important;
-    width: 100% !important;
-  }
-
-  .dk-search {
-    width: 100% !important;
-    min-height: 54px !important;
-    display: flex !important;
-    align-items: center !important;
-    box-sizing: border-box !important;
-    background: #111f36 !important;
-    border: 1px solid #087bff !important;
-    border-radius: 14px !important;
-  }
-
-  .dk-search input {
-    flex: 1 !important;
-    min-width: 0 !important;
-    background: transparent !important;
-    color: white !important;
-  }
-
-  .dk-currency {
-    grid-area: currency !important;
-  }
-
-  #menuBtn {
-    grid-area: menu !important;
-    z-index: 3010 !important;
-  }
-
-  /* TURUNKAN SELURUH KONTEN TRANSAKSI */
-  body {
-    padding-top: 170px !important;
-  }
-
-  main {
-    margin-top: 16px !important;
-    padding-top: 0 !important;
-  }
-
-  /* Jarak antar bagian transaksi */
-  main > section {
-    margin-top: 16px !important;
-  }
-}
-/* HEADER EMBA STORE - SEARCH SEJAJAR IDR */
-@media (max-width: 600px) {
-
-  .dk-header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 3000 !important;
-
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) auto auto !important;
-    grid-template-areas: "brand currency menu" !important;
-
-    align-items: center !important;
-    gap: 8px !important;
-    padding: 12px !important;
-    background: #070b18 !important;
-    box-sizing: border-box !important;
-  }
-
-  .dk-brand {
-    grid-area: brand !important;
-    min-width: 0 !important;
-  }
-
-  .dk-header .dk-actions {
-    display: contents !important;
-  }
-
-  .dk-search-wrap {
-    grid-area: brand !important;
-    justify-self: end !important;
-    width: 110px !important;
-    margin-right: 0 !important;
-    position: relative !important;
-  }
-
-  .dk-search {
-    width: 100% !important;
-    min-height: 40px !important;
-    display: flex !important;
-    background: #111f36 !important;
-    border: 1px solid #087bff !important;
-    border-radius: 10px !important;
-    box-sizing: border-box !important;
-  }
-
-  .dk-search input {
-    width: 100% !important;
-    min-width: 0 !important;
-    font-size: 11px !important;
-  }
-
-  .dk-currency {
-    grid-area: currency !important;
-  }
-
-  #menuBtn {
-    grid-area: menu !important;
-  }
-
-  body {
-    padding-top: 80px !important;
-  }
-}
+/* HEADER EMBA STORE - PERBAIKAN */
 .dk-header {
   width: 100%;
-  min-height: 110px;
-  display: flex;
+  min-height: 90px;
+  padding: 12px 16px;
+  display: flex !important;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 15px 25px;
+  gap: 10px;
   box-sizing: border-box;
   background: #070d1c;
   border-bottom: 1px solid #12365c;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 3000;
 }
 
 .dk-brand {
-  display: flex;
+  display: flex !important;
   align-items: center;
-  gap: 12px;
+  gap: 6px;
+  flex: 0 1 145px;
   min-width: 0;
-  color: #fff;
-  font-size: 27px;
-  font-weight: 800;
   white-space: nowrap;
+  font-size: 17px;
+  font-weight: 800;
 }
 
 .dk-logo-img {
-  width: 65px;
-  height: 65px;
+  width: 45px;
+  height: 45px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .dk-gold {
@@ -509,42 +286,51 @@ footer{background:#07172d!important;color:#a9c4e8!important;border-top:1px solid
 }
 
 .dk-actions {
-  display: flex;
+  display: flex !important;
   align-items: center;
-  gap: 18px;
+  gap: 8px;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
-.dk-icon-btn {
-  width: 82px;
-  height: 80px;
+.dk-actions .dk-icon-btn {
+  width: 52px;
+  height: 54px;
+  flex: 0 0 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #087bdb;
-  border-radius: 22px;
+  border-radius: 17px;
   background: #09172d;
   color: #19e5ff;
-  font-size: 38px;
-  cursor: pointer;
+  font-size: 30px;
 }
 
 .dk-currency {
-  height: 76px;
+  height: 54px;
+  padding: 0 8px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 15px;
+  justify-content: center;
+  gap: 4px;
+  flex: 1 1 auto;
+  min-width: 0;
   border: 1px solid #087bdb;
-  border-radius: 22px;
+  border-radius: 17px;
   background: #09172d;
   color: white;
-  font-size: 24px;
 }
 
 .dk-currency select {
-  max-width: 125px;
+  width: 100%;
+  min-width: 0;
+  max-width: 85px;
+  border: none;
+  outline: none;
   background: transparent;
   color: white;
-  border: none;
-  font-size: 20px;
-  outline: none;
+  font-size: 14px;
 }
 
 .dk-currency option {
@@ -552,46 +338,40 @@ footer{background:#07172d!important;color:#a9c4e8!important;border-top:1px solid
   color: white;
 }
 
+/* MOBILE */
 @media (max-width: 600px) {
   .dk-header {
-    min-height: 100px;
-    padding: 12px 15px;
+    padding: 12px 14px;
     gap: 8px;
   }
 
   .dk-brand {
-    gap: 8px;
-    font-size: 19px;
+    flex: 0 1 130px;
+    font-size: 15px;
   }
 
   .dk-logo-img {
-    width: 55px;
-    height: 55px;
+    width: 43px;
+    height: 43px;
   }
 
   .dk-actions {
-    gap: 9px;
+    gap: 7px;
   }
 
-  .dk-icon-btn {
-    width: 62px;
-    height: 65px;
-    border-radius: 19px;
-    font-size: 30px;
-    flex-shrink: 0;
+  .dk-actions .dk-icon-btn {
+    width: 49px;
+    height: 52px;
+    flex-basis: 49px;
+    font-size: 28px;
   }
 
   .dk-currency {
-    height: 62px;
-    padding: 0 9px;
-    gap: 5px;
-    border-radius: 18px;
-    font-size: 19px;
-    flex-shrink: 0;
+    height: 52px;
+    padding: 0 6px;
   }
 
   .dk-currency select {
-    max-width: 105px;
-    font-size: 16px;
+    font-size: 12px;
   }
 }
