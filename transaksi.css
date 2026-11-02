@@ -246,3 +246,99 @@ footer{background:#07172d!important;color:#a9c4e8!important;border-top:1px solid
  .packages{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
  .packages button,.packages .package,.packages .product,.packages [data-package]{padding:9px!important}
 }
+/* =====================================================
+   EMBA STORE — CHECKOUT 5 TAHAP
+   Tampilan mengikuti konsep transaksi rekomendasi.
+===================================================== */
+body.transaction-view main > :not(.transaction-game-hero):not(.emba-steps):not(#playersection):not(#packagestitle):not(#paymentsection):not(#contactsection):not(#promosection):not(#checkoutsection):not(#alert) {
+  display: none !important;
+}
+body.transaction-view .emba-steps,
+body.transaction-view #playersection,
+body.transaction-view #packagestitle,
+body.transaction-view #paymentsection,
+body.transaction-view #contactsection,
+body.transaction-view #promosection,
+body.transaction-view #checkoutsection {
+  display: block !important;
+}
+body.transaction-view #playersection[hidden],
+body.transaction-view #packagestitle[hidden],
+body.transaction-view #paymentsection[hidden],
+body.transaction-view #contactsection[hidden],
+body.transaction-view #promosection[hidden],
+body.transaction-view #checkoutsection[hidden] {
+  display: block !important;
+}
+body.transaction-view .transaction-game-hero { display:none !important; }
+
+.emba-steps {
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:5px; margin:18px 2px 22px; padding:0 4px;
+}
+.emba-steps .emba-step { display:flex; flex-direction:column; align-items:center; gap:7px; min-width:42px; color:#91a8ce; }
+.emba-steps .emba-step span {
+  width:42px; height:42px; display:grid; place-items:center; border-radius:50%;
+  border:2px solid #273f70; background:#0b1830; color:#a9bce0; font-weight:800; font-size:17px;
+}
+.emba-steps .emba-step small { font-size:11px; white-space:nowrap; }
+.emba-steps .emba-step.active span {
+  color:white; border-color:#19d9ff; background:linear-gradient(135deg,#087bff,#13cfff);
+  box-shadow:0 0 18px rgba(24,217,255,.45);
+}
+.emba-steps .emba-step.active small { color:#eafaff; font-weight:700; }
+.emba-steps > i { height:2px; flex:1; margin-top:20px; background:#263c68; }
+.emba-panel { padding:16px !important; }
+.emba-panel-title { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+.emba-panel-title > span {
+  width:40px; height:40px; flex:0 0 40px; display:grid; place-items:center;
+  border-radius:50%; color:white; font-size:19px; font-weight:800;
+  background:linear-gradient(135deg,#087bff,#19d9ff); box-shadow:0 0 14px rgba(8,123,255,.25);
+}
+.emba-panel-title h2 { margin:0 0 4px !important; }
+.emba-panel-title p { margin:0 !important; }
+.emba-account-grid,.emba-contact-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.emba-safe-note { margin:14px 0 0; padding:10px 12px; border:1px solid rgba(24,217,255,.22); border-radius:10px; color:#bcefff; background:rgba(8,123,255,.08); font-size:13px; }
+.emba-payment-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+.emba-payment-option {
+  min-width:0; min-height:104px; padding:12px 6px; display:flex; flex-direction:column;
+  justify-content:center; align-items:center; gap:12px; border:1px solid rgba(80,130,210,.42);
+  border-radius:13px; color:#eef6ff; background:linear-gradient(145deg,#142d4e,#0b1c34);
+  font:inherit; cursor:pointer;
+}
+.emba-payment-option.active { border:2px solid #19d9ff; box-shadow:0 0 0 1px rgba(24,217,255,.2),0 0 18px rgba(8,123,255,.2); }
+.emba-payment-option span { font-size:12px; text-align:center; }
+.pay-logo { font-size:20px; font-weight:900; letter-spacing:.3px; }
+.qris-logo { color:#fff; text-shadow:2px 0 #18d9ff; }
+.bca-logo { color:#55aaff; font-style:italic; }
+.dana-logo { color:#18baff; }
+.gopay-logo { color:#21d7d0; }
+.emba-method-hidden { position:absolute !important; width:1px; height:1px; opacity:0; pointer-events:none; }
+.emba-payment-hint { margin:13px 0 0; font-size:12px; }
+.emba-promo-row { display:flex; gap:10px; align-items:stretch; }
+.emba-promo-row input {
+  flex:1; min-width:0; min-height:48px; padding:0 13px; border-radius:11px;
+  border:1px solid rgba(24,150,255,.55); background:#142b4a; color:#fff; font:inherit;
+}
+.emba-promo-button { min-width:100px; margin:0 !important; padding:0 16px !important; }
+#promoMessage { display:block; margin-top:10px; line-height:1.5; }
+.emba-total-panel { display:flex; justify-content:space-between; align-items:center; gap:14px; }
+.emba-total-left { min-width:0; }
+.emba-trust { display:flex; align-items:center; gap:9px; padding-left:14px; border-left:1px solid rgba(24,217,255,.3); color:#c8e7ff; font-size:11px; line-height:1.8; white-space:nowrap; }
+.emba-trust > span { font-size:28px; }
+@media(max-width:600px) {
+  .emba-steps { gap:2px; margin:14px 0 18px; }
+  .emba-steps .emba-step { min-width:35px; gap:5px; }
+  .emba-steps .emba-step span { width:34px; height:34px; font-size:15px; }
+  .emba-steps .emba-step small { font-size:10px; }
+  .emba-steps > i { margin-top:16px; }
+  .emba-panel { padding:13px !important; }
+  .emba-account-grid,.emba-contact-grid { grid-template-columns:1fr; }
+  .emba-payment-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .emba-payment-option { min-height:88px; }
+  .emba-total-panel { align-items:flex-start; }
+  .emba-trust { font-size:9px; gap:5px; padding-left:8px; }
+  .emba-trust > span { font-size:22px; }
+  .emba-promo-row { gap:7px; }
+  .emba-promo-button { min-width:82px; padding-inline:10px !important; }
+}
