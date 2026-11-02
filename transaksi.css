@@ -1,0 +1,417 @@
+:root {
+  --emba-blue: #087bff;
+  --emba-cyan: #18d9ff;
+  --emba-bg: #070b19;
+  --emba-card-bg: #0d172a;
+  --emba-input-bg: #11223b;
+  --emba-border: rgba(24, 217, 255, 0.22);
+}
+
+html, body {
+  background-color: var(--emba-bg) !important;
+  color: #f4f8ff !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding-top: 76px;
+  padding-bottom: 90px;
+}
+
+
+/* =====================================================
+   PERBAIKAN TOMBOL MENU AGAR BISA DIKLIK
+===================================================== */
+.dk-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 3000 !important; /* Pastikan header berada di lapisan paling atas */
+}
+
+.dk-header .dk-actions {
+  position: relative;
+  z-index: 3002 !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#menuBtn {
+  position: relative;
+  z-index: 3005 !important; /* Lapisan tertinggi untuk tombol menu */
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  background: #0d1a2d !important;
+  border: 1px solid rgba(24, 217, 255, 0.4) !important;
+  color: #fff !important;
+  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+}
+
+#menuBtn:hover {
+  border-color: #18d9ff !important;
+  background: #122642 !important;
+}
+
+/* Memastikan overlay dan sidebar menu berfungsi normal saat tombol dibuka */
+.dk-overlay {
+  z-index: 4000 !important;
+}
+
+.dk-sidebar {
+  z-index: 4001 !important;
+}
+
+/* Main Container */
+main {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.emba-back-games {
+  display: inline-block;
+  background: #112035;
+  color: #19d9ff;
+  border: 1px solid rgba(24, 217, 255, 0.35);
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-size: 13.5px;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.emba-game-title-info h1 {
+  font-size: 20px;
+  margin: 0 0 6px 0;
+  font-weight: 700;
+}
+
+.emba-sub-note {
+  font-size: 13px;
+  color: #8da4c4;
+  margin: 0 0 20px 0;
+}
+
+/* Step Bar Horizontal (1 - 5) */
+.emba-steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  padding: 0 4px;
+}
+
+.emba-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #7993ba;
+}
+
+.emba-step span {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #1c3254;
+  background: #0a1426;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 15px;
+  color: #9cb2d6;
+}
+
+.emba-step small {
+  font-size: 11px;
+}
+
+.emba-step.active span {
+  border-color: var(--emba-cyan);
+  background: linear-gradient(135deg, var(--emba-blue), var(--emba-cyan));
+  color: #fff;
+  box-shadow: 0 0 12px rgba(24, 217, 255, 0.4);
+}
+
+.emba-step.active small {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.emba-steps > i {
+  flex: 1;
+  height: 2px;
+  background: #1c3254;
+  margin: 0 4px 18px 4px;
+}
+
+/* Panel Card */
+.emba-panel, .checkout {
+  background: linear-gradient(145deg, #0c182b, #091322) !important;
+  border: 1px solid var(--emba-border) !important;
+  border-radius: 18px !important;
+  padding: 18px !important;
+  margin-bottom: 16px !important;
+}
+
+.emba-panel-title {
+  display: flex;
+  align-items: flex-center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.emba-panel-title > span {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0077ff, #00d9ff);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  box-shadow: 0 0 14px rgba(0, 195, 255, 0.3);
+}
+
+.emba-panel-title h2 {
+  font-size: 17px !important;
+  margin: 0 0 2px 0 !important;
+  color: #fff !important;
+}
+
+.emba-panel-title p.sub {
+  margin: 0 !important;
+  font-size: 12.5px !important;
+  color: #8da4c4 !important;
+}
+
+/* Input Fields */
+.fieldgrid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field label {
+  display: block;
+  font-size: 13.5px;
+  margin-bottom: 8px;
+  color: #dce7f7;
+}
+
+.field input {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--emba-input-bg) !important;
+  border: 1px solid rgba(24, 150, 255, 0.4) !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  outline: none;
+}
+
+.field input:focus {
+  border-color: var(--emba-cyan) !important;
+  box-shadow: 0 0 8px rgba(24, 217, 255, 0.3);
+}
+
+.field small {
+  display: block;
+  margin-top: 6px;
+  font-size: 11.5px;
+  color: #7d96b8;
+}
+
+/* Option Payment & Promo */
+.emba-payment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.emba-payment-option {
+  background: #101f35;
+  border: 1px solid var(--emba-border);
+  border-radius: 12px;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.emba-payment-option.active {
+  border-color: var(--emba-cyan);
+  box-shadow: 0 0 10px rgba(24, 217, 255, 0.25);
+}
+
+.emba-promo-row {
+  display: flex;
+  gap: 8px;
+}
+
+.emba-promo-row input {
+  flex: 1;
+  background: var(--emba-input-bg);
+  border: 1px solid rgba(24, 150, 255, 0.4);
+  border-radius: 12px;
+  padding: 0 14px;
+  color: #fff;
+}
+
+.emba-promo-button {
+  background: linear-gradient(90deg, #0077ff, #00d9ff) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  color: #fff !important;
+  font-weight: 700;
+  padding: 0 18px !important;
+  cursor: pointer;
+}
+
+/* Sticky Bottom Button */
+.emba-sticky-order {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(7, 11, 25, 0.95);
+  border-top: 1px solid var(--emba-border);
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.emba-sticky-order .btn {
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(90deg, #0077ff 0%, #00d9ff 100%) !important;
+  border: none !important;
+  border-radius: 14px !important;
+  color: #fff !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 195, 255, 0.35);
+}
+/* =====================================================
+   PERBAIKAN UKURAN KOLOM KODE PROMO
+===================================================== */
+.emba-promo-row {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  margin-top: 4px;
+}
+
+.emba-promo-row input {
+  flex: 1;
+  min-width: 0;
+  min-height: 52px !important; /* Dibuat lebih tinggi agar sejajar dengan input lain */
+  padding: 0 16px !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(24, 150, 255, 0.55);
+  background: #142b4a !important;
+  color: #fff !important;
+  font-size: 15px !important;    /* Ukuran teks diperbesar */
+}
+
+.emba-promo-button {
+  min-width: 110px;
+  margin: 0 !important;
+  padding: 0 18px !important;
+  min-height: 52px !important;   /* Menyesuaikan tinggi tombol dengan input */
+  border-radius: 14px !important;
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+}
+
+#promoMessage {
+  display: block;
+  margin-top: 10px;
+  line-height: 1.5;
+  font-size: 12.5px;
+}
+/* Styling Search Icon Button & Dropdown/Overlay */
+.dk-search-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.dk-search-icon-btn {
+  background: #0d1a2d;
+  border: 1px solid var(--emba-border, rgba(24, 217, 255, 0.3));
+  color: #fff;
+  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.dk-search-icon-btn:hover,
+.dk-search-wrap.active .dk-search-icon-btn {
+  border-color: #18d9ff;
+  background: #112540;
+  color: #18d9ff;
+}
+
+/* Hidden Dropdown Input saat awal */
+.dk-search-dropdown {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 280px;
+  background: #0d1a2d;
+  border: 1px solid rgba(24, 217, 255, 0.5);
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  z-index: 2500;
+}
+
+/* Menampilkan input saat class 'active' dipicu oleh tombol */
+.dk-search-wrap.active .dk-search-dropdown {
+  display: block;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.dk-search-dropdown input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #142b4a;
+  border: 1px solid rgba(24, 217, 255, 0.3);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.dk-search-dropdown input:focus {
+  border-color: #18d9ff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
