@@ -10,6 +10,50 @@
 <link rel="stylesheet" href="transaksi.css">
 </head>
 <body>
+<!-- Overlay Gelap saat Sidebar Terbuka -->
+<div class="dk-overlay" id="dkOverlay"></div>
+
+<!-- Sidebar EMBA Store (Slide-in dari Kiri) -->
+<aside class="dk-sidebar" id="dkSidebar" aria-label="Menu utama" aria-hidden="true" inert>
+  <div class="dk-sidebar-head">
+    <a class="dk-sidebar-brand" href="/" aria-label="EMBA Store Beranda">
+      <img src="Images/emba-store.png" alt="Logo EMBA Store">
+      <span>EMBA <span class="dk-cyan">Store</span></span>
+    </a>
+    <button type="button" class="dk-sidebar-close" id="dkClose" aria-label="Tutup menu">✕</button>
+  </div>
+
+  <nav class="dk-sidebar-nav" aria-label="Navigasi EMBA Store">
+    <a href="#games-title">
+      <span>Top Up</span>
+      <span class="dk-sidebar-icon" aria-hidden="true">♧</span>
+    </a>
+    <a href="#help">
+      <span>Cek Transaksi</span>
+      <span class="dk-sidebar-icon" aria-hidden="true">⌕</span>
+    </a>
+    <a href="#leaderboard">
+      <span>Leaderboard</span>
+      <span class="dk-sidebar-icon" aria-hidden="true">♙</span>
+    </a>
+    <a href="#artikel">
+      <span>Artikel</span>
+      <span class="dk-sidebar-icon" aria-hidden="true">♧</span>
+    </a>
+    <a href="#kalkulator">
+      <span>Kalkulator</span>
+      <span class="dk-sidebar-icon" aria-hidden="true">→</span>
+    </a>
+    <a href="#masuk">
+      <span>Masuk</span>
+      <span class="dk-sidebar-icon" aria-hidden="true">↵</span>
+    </a>
+    <a href="#daftar">
+      <span>Daftar</span>
+      <span class="dk-sidebar-icon" aria-hidden="true">♙</span>
+    </a>
+  </nav>
+</aside>
 
 <header class="dk-header">
   <div class="dk-brand" aria-label="EMBA Store">
@@ -38,26 +82,6 @@
     </div>
     <button class="dk-icon-btn" id="menuBtn" type="button" aria-label="Buka menu" aria-expanded="false">☰</button>
   </div>
-	<!-- Sidebar menu EMBA Store: berada di luar header -->
-<div class="dk-overlay" id="dkOverlay"></div>
-<aside class="dk-sidebar" id="dkSidebar" aria-label="Menu utama" aria-hidden="true" inert>
-  <div class="dk-sidebar-head">
-    <a class="dk-sidebar-brand" href="/" aria-label="EMBA Store Beranda">
-      <img src="/Images/emba-store.png" alt="Logo EMBA Store">
-      <span>EMBA <span class="dk-gold">Store</span></span>
-    </a>
-    <button type="button" class="dk-sidebar-close" id="dkClose" aria-label="Tutup menu">×</button>
-  </div>
-  <nav class="dk-sidebar-nav" aria-label="Navigasi EMBA Store">
-    <a href="#games-title"><span>Top Up</span><span class="dk-sidebar-icon" aria-hidden="true">♧</span></a>
-    <a href="#help"><span>Cek Transaksi</span><span class="dk-sidebar-icon" aria-hidden="true">⌕</span></a>
-    <a href="#leaderboard"><span>Leaderboard</span><span class="dk-sidebar-icon" aria-hidden="true">♙</span></a>
-    <a href="#artikel"><span>Artikel</span><span class="dk-sidebar-icon" aria-hidden="true">♧</span></a>
-    <a href="#kalkulator"><span>Kalkulator</span><span class="dk-sidebar-icon" aria-hidden="true">→</span></a>
-    <a href="#masuk"><span>Masuk</span><span class="dk-sidebar-icon" aria-hidden="true">↪</span></a>
-    <a href="#daftar"><span>Daftar</span><span class="dk-sidebar-icon" aria-hidden="true">♙</span></a>
-  </nav>
-</aside>
 </header>
 <main>
 <div class="games" id="games">
