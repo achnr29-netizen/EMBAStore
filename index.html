@@ -440,6 +440,87 @@ load();
     initEmbaMainMenu();
   }
 })();
+	
+/* EMBA STORE BANNER SLIDER */
+(function () {
+  const track = document.getElementById('embaBannerTrack');
+  const slider = document.getElementById('embaBannerSlider');
+  const dotsBox = document.getElementById('embaBannerDots');
+  const prev = document.getElementById('embaBannerPrev');
+  const next = document.getElementById('embaBannerNext');
+
+  if (!track || !slider || !dotsBox) return;
+
+  const slides = [...track.children];
+  const dots = [...dotsBox.children];
+
+  let current = 0;
+  let autoSlide;
+
+  function goTo(index) {
+    current = (index + slides.length) % slides.length;
+
+    track.scrollTo({
+      left: slides[current].offsetLeft,
+      behavior: 'smooth'
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === current);
+    });
+  }
+
+  function startAuto() {
+    clearInterval(autoSlide);
+
+    autoSlide = setInterval(() => {
+      goTo(current + 1);
+    }, 4000);
+  }
+
+  function stopAuto() {
+    clearInterval(autoSlide);
+  }
+
+  next?.addEventListener('click', () => {
+    goTo(current + 1);
+    startAuto();
+  });
+
+  prev?.addEventListener('click', () => {
+    goTo(current - 1);
+    startAuto();
+  });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      goTo(i);
+      startAuto();
+    });
+  });
+
+  track.addEventListener('scroll', () => {
+    const width = track.clientWidth;
+    if (!width) return;
+
+    const index = Math.round(track.scrollLeft / width);
+
+    if (index !== current && index >= 0 && index < slides.length) {
+      current = index;
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === current);
+      });
+    }
+  }, { passive: true });
+
+  slider.addEventListener('mouseenter', stopAuto);
+  slider.addEventListener('mouseleave', startAuto);
+  slider.addEventListener('touchstart', stopAuto, { passive: true });
+  slider.addEventListener('touchend', startAuto, { passive: true });
+
+  startAuto();
+})();
+		
 </script>
 </body>
 </html>
