@@ -842,3 +842,167 @@ img { max-width: 100%; }
   .games { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
   .game .gicon { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
 }
+/* =================================
+   EMBA STORE - INDEX MOBILE FINAL
+================================= */
+
+@media (max-width: 760px) {
+
+  /* HEADER */
+  .dk-header {
+    position: sticky !important;
+    top: 0;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100%;
+    min-height: 88px;
+    padding: 12px 16px !important;
+    gap: 8px;
+    z-index: 3000;
+  }
+
+  .dk-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 17px;
+    white-space: nowrap;
+  }
+
+  .dk-logo-img {
+    width: 58px !important;
+    height: 58px !important;
+    object-fit: contain;
+  }
+
+  /* MENU DAN ACTION */
+  .dk-actions {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+  }
+
+  /* SEARCH ICON */
+  .dk-search-wrap {
+    width: 72px !important;
+    min-width: 72px !important;
+    height: 72px !important;
+    flex: 0 0 72px !important;
+    padding: 0 !important;
+  }
+
+  .dk-search {
+    width: 72px !important;
+    height: 72px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 20px !important;
+    padding: 0 !important;
+    background: #111c30 !important;
+  }
+
+  .dk-search > span {
+    font-size: 30px !important;
+    color: #53e7ff;
+  }
+
+  .dk-search input {
+    display: none;
+  }
+
+  .dk-search:focus-within {
+    position: absolute !important;
+    top: 100% !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    height: 50px !important;
+    z-index: 3001;
+    background: #111c30 !important;
+  }
+
+  .dk-search:focus-within input {
+    display: block !important;
+    width: 100% !important;
+    padding: 10px !important;
+    color: white !important;
+  }
+
+  /* CURRENCY */
+  .dk-currency {
+    max-width: 175px;
+    min-width: 0;
+    padding: 12px !important;
+  }
+
+  .dk-currency select {
+    font-size: 13px;
+    max-width: 100px;
+  }
+
+  /* MENU BUTTON */
+  .dk-icon-btn {
+    width: 68px !important;
+    height: 68px !important;
+    flex: 0 0 68px !important;
+  }
+
+  /* SEMBUNYIKAN HERO DI INDEX */
+  .hero {
+    display: none !important;
+  }
+
+  /* AREA KATALOG */
+  main {
+    width: 100%;
+    padding: 100px 22px 40px !important;
+  }
+
+  .section[aria-labelledby="games-title"] {
+    margin-top: 0 !important;
+  }
+
+  .heading {
+    font-size: 38px !important;
+    margin-bottom: 24px;
+  }
+
+  /* GRID 3 KOLOM */
+  .games {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+  }
+
+  .game {
+    width: 100%;
+    min-width: 0;
+    padding: 0 !important;
+    overflow: hidden;
+    border-radius: 22px !important;
+  }
+
+  .game .gicon {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    height: auto !important;
+    object-fit: cover;
+  }
+
+  .game strong {
+    display: block;
+    padding: 12px 10px 3px !important;
+    font-size: 13px !important;
+  }
+
+  .game small {
+    display: block;
+    padding: 3px 10px 12px !important;
+    font-size: 12px !important;
+  }
+}
