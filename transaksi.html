@@ -318,7 +318,29 @@ $('games').addEventListener('click', async function(event) {
   const selectedGame = button.dataset.game;
   window.location.href = 'transaksi.html?game=' + encodeURIComponent(selectedGame);
 });
-	
+// Pilihan metode pembayaran pada kartu visual.
+document.querySelectorAll('.emba-payment-option').forEach(option => {
+  option.addEventListener('click', () => {
+    document.querySelectorAll('.emba-payment-option').forEach(item => {
+      item.classList.remove('active');
+      item.setAttribute('aria-pressed', 'false');
+    });
+    option.classList.add('active');
+    option.setAttribute('aria-pressed', 'true');
+    $('method').value = option.dataset.method;
+  });
+});
+
+// Promo ditampilkan sebagai opsional. Validasi diskon harus dilakukan server.
+const promoButton = $('applyPromo');
+if (promoButton) {
+  promoButton.addEventListener('click', () => {
+    const code = $('promoCode').value.trim();
+    $('promoMessage').textContent = code
+      ? 'Kode promo sudah dimasukkan. Validasi dan potongan harga belum diaktifkan di backend.'
+      : 'Masukkan kode promo terlebih dahulu.';
+  });
+}	
 $('orderBtn').addEventListener('click', async () => {
   clearAlert();
   if (!selected) return alertMsg('Pilih paket terlebih dahulu.');
