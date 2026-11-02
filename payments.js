@@ -38,7 +38,7 @@ export async function createMidtransPayment(order) {
         name: String(order.product_name).slice(0, 50)
       }],
       customer_details: {
-        first_name: 'Pelanggan DiamondKu',
+        first_name: 'Pelanggan EMBAStore',
         phone: order.buyer_contact || undefined
       },
       enabled_payments: ['qris', 'bank_transfer', 'gopay', 'dana'],
