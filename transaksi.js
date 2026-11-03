@@ -370,3 +370,25 @@ document.querySelectorAll('.emba-payment-card').forEach(card => {
     }
   });
 });
+// Di dalam event listener klik paket produk:
+button.addEventListener('click', () => {
+  document.querySelectorAll('.pack').forEach(item => {
+    item.classList.remove('active');
+    item.setAttribute('aria-pressed', 'false');
+  });
+  button.classList.add('active');
+  button.setAttribute('aria-pressed', 'true');
+  selected = product;
+  
+  const formattedPrice = money(product.price_idr);
+  
+  if ($('total')) $('total').textContent = formattedPrice;
+  if ($('summary')) $('summary').textContent = product.game + ' • ' + product.name;
+  
+  // Perbarui nominal di kartu pembayaran secara real-time
+  document.querySelectorAll('.pay-nominal').forEach(el => {
+    el.textContent = formattedPrice;
+  });
+
+  clearAlert();
+});
