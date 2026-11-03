@@ -31,7 +31,6 @@ body {
   right: 0;
   width: 100%;
   z-index: 3000 !important; /* Pastikan header berada di lapisan paling atas */
-padding-top: 12px !important;
 }
 
 .dk-header .dk-actions {
@@ -562,6 +561,7 @@ main {
 /* =====================================================
    PERBAIKAN BANNER AGAR TIDAK KEPOTONG DI ATAS
 ===================================================== */
+{padding-top: 12px !important;}
 .transaction-game-hero {
   position: relative;
   overflow: hidden;
