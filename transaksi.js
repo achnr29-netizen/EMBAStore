@@ -354,3 +354,19 @@ if (gameHero) gameHero.style.setProperty('--game-art', `url("${visual.image}")`)
 if (gameIcon) { gameIcon.src = visual.image; gameIcon.alt = game; }
 if (gameName) gameName.textContent = game;
 if (gamePublisher) gamePublisher.textContent = `${visual.publisher} • ${visual.product}`;
+
+document.querySelectorAll('.emba-payment-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.emba-payment-card').forEach(item => {
+      item.classList.remove('active');
+      item.setAttribute('aria-pressed', 'false');
+    });
+    card.classList.add('active');
+    card.setAttribute('aria-pressed', 'true');
+    
+    const methodSelect = $('method');
+    if (methodSelect) {
+      methodSelect.value = card.dataset.method;
+    }
+  });
+});
