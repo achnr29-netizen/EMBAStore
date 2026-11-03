@@ -370,6 +370,16 @@ document.querySelectorAll('.emba-payment-card').forEach(card => {
     }
   });
 });
+// Di dalam fungsi render() atau saat paket dipilih, tambahkan sinkronisasi harga ke kartu pembayaran:
+if (selected) {
+  const currentPriceFormatted = money(selected.price_idr);
+  
+  // Perbarui semua teks nominal pada kartu pembayaran agar sesuai dengan harga paket
+  document.querySelectorAll('.pay-nominal').forEach(el => {
+    el.textContent = currentPriceFormatted;
+  });
+}
+
 // Di dalam event listener klik paket produk:
 button.addEventListener('click', () => {
   document.querySelectorAll('.pack').forEach(item => {
