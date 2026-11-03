@@ -487,10 +487,10 @@ main {
   position: relative;
   overflow: hidden;
   height: auto;
-  margin: 16px 0 20px 0 !important; /* Memberikan jarak aman di atas dan bawah */
-  padding-top: 12px;                /* Ruang nafas bagian atas */
+  margin-top: 10px;
+  margin-bottom: 16px;                
   border: 1px solid rgba(24, 217, 255, 0.25);
-  border-radius: 18px;
+  border-radius: 16px;
   background: #111827;
   isolation: isolate;
 }
@@ -515,7 +515,7 @@ main {
 }
 
 .transaction-game-banner {
-  height: 110px;
+  height: 100px;
   background-image: var(--game-art);
   background-size: cover;
   background-position: center center;
