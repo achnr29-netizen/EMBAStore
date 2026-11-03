@@ -565,14 +565,15 @@ main {
 .transaction-game-hero {
   position: relative;
   overflow: hidden;
-  min-height: 180px; /* Sedikit ditambah tingginya */
-  margin-top: 10px;  /* Memberikan jarak aman dari header atas */
-  margin-bottom: 16px;
+  height: auto;
+  margin: 0 0 16px 0 !important; /* Menghilangkan margin atas agar tidak ada celah */
+  padding-top: 10px;
   border: 1px solid rgba(24, 217, 255, 0.25);
   border-radius: 16px;
   background: #111827;
   isolation: isolate;
 }
+
 
 .transaction-game-hero::before {
   content: "";
