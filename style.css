@@ -1441,3 +1441,94 @@ img { max-width: 100%; }
     background: #55dfff;
   }
 	  }
+/* =====================================================
+   EMBA STORE — SIDEBAR DARK CHARCOAL
+===================================================== */
+
+/* Container Sidebar (Warna Dark Charcoal Modern) */
+.dk-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(80vw, 300px);
+  z-index: 4001 !important;
+  overflow-y: auto;
+  padding: 20px 18px;
+  background: #181a1d !important; /* Warna Dark Charcoal elegan */
+  border-right: 1px solid rgba(24, 217, 255, 0.18) !important; /* Border tipis Cyan khas EMBA Store */
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.6);
+  transform: translateX(-100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.26s ease;
+}
+
+.dk-sidebar.is-open {
+  transform: translateX(0) !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Header Sidebar */
+.dk-sidebar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.12); /* Garis pemisah tipis */
+  margin-bottom: 8px;
+}
+
+.dk-sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+/* Aksen Warna EMBA Store */
+.dk-gold, .dk-cyan {
+  color: #18d9ff !important; /* Warna Cyan khas EMBA Store */
+}
+
+/* Menu Navigasi */
+.dk-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dk-sidebar-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 10px;
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 14px; /* Ukuran teks ramping */
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Efek Hover Menu */
+.dk-sidebar-nav a:hover,
+.dk-sidebar-nav a:active {
+  background: rgba(24, 217, 255, 0.08); /* Highlight subtle Cyan */
+  color: #18d9ff;
+}
+
+.dk-sidebar-icon {
+  font-size: 15px;
+  color: #cbd5e1;
+  opacity: 0.85;
+}
+
+.dk-sidebar-nav a:hover .dk-sidebar-icon {
+  color: #18d9ff;
+  opacity: 1;
+}
