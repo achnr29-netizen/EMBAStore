@@ -327,3 +327,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   load();
 });
+// Konfigurasi Banner & Gambar Berdasarkan Game yang Dipilih
+const gameVisuals = {
+  'Mobile Legends': { image: 'Images/mobile-legends.png', publisher: 'Moonton', product: 'Diamond' },
+  'Free Fire': { image: 'Images/free-fire.png', publisher: 'Garena', product: 'Diamond' },
+  'PUBG Mobile': { image: 'Images/pubg-mobile.png', publisher: 'Level Infinite', product: 'UC' },
+  'Genshin Impact': { image: 'Images/genshin-impact.png', publisher: 'HoYoverse', product: 'Genesis Crystals' },
+  'Valorant': { image: 'Images/valorant.png', publisher: 'Riot Games', product: 'VP' },
+  'Honor of Kings': { image: 'Images/honor-of-kings.png', publisher: 'Level Infinite', product: 'Tokens' },
+  'Call of Duty: Mobile': { image: 'Images/cod-mobile.png', publisher: 'Activision', product: 'CP' }
+};
+
+const pageParams = new URLSearchParams(window.location.search);
+const requestedGame = pageParams.get('game') || 'Mobile Legends';
+
+// Terapkan data dinamis ke banner
+game = requestedGame;
+const visual = gameVisuals[game] || gameVisuals['Mobile Legends'];
+
+const gameHero = $('transactionGameHero');
+const gameIcon = $('transactionGameIcon');
+const gameName = $('transactionGameName');
+const gamePublisher = $('transactionGamePublisher');
+
+if (gameHero) gameHero.style.setProperty('--game-art', `url("${visual.image}")`);
+if (gameIcon) { gameIcon.src = visual.image; gameIcon.alt = game; }
+if (gameName) gameName.textContent = game;
+if (gamePublisher) gamePublisher.textContent = `${visual.publisher} • ${visual.product}`;
