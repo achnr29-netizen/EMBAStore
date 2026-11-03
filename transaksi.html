@@ -120,65 +120,84 @@
     </div>
   </section>
 
-  <section class="section emba-panel" id="paymentsection">
-    <div class="emba-panel-title">
-      <span>3</span>
-      <div>
-        <h2 class="heading">Pilih Pembayaran</h2>
-        <p class="sub">Pilih metode pembayaran yang tersedia.</p>
-      </div>
+<section class="section emba-panel" id="paymentsection">
+  <div class="emba-panel-title">
+    <span>3</span>
+    <div>
+      <h2 class="heading">Pilih Pembayaran</h2>
+      <p class="sub">Metode pembayaran instan dan terverifikasi otomatis.</p>
     </div>
-    <div class="emba-payment-grid">
-      <button type="button" class="emba-payment-option active" data-method="qris" aria-pressed="true"><b class="pay-logo qris-logo">QRIS</b><span>QRIS</span></button>
-      <button type="button" class="emba-payment-option" data-method="bca" aria-pressed="false"><b class="pay-logo bca-logo">BCA</b><span>BCA Transfer</span></button>
-      <button type="button" class="emba-payment-option" data-method="dana" aria-pressed="false"><b class="pay-logo dana-logo">DANA</b><span>DANA</span></button>
-      <button type="button" class="emba-payment-option" data-method="gopay" aria-pressed="false"><b class="pay-logo gopay-logo">GoPay</b><span>GoPay</span></button>
-    </div>
-    <select id="method" class="emba-method-hidden" aria-label="Metode pembayaran">
-      <option value="qris">QRIS</option>
-      <option value="bca">BCA / Transfer bank</option>
-      <option value="dana">DANA</option>
-      <option value="gopay">GoPay</option>
-    </select>
-    <p class="sub emba-payment-hint">Pilihan pembayaran akan diproses melalui gateway yang terhubung di server.</p>
-  </section>
+  </div>
 
-  <section class="section emba-panel" id="contactsection">
-    <div class="emba-panel-title">
-      <span>4</span>
-      <div>
-        <h2 class="heading">Detail Kontak</h2>
-        <p class="sub">Kontak digunakan jika terjadi kendala transaksi.</p>
-      </div>
-    </div>
-    <div class="fieldgrid emba-contact-grid">
-      <div class="field">
-        <label for="contact">Nomor WhatsApp</label>
-        <input id="contact" maxlength="30" placeholder="08xxxxxxxxxx" inputmode="tel" autocomplete="tel">
-        <small>Nomor WhatsApp aktif</small>
-      </div>
-      <div class="field">
-        <label for="buyerEmail">Email (Opsional)</label>
-        <input id="buyerEmail" type="email" maxlength="120" placeholder="contoh@email.com" autocomplete="email">
-        <small>Untuk menerima informasi pesanan jika didukung server.</small>
-      </div>
-    </div>
-  </section>
+  <div class="emba-payment-category-title">QRIS</div>
+  <div class="emba-payment-grid">
+    <button type="button" class="emba-payment-card active" data-method="qris" aria-pressed="true">
+      <div class="pay-top"><b class="pay-logo">QRIS</b></div>
+      <div class="pay-nominal" id="qrisPrice">Rp0</div>
+      <small class="pay-status">Proses Otomatis</small>
+    </button>
+    <button type="button" class="emba-payment-card" data-method="dana" aria-pressed="false">
+      <div class="pay-top"><b class="pay-logo">DANA</b></div>
+      <div class="pay-nominal" id="danaPrice">Rp0</div>
+      <small class="pay-status">Proses Otomatis</small>
+    </button>
+    <button type="button" class="emba-payment-card" data-method="bca_va" aria-pressed="false">
+      <div class="pay-top"><b class="pay-logo">BCA VA</b></div>
+      <div class="pay-nominal" id="bcaPrice">Rp0</div>
+      <small class="pay-status">Proses Otomatis</small>
+    </button>
+    <button type="button" class="emba-payment-card" data-method="gopay" aria-pressed="false">
+      <div class="pay-top"><b class="pay-logo">GoPay</b></div>
+      <div class="pay-nominal" id="gopayPrice">Rp0</div>
+      <small class="pay-status">Proses Otomatis</small>
+    </button>
+  </div>
+  <select id="method" class="emba-method-hidden" style="display: none;">
+    <option value="qris" selected>QRIS</option>
+    <option value="dana">DANA</option>
+    <option value="bca_va">BCA VA</option>
+    <option value="gopay">GoPay</option>
+  </select>
+</section>
 
-  <section class="section emba-panel" id="promosection">
-    <div class="emba-panel-title">
-      <span>5</span>
-      <div>
-        <h2 class="heading">Kode Promo (Opsional)</h2>
-        <p class="sub">Punya kode promo? Masukkan di bawah ini.</p>
+<section class="section emba-panel" id="contactsection">
+  <div class="emba-panel-title">
+    <span>4</span>
+    <div>
+      <h2 class="heading">Detail Kontak</h2>
+      <p class="sub">Kontak digunakan jika terjadi kendala transaksi.</p>
+    </div>
+  </div>
+  <div class="fieldgrid emba-contact-grid">
+    <div class="field">
+      <label for="buyerEmail">Email (Opsional)</label>
+      <input id="buyerEmail" type="email" maxlength="120" placeholder="example@gmail.com" autocomplete="email">
+    </div>
+    <div class="field">
+      <label for="contact">No. WhatsApp</label>
+      <div class="whatsapp-row">
+        <span class="wa-prefix">🇮🇩 +62</span>
+        <input id="contact" maxlength="30" placeholder="812 3456 7890" inputmode="tel" autocomplete="tel">
       </div>
+      <small class="sub" style="margin-top:6px; display:block;">**Nomor ini akan dihubungi jika terjadi masalah</small>
     </div>
-    <div class="emba-promo-row">
-      <input id="promoCode" type="text" maxlength="40" placeholder="Masukkan kode promo" autocomplete="off">
-      <button type="button" class="btn emba-promo-button" id="applyPromo">Gunakan</button>
+  </div>
+</section>
+
+<section class="section emba-panel" id="promosection">
+  <div class="emba-panel-title">
+    <span>5</span>
+    <div>
+      <h2 class="heading">Kode Promo</h2>
+      <p class="sub">Punya kode promo? Masukkan di bawah ini.</p>
     </div>
-    <small class="sub" id="promoMessage">Fitur potongan harga perlu dihubungkan ke validasi promo di backend.</small>
-  </section>
+  </div>
+  <div class="emba-promo-row">
+    <input id="promoCode" type="text" maxlength="40" placeholder="Ketik Kode Promo Kamu" autocomplete="off">
+    <button type="button" class="btn emba-promo-button" id="applyPromo">Gunakan</button>
+  </div>
+  <button type="button" class="btn-secondary-promo">🏷️ Pakai Promo Yang Tersedia</button>
+	</section>
 
   <section class="checkout emba-total-panel" id="checkoutsection" aria-label="Ringkasan pesanan">
     <div class="emba-total-left">
