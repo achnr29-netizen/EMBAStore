@@ -554,3 +554,112 @@ main {
   color: #8beeff;
   font-size: 12.5px;
 }
+/* =====================================================
+   GAYA KARTU PEMBAYARAN ALA REFERENSI
+===================================================== */
+.emba-payment-category-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #18d9ff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.emba-payment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.emba-payment-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: #111827;
+  border: 1.5px solid #22345c;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  min-height: 80px;
+}
+
+.emba-payment-card.active {
+  border-color: #18d9ff;
+  background: rgba(24, 217, 255, 0.08);
+  box-shadow: 0 0 12px rgba(24, 217, 255, 0.2);
+}
+
+.emba-payment-card .pay-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.emba-payment-card .pay-logo {
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.emba-payment-card .pay-nominal {
+  font-size: 13px;
+  font-weight: 700;
+  color: #18d9ff;
+  margin-bottom: 4px;
+}
+
+.emba-payment-card .pay-status {
+  font-size: 10.5px;
+  color: #8da4c4;
+}
+
+/* Penyesuaian Input WhatsApp & Tombol Promo */
+.whatsapp-row {
+  display: flex;
+  align-items: center;
+  background: #0f1626;
+  border: 1.5px solid #21345c;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.wa-prefix {
+  padding: 0 12px;
+  font-size: 13px;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.03);
+  border-right: 1px solid #21345c;
+  font-weight: 600;
+}
+
+.whatsapp-row input {
+  border: none !important;
+  background: transparent !important;
+  flex: 1;
+}
+
+.btn-secondary-promo {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: #111827;
+  border: 1.5px solid #22345c;
+  color: #cbd5e1;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary-promo:hover {
+  border-color: #18d9ff;
+  color: #18d9ff;
+}
