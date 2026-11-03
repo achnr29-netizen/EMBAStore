@@ -503,7 +503,7 @@ main {
   background-size: cover;
   background-position: center;
   filter: blur(4px) brightness(1);
-  transform: scale(2);
+  transform: scale(1.5);
 }
 
 .transaction-game-hero::after {
