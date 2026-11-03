@@ -480,17 +480,17 @@ main {
   font-size: 15px !important;
 }
 
-
 /* =====================================================
-   2. BANNER GAME DINAMIS DI BAWAH HEADER
+   PERBAIKAN TOTAL BANNER SUPAYA TIDAK KEPOTONG
 ===================================================== */
 .transaction-game-hero {
   position: relative;
   overflow: hidden;
-  min-height: 160px;
-  margin: 0 0 16px;
+  height: auto;
+  margin: 12px 0 20px 0 !important; /* Memberikan jarak aman di atas dan bawah */
+  padding-top: 12px;                /* Ruang nafas bagian atas */
   border: 1px solid rgba(24, 217, 255, 0.25);
-  border-radius: 16px;
+  border-radius: 18px;
   background: #111827;
   isolation: isolate;
 }
@@ -498,13 +498,12 @@ main {
 .transaction-game-hero::before {
   content: "";
   position: absolute;
-  inset: -10px;
+  inset: 0;
   z-index: -2;
   background-image: var(--game-art);
   background-size: cover;
-  background-position: center;
-  filter: blur(4px) brightness(0.45);
-  transform: scale(1.05);
+  background-position: center center;
+  filter: blur(3px) brightness(0.5);
 }
 
 .transaction-game-hero::after {
@@ -512,32 +511,33 @@ main {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(7,11,24,0.2), rgba(7,11,24,0.85));
+  background: linear-gradient(180deg, rgba(7,11,24,0.4), rgba(7,11,24,0.9));
 }
 
 .transaction-game-banner {
-  height: 90px;
+  height: 110px;
   background-image: var(--game-art);
   background-size: cover;
-  background-position: center;
-  opacity: 0.85;
-  mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
+  background-position: center center;
+  border-radius: 12px;
+  margin: 0 12px;
+  opacity: 0.9;
 }
 
 .transaction-game-info {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 0 16px 16px;
-  margin-top: -36px;
+  padding: 12px 16px 16px;
+  margin-top: 0; /* Dibuat 0 agar tidak menimpa ke atas secara berlebihan */
 }
 
 .transaction-game-icon {
-  width: 64px;
-  height: 64px;
-  flex: 0 0 64px;
+  width: 68px;
+  height: 68px;
+  flex: 0 0 68px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 2px solid #18d9ff;
   box-shadow: 0 4px 16px rgba(0,0,0,0.5);
   background: #111827;
@@ -554,7 +554,10 @@ main {
   margin: 0;
   color: #8beeff;
   font-size: 12.5px;
-  }
+}
+
+
+
 /* =====================================================
    PERBAIKAN BANNER AGAR TIDAK KEPOTONG DI ATAS
 ===================================================== */
