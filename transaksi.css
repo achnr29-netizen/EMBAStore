@@ -502,7 +502,7 @@ main {
   background-image: var(--game-art);
   background-size: cover;
   background-position: center;
-  filter: blur(3px) brightness(1);
+  filter: blur(3px) brightness(0.5);
   transform: scale(1.05);
 }
 
