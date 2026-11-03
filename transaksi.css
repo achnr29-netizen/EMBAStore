@@ -663,3 +663,42 @@ main {
   border-color: #18d9ff;
   color: #18d9ff;
 }
+/* Perbaikan Total Baris Kode Promo */
+.emba-promo-row {
+  display: flex !important;
+  gap: 10px !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin-bottom: 10px !important;
+}
+
+.emba-promo-row input#promoCode {
+  flex: 1 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 12px 14px !important;
+  background: #0f1626 !important;
+  border: 1.5px solid #21345c !important;
+  border-radius: 12px !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  box-sizing: border-box !important;
+}
+
+.emba-promo-row input#promoCode:focus {
+  border-color: #18d9ff !important;
+  outline: none !important;
+}
+
+.emba-promo-row .emba-promo-button {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  padding: 12px 20px !important;
+  background: linear-gradient(135deg, #087bff, #13cfff) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+}
