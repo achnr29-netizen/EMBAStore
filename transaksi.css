@@ -502,8 +502,8 @@ main {
   background-image: var(--game-art);
   background-size: cover;
   background-position: center;
-  filter: blur(4px) brightness(0.45);
-  transform: scale(1.05);
+  filter: blur(4px) brightness(1);
+  transform: scale(2);
 }
 
 .transaction-game-hero::after {
