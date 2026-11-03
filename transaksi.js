@@ -433,3 +433,34 @@ function selectPackage(product) {
     el.textContent = formattedPrice;
   });
                     }
+// Skrip otomatis penyinkron harga kartu pembayaran secara real-time
+setInterval(() => {
+  const totalElement = document.getElementById('total');
+  if (totalElement) {
+    const currentTotal = totalElement.textContent;
+    if (currentTotal && currentTotal !== 'Rp0') {
+      document.querySelectorAll('.pay-nominal').forEach(el => {
+        if (el.textContent !== currentTotal) {
+          el.textContent = currentTotal;
+        }
+      });
+    }
+  }
+}, 300);
+
+// Logika klik pilihan kartu pembayaran
+document.querySelectorAll('.emba-payment-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.emba-payment-card').forEach(item => {
+      item.classList.remove('active');
+      item.setAttribute('aria-pressed', 'false');
+    });
+    card.classList.add('active');
+    card.setAttribute('aria-pressed', 'true');
+    
+    const methodSelect = document.getElementById('method');
+    if (methodSelect) {
+      methodSelect.value = card.dataset.method;
+    }
+  });
+});
