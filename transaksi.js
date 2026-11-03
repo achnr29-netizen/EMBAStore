@@ -402,3 +402,19 @@ button.addEventListener('click', () => {
 
   clearAlert();
 });
+// Contoh implementasi di dalam transaksi.js saat paket produk dipilih:
+document.querySelectorAll('.emba-pack-card, .pack').forEach(card => {
+  card.addEventListener('click', () => {
+    // 1. Ambil nilai harga dari paket yang dipilih (misal dari atribut data atau variabel produk)
+    const hargaPaket = card.getAttribute('data-price') || 'Rp 50.000'; // Sesuaikan dengan variabel harga di kode Anda
+
+    // 2. Perbarui teks total pembayaran bawah
+    const totalEl = document.getElementById('total');
+    if (totalEl) totalEl.textContent = hargaPaket;
+
+    // 3. PERBARUI SEMUA HARGA PADA KARTU PEMBAYARAN
+    document.querySelectorAll('.pay-nominal').forEach(nominalEl => {
+      nominalEl.textContent = hargaPaket;
+    });
+  });
+});
