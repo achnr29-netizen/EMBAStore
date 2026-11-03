@@ -418,3 +418,18 @@ document.querySelectorAll('.emba-pack-card, .pack').forEach(card => {
     });
   });
 });
+// Di dalam fungsi saat paket dipilih (event listener klik paket):
+// Contoh:
+function selectPackage(product) {
+  selected = product;
+  const formattedPrice = money(product.price_idr); // atau format harga Anda
+
+  // 1. Perbarui total pembayaran di bawah
+  if ($('total')) $('total').textContent = formattedPrice;
+  if ($('summary')) $('summary').textContent = product.game + ' • ' + product.name;
+
+  // 2. PERBARUI SEMUA NOMINAL PADA KARTU PEMBAYARAN (TAMBAHKAN INI)
+  document.querySelectorAll('.pay-nominal').forEach(el => {
+    el.textContent = formattedPrice;
+  });
+                    }
