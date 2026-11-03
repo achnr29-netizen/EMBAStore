@@ -487,7 +487,7 @@ main {
   position: relative;
   overflow: hidden;
   height: auto;
-  margin: 12px 0 20px 0 !important; /* Memberikan jarak aman di atas dan bawah */
+  margin: 0 0 16px 0 !important; /* Memberikan jarak aman di atas dan bawah */
   padding-top: 12px;                /* Ruang nafas bagian atas */
   border: 1px solid rgba(24, 217, 255, 0.25);
   border-radius: 18px;
@@ -556,61 +556,3 @@ main {
   font-size: 12.5px;
 }
 
-
-
-/* =====================================================
-   PERBAIKAN BANNER AGAR TIDAK KEPOTONG DI ATAS
-===================================================== */
-{padding-top: 12px !important;}
-.transaction-game-hero {
-  position: relative;
-  overflow: hidden;
-  height: auto;
-  margin: 0 0 16px 0 !important; /* Menghilangkan margin atas agar tidak ada celah */
-  padding-top: 10px;
-  border: 1px solid rgba(24, 217, 255, 0.25);
-  border-radius: 16px;
-  background: #111827;
-  isolation: isolate;
-}
-
-
-.transaction-game-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0; /* Ubah dari -10px menjadi 0 agar gambar pas di dalam kotak */
-  z-index: -2;
-  background-image: var(--game-art);
-  background-size: cover;
-  background-position: center; /* Memastikan posisi gambar di tengah */
-  filter: blur(2px) brightness(0.5); /* Blur diperhalus */
-  transform: scale(1);
-}
-
-.transaction-game-banner {
-  height: 100px; /* Menyesuaikan tinggi area gambar */
-  background-image: var(--game-art);
-  background-size: cover;
-  background-position: center center;
-  opacity: 0.9;
-  mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
-}
-
-.transaction-game-info {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 0 16px 16px;
-  margin-top: -42px; /* Mengatur posisi kotak ikon game agar pas menimpa banner */
-}
-
-.transaction-game-icon {
-  width: 72px;
-  height: 72px;
-  flex: 0 0 72px;
-  object-fit: cover;
-  border-radius: 14px;
-  border: 2px solid #18d9ff;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
-  background: #111827;
-}
