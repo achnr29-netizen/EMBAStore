@@ -515,15 +515,14 @@ main {
 }
 
 .transaction-game-banner {
-  height: 110px; 
-  background-image: var(--game-art);
-  background-size: contain;   
-  background-repeat: no-repeat;
-  background-position: center;
-  margin: 12px 12px 0 12px;
-  border-radius: 10px;
+  height: 120px !important;          
+  background-image: var(--game-art) !important;
+  background-size: cover !important;       
+  background-repeat: no-repeat !important;
+  background-position: center center !important; 
+  margin: 12px 12px 0 12px !important;
+  border-radius: 10px !important;
 }
-
 
 .transaction-game-info {
   display: flex;
