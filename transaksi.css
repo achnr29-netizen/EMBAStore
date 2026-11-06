@@ -515,13 +515,15 @@ main {
 }
 
 .transaction-game-banner {
-  height: 90px;
+  height: 110px; 
   background-image: var(--game-art);
-  background-size: cover;
+  background-size: contain;   
+  background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.85;
-  mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
+  margin: 12px 12px 0 12px;
+  border-radius: 10px;
 }
+
 
 .transaction-game-info {
   display: flex;
