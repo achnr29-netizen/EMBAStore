@@ -494,14 +494,14 @@ main {
 
 /* Mengatur area gambar banner agar tampil tinggi dan proporsional */
 .transaction-game-banner {
-  width: 100%;
-  height: 180px;                          /* Perbesar tinggi banner (sesuaikan jadi 170px-200px jika kurang) */
-  background-image: var(--game-art);
-  background-size: cover;                 /* Menutupi area dengan pas */
-  background-repeat: no-repeat;
-  background-position: center top;        /* Fokus ke bagian atas/tengah ilustrasi agar kepala/karakter utama tidak terpotong */
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  width: 100% !important;
+  height: 210px !important;                       
+  background-image: var(--game-art)!important;
+  background-size: cover !important;                
+  background-repeat: no-repeat !important;
+  background-position: center 30% !important;        
+  border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px !important;
 }
 
 /* Bagian informasi game di bawah banner */
