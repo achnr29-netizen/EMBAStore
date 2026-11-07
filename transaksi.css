@@ -309,32 +309,52 @@ main {
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(0, 195, 255, 0.35);
 }
+/* Pembungkus utama pencarian di header */
+.dk-search-wrap {
+  position: relative !important;
+  display: inline-block !important;
+}
 
+/* Tombol ikon kaca pembesar */
+.dk-search-icon-btn {
+  background: #0d1a2d !important;
+  border: 1px solid rgba(24, 217, 255, 0.3) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  width: 42px !important;
+  height: 42px !important;
+  display: grid !important;
+  place-items: center !important;
+  font-size: 20px !important;
+  cursor: pointer !important;
+}
+
+/* Kotak Dropdown Input Pencarian */
 .dk-search-dropdown {
   display: none;
-  position: absolute !important;     
-  top: 50px !important;             
-  right: 0 !important;               
+  position: absolute !important;
+  top: 50px !important;
+  right: 0 !important;              /* Menempel rapi dari sisi kanan tombol */
   left: auto !important;
-  width: 260px !important;           
+  width: 260px !important;
   background: #0d1a2d !important;
   border: 1px solid rgba(24, 217, 255, 0.5) !important;
   border-radius: 14px !important;
   padding: 8px !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
-  z-index: 5000 !important;      
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7) !important;
+  z-index: 9999 !important;
 }
 
+/* Menampilkan input saat class 'active' aktif */
 .dk-search-wrap.active .dk-search-dropdown {
   display: block !important;
-  animation: fadeIn 0.2s ease-out;
 }
 
 .dk-search-dropdown input {
   width: 100% !important;
   box-sizing: border-box !important;
   background: #142b4a !important;
-  border: 1px solid rgba(24, 217, 255, 0.3) !important;
+  border: 1px solid rgba(24, 217, 255, 0.4) !important;
   border-radius: 10px !important;
   padding: 10px 14px !important;
   color: #fff !important;
@@ -345,6 +365,7 @@ main {
 .dk-search-dropdown input:focus {
   border-color: #18d9ff !important;
 }
+
 
 /* =====================================================
    1. UKURAN NOMOR TAHAPAN (STEPS) DIPERKECIL
