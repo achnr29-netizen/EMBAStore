@@ -310,63 +310,41 @@ main {
   box-shadow: 0 4px 16px rgba(0, 195, 255, 0.35);
 }
 
-.dk-search-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.dk-search-icon-btn {
-  background: #0d1a2d;
-  border: 1px solid rgba(24, 217, 255, 0.3);
-  color: #fff;
-  border-radius: 12px;
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-
 .dk-search-dropdown {
   display: none;
-  position: fixed;         
-  top: 70px;               
-  left: 16px;
-  right: 16px;
-  width: auto;
-  background: #0d1a2d;
-  border: 1px solid rgba(24, 217, 255, 0.5);
-  border-radius: 14px;
-  padding: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-  z-index: 5000;         
+  position: absolute !important;     
+  top: 50px !important;             
+  right: 0 !important;               
+  left: auto !important;
+  width: 260px !important;           
+  background: #0d1a2d !important;
+  border: 1px solid rgba(24, 217, 255, 0.5) !important;
+  border-radius: 14px !important;
+  padding: 8px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+  z-index: 5000 !important;      
 }
 
 .dk-search-wrap.active .dk-search-dropdown {
-  display: block;
+  display: block !important;
   animation: fadeIn 0.2s ease-out;
 }
 
 .dk-search-dropdown input {
-  width: 100%;
-  box-sizing: border-box;
-  background: #142b4a;
-  border: 1px solid rgba(24, 217, 255, 0.4);
-  border-radius: 10px;
-  padding: 12px 16px;
-  color: #fff;
-  font-size: 14.5px;
-  outline: none;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background: #142b4a !important;
+  border: 1px solid rgba(24, 217, 255, 0.3) !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  outline: none !important;
 }
 
 .dk-search-dropdown input:focus {
-  border-color: #18d9ff;
-  }
-
- 
+  border-color: #18d9ff !important;
+}
 
 /* =====================================================
    1. UKURAN NOMOR TAHAPAN (STEPS) DIPERKECIL
