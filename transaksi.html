@@ -17,14 +17,17 @@
     <span>EMBA<span class="dk-gold">Store</span></span>
   </div>
 	
-  <div class="dk-actions">
-    <div class="dk-search-wrap">
-      <label class="dk-search">
-        <span aria-hidden="true">⌕</span>
-        <input id="gameSearch" type="search" placeholder="Cari Mobile Legends, Free Fire..." autocomplete="off" aria-label="Cari game">
-        <button id="clearSearch" type="button" aria-label="Hapus pencarian" hidden>×</button>
-      </label>
-    </div>
+  <div class="dk-search-wrap" id="dkSearchWrap">
+  <button type="button" class="dk-search-icon-btn" id="searchIconBtn" aria-label="Buka pencarian">
+    ⌕
+  </button>
+  <div class="dk-search-dropdown">
+    <label class="dk-search">
+      <input id="gameSearch" type="search" placeholder="Cari Mobile Legends, Free Fire..." autocomplete="off" aria-label="Cari game">
+    </label>
+  </div>
+  </div>
+	
     <div class="dk-currency">
       <span id="currencyFlag" aria-hidden="true">🇮🇩</span>
       <select id="currency" aria-label="Negara dan mata uang">
