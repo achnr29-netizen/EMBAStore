@@ -349,7 +349,6 @@ img {
 
 .dk-search-wrap.active .dk-search-bar {
   display: flex !important;
-  width: 275px !important;
 }
 
 .dk-search-wrap.active .dk-search-icon-btn {
