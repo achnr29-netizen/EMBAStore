@@ -317,6 +317,14 @@ img {
 }
 
 /* ===== SEARCH ===== */
+.dk-header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3000;
+}
+
 .dk-search-wrap {
   position: relative !important;
   display: inline-block !important;
@@ -325,8 +333,9 @@ img {
 .dk-search-bar {
   display: none;
   position: absolute !important;
-  top: 50% !important;
-  right: 0 !important;
+  top: -6px !important;
+  right: -6px !important;
+  height: 52px !important;
   transform: translateY(-50%);
   width: 100% !important;
   max-width: 320px !important; /* Menyesuaikan lebar area header */
@@ -342,6 +351,7 @@ img {
 
 .dk-search-wrap.active .dk-search-bar {
   display: flex !important;
+  width: 275px !important;
 }
 
 .dk-search-wrap.active .dk-search-icon-btn {
