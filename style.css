@@ -322,53 +322,55 @@ img {
   display: inline-block !important;
 }
 
-.dk-search-icon-btn {
-  background: #0d1a2d !important;
-  border: 1px solid rgba(24, 217, 255, 0.3) !important;
-  color: #fff !important;
-  border-radius: 12px !important;
-  width: 42px !important;
-  height: 42px !important;
-  display: grid !important;
-  place-items: center !important;
-  font-size: 20px !important;
-  cursor: pointer !important;
-}
-
-.dk-search-dropdown {
+.dk-search-bar {
   display: none;
   position: absolute !important;
-  top: 50px !important;
-  right: 0 !important;              
-  left: auto !important;
-  width: 260px !important;
+  top: 50% !important;
+  right: 0 !important;
+  transform: translateY(-50%);
+  width: 100% !important;
+  max-width: 320px !important; /* Menyesuaikan lebar area header */
   background: #0d1a2d !important;
   border: 1px solid rgba(24, 217, 255, 0.5) !important;
-  border-radius: 14px !important;
-  padding: 8px !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7) !important;
-  z-index: 9999 !important;
-}
-
-.dk-search-wrap.active .dk-search-dropdown {
-  display: block !important;
-}
-
-.dk-search-dropdown input {
-  width: 100% !important;
+  border-radius: 12px !important;
+  padding: 4px 8px !important;
   box-sizing: border-box !important;
-  background: #142b4a !important;
-  border: 1px solid rgba(24, 217, 255, 0.4) !important;
-  border-radius: 10px !important;
-  padding: 10px 14px !important;
+  z-index: 6000 !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.dk-search-wrap.active .dk-search-bar {
+  display: flex !important;
+}
+
+.dk-search-wrap.active .dk-search-icon-btn {
+  visibility: hidden !important;
+}
+
+.dk-search-bar input {
+  flex: 1 !important;
+  background: transparent !important;
+  border: none !important;
   color: #fff !important;
   font-size: 14px !important;
   outline: none !important;
+  padding: 6px !important;
 }
 
-.dk-search-dropdown input:focus {
-  border-color: #18d9ff !important;
+.dk-search-close-btn {
+  background: #1c3254 !important;
+  border: none !important;
+  color: #fff !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  font-size: 12px !important;
+  display: grid !important;
+  place-items: center !important;
+  cursor: pointer !important;
 }
+
 
 
 /* ===== KATALOG GAME ===== */
