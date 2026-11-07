@@ -153,8 +153,16 @@ function render() {
       button.classList.add('active');
       button.setAttribute('aria-pressed', 'true');
       selected = product;
-      if ($('total')) $('total').textContent = money(product.price_idr);
+      
+      const formattedPrice = money(product.price_idr);
+      if ($('total')) $('total').textContent = formattedPrice;
       if ($('summary')) $('summary').textContent = product.game + ' • ' + product.name;
+
+      // Sinkronisasi otomatis ke kartu pembayaran
+      document.querySelectorAll('.pay-nominal').forEach(el => {
+        el.textContent = formattedPrice;
+      });
+
       clearAlert();
     });
     packageBox.appendChild(button);
@@ -184,16 +192,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Pilih Metode Pembayaran
-  document.querySelectorAll('.emba-payment-option').forEach(option => {
-    option.addEventListener('click', () => {
-      document.querySelectorAll('.emba-payment-option').forEach(item => {
+  // Pilihan Metode Pembayaran menggunakan .emba-payment-card yang benar
+  document.querySelectorAll('.emba-payment-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.emba-payment-card').forEach(item => {
         item.classList.remove('active');
         item.setAttribute('aria-pressed', 'false');
       });
-      option.classList.add('active');
-      option.setAttribute('aria-pressed', 'true');
-      if ($('method')) $('method').value = option.dataset.method;
+      card.classList.add('active');
+      card.setAttribute('aria-pressed', 'true');
+      if ($('method')) $('method').value = card.dataset.method;
     });
   });
 
@@ -263,14 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Tombol Kembali ke Beranda
-  const backToGames = $('backToGames');
-  if (backToGames) {
-    backToGames.addEventListener('click', () => {
-      window.location.href = 'index.html';
-    });
-  }
-
   // Parameter Game URL
   const pageParams = new URLSearchParams(window.location.search);
   const requestedGame = pageParams.get('game');
@@ -327,6 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   load();
 });
+
 // Konfigurasi Banner & Gambar Berdasarkan Game yang Dipilih
 const gameVisuals = {
   'Mobile Legends': { image: 'Images/mobile-legends.png', publisher: 'Moonton', product: 'Diamond' },
@@ -341,7 +342,6 @@ const gameVisuals = {
 const pageParams = new URLSearchParams(window.location.search);
 const requestedGame = pageParams.get('game') || 'Mobile Legends';
 
-// Terapkan data dinamis ke banner
 game = requestedGame;
 const visual = gameVisuals[game] || gameVisuals['Mobile Legends'];
 
@@ -355,84 +355,6 @@ if (gameIcon) { gameIcon.src = visual.image; gameIcon.alt = game; }
 if (gameName) gameName.textContent = game;
 if (gamePublisher) gamePublisher.textContent = `${visual.publisher} • ${visual.product}`;
 
-document.querySelectorAll('.emba-payment-card').forEach(card => {
-  card.addEventListener('click', () => {
-    document.querySelectorAll('.emba-payment-card').forEach(item => {
-      item.classList.remove('active');
-      item.setAttribute('aria-pressed', 'false');
-    });
-    card.classList.add('active');
-    card.setAttribute('aria-pressed', 'true');
-    
-    const methodSelect = $('method');
-    if (methodSelect) {
-      methodSelect.value = card.dataset.method;
-    }
-  });
-});
-// Di dalam fungsi render() atau saat paket dipilih, tambahkan sinkronisasi harga ke kartu pembayaran:
-if (selected) {
-  const currentPriceFormatted = money(selected.price_idr);
-  
-  // Perbarui semua teks nominal pada kartu pembayaran agar sesuai dengan harga paket
-  document.querySelectorAll('.pay-nominal').forEach(el => {
-    el.textContent = currentPriceFormatted;
-  });
-}
-
-// Di dalam event listener klik paket produk:
-button.addEventListener('click', () => {
-  document.querySelectorAll('.pack').forEach(item => {
-    item.classList.remove('active');
-    item.setAttribute('aria-pressed', 'false');
-  });
-  button.classList.add('active');
-  button.setAttribute('aria-pressed', 'true');
-  selected = product;
-  
-  const formattedPrice = money(product.price_idr);
-  
-  if ($('total')) $('total').textContent = formattedPrice;
-  if ($('summary')) $('summary').textContent = product.game + ' • ' + product.name;
-  
-  // Perbarui nominal di kartu pembayaran secara real-time
-  document.querySelectorAll('.pay-nominal').forEach(el => {
-    el.textContent = formattedPrice;
-  });
-
-  clearAlert();
-});
-// Contoh implementasi di dalam transaksi.js saat paket produk dipilih:
-document.querySelectorAll('.emba-pack-card, .pack').forEach(card => {
-  card.addEventListener('click', () => {
-    // 1. Ambil nilai harga dari paket yang dipilih (misal dari atribut data atau variabel produk)
-    const hargaPaket = card.getAttribute('data-price') || 'Rp 50.000'; // Sesuaikan dengan variabel harga di kode Anda
-
-    // 2. Perbarui teks total pembayaran bawah
-    const totalEl = document.getElementById('total');
-    if (totalEl) totalEl.textContent = hargaPaket;
-
-    // 3. PERBARUI SEMUA HARGA PADA KARTU PEMBAYARAN
-    document.querySelectorAll('.pay-nominal').forEach(nominalEl => {
-      nominalEl.textContent = hargaPaket;
-    });
-  });
-});
-// Di dalam fungsi saat paket dipilih (event listener klik paket):
-// Contoh:
-function selectPackage(product) {
-  selected = product;
-  const formattedPrice = money(product.price_idr); // atau format harga Anda
-
-  // 1. Perbarui total pembayaran di bawah
-  if ($('total')) $('total').textContent = formattedPrice;
-  if ($('summary')) $('summary').textContent = product.game + ' • ' + product.name;
-
-  // 2. PERBARUI SEMUA NOMINAL PADA KARTU PEMBAYARAN (TAMBAHKAN INI)
-  document.querySelectorAll('.pay-nominal').forEach(el => {
-    el.textContent = formattedPrice;
-  });
-                    }
 // Skrip otomatis penyinkron harga kartu pembayaran secara real-time
 setInterval(() => {
   const totalElement = document.getElementById('total');
@@ -448,42 +370,25 @@ setInterval(() => {
   }
 }, 300);
 
-// Logika klik pilihan kartu pembayaran
-document.querySelectorAll('.emba-payment-card').forEach(card => {
-  card.addEventListener('click', () => {
-    document.querySelectorAll('.emba-payment-card').forEach(item => {
-      item.classList.remove('active');
-      item.setAttribute('aria-pressed', 'false');
-    });
-    card.classList.add('active');
-    card.setAttribute('aria-pressed', 'true');
-    
-    const methodSelect = document.getElementById('method');
-    if (methodSelect) {
-      methodSelect.value = card.dataset.method;
-    }
-  });
-});
-// Script agar tombol pencarian bisa memunculkan (pop-up) kotak input
+// Script interaksi Tombol Pencarian (Pop-up dropdown)
 const searchWrap = document.querySelector('.dk-search-wrap');
-const searchBtn = document.querySelector('.dk-search-icon-btn'); // atau tombol kaca pembesar Anda
+const searchBtn = document.querySelector('.dk-search-icon-btn'); 
 
 if (searchBtn && searchWrap) {
   searchBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     searchWrap.classList.toggle('active');
     
-    // Fokus otomatis ke input pencarian saat muncul
     const searchInput = searchWrap.querySelector('input');
     if (searchInput && searchWrap.classList.contains('active')) {
       searchInput.focus();
     }
   });
 
-  // Menutup pencarian jika diklik di luar area pencarian
   document.addEventListener('click', (e) => {
     if (!searchWrap.contains(e.target)) {
       searchWrap.classList.remove('active');
     }
   });
-}
+  }
+      
