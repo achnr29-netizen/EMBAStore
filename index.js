@@ -212,3 +212,21 @@ if (document.readyState === 'loading') {
 } else {
   initPage();
 }
+const searchWrap = document.querySelector('.dk-search-wrap');
+const searchBtn = document.querySelector('.dk-search-icon-btn');
+const searchCloseBtn = document.querySelector('#searchCloseBtn');
+const gameSearchInput = document.querySelector('#gameSearch');
+
+if (searchBtn && searchWrap) {
+  searchBtn.addEventListener('click', () => {
+    searchWrap.classList.add('active');
+    if (gameSearchInput) gameSearchInput.focus();
+  });
+}
+
+if (searchCloseBtn && searchWrap) {
+  searchCloseBtn.addEventListener('click', () => {
+    searchWrap.classList.remove('active');
+    if (gameSearchInput) gameSearchInput.value = '';
+  });
+}
