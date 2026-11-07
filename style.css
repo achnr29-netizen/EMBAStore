@@ -318,59 +318,58 @@ img {
 
 /* ===== SEARCH ===== */
 .dk-search-wrap {
-  width: 100%;
-  padding: 14px 16px;
-  background: #090d19;
+  position: relative !important;
+  display: inline-block !important;
 }
 
-.dk-search {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  max-width: 1120px;
-  margin: auto;
-  padding: 0 14px;
-  border: 1px solid #53e7ff35;
-  border-radius: 13px;
-  background: #121a2e;
-  color: #53e7ff;
+.dk-search-icon-btn {
+  background: #0d1a2d !important;
+  border: 1px solid rgba(24, 217, 255, 0.3) !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  width: 42px !important;
+  height: 42px !important;
+  display: grid !important;
+  place-items: center !important;
+  font-size: 20px !important;
+  cursor: pointer !important;
 }
 
-.dk-search input {
-  width: 100%;
-  min-width: 0;
-  padding: 13px 0;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: #f5f7ff;
-  font: inherit;
+.dk-search-dropdown {
+  display: none;
+  position: absolute !important;
+  top: 50px !important;
+  right: 0 !important;              
+  left: auto !important;
+  width: 260px !important;
+  background: #0d1a2d !important;
+  border: 1px solid rgba(24, 217, 255, 0.5) !important;
+  border-radius: 14px !important;
+  padding: 8px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7) !important;
+  z-index: 9999 !important;
 }
 
-.dk-search input::placeholder {
-  color: #aab5d0;
+.dk-search-wrap.active .dk-search-dropdown {
+  display: block !important;
 }
 
-.dk-search button {
-  border: 0;
-  background: transparent;
-  color: #53e7ff;
-  font-size: 22px;
-  cursor: pointer;
+.dk-search-dropdown input {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background: #142b4a !important;
+  border: 1px solid rgba(24, 217, 255, 0.4) !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  outline: none !important;
 }
 
-/* Sedikit perbesar kotak pencarian lama */
-.dk-search {
-  min-height: 54px;
-  padding: 0 18px;
-  border-radius: 15px;
-  border-width: 1.5px;
+.dk-search-dropdown input:focus {
+  border-color: #18d9ff !important;
 }
 
-.dk-search input {
-  padding: 15px 0;
-}
 
 /* ===== KATALOG GAME ===== */
 .games {
