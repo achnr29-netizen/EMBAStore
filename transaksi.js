@@ -464,3 +464,26 @@ document.querySelectorAll('.emba-payment-card').forEach(card => {
     }
   });
 });
+// Script agar tombol pencarian bisa memunculkan (pop-up) kotak input
+const searchWrap = document.querySelector('.dk-search-wrap');
+const searchBtn = document.querySelector('.dk-search-icon-btn'); // atau tombol kaca pembesar Anda
+
+if (searchBtn && searchWrap) {
+  searchBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    searchWrap.classList.toggle('active');
+    
+    // Fokus otomatis ke input pencarian saat muncul
+    const searchInput = searchWrap.querySelector('input');
+    if (searchInput && searchWrap.classList.contains('active')) {
+      searchInput.focus();
+    }
+  });
+
+  // Menutup pencarian jika diklik di luar area pencarian
+  document.addEventListener('click', (e) => {
+    if (!searchWrap.contains(e.target)) {
+      searchWrap.classList.remove('active');
+    }
+  });
+}
