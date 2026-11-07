@@ -8,7 +8,28 @@ body { padding-top: 76px !important; margin: 0; }
 
 <header class="dk-header"> <div class="dk-brand" aria-label="EMBA Store"> <img class="dk-logo-img" src="/Images/emba-store.png" alt="Logo EMBA Store"> <span>EMBA<span class="dk-gold">Store</span></span> </div>
 
-<div class="dk-actions"> <div class="dk-search-wrap"> <label class="dk-search"> <span aria-hidden="true">⌕</span> <input id="gameSearch" type="search" placeholder="Cari Mobile Legends, Free Fire..." autocomplete="off" aria-label="Cari game"> <button id="clearSearch" type="button" aria-label="Hapus pencarian" hidden>×</button> </label> </div> <div class="dk-currency"> <span id="currencyFlag" aria-hidden="true">🇮🇩</span> <select id="currency" aria-label="Negara dan mata uang"> <option value="IDR" selected>ID / IDR</option> <option value="MYR">MY / MYR</option> <option value="SGD">SG / SGD</option> <option value="USD">US / USD</option> <option value="PHP">PH / PHP</option> <option value="THB">TH / THB</option> </select> </div> <button class="dk-icon-btn" id="menuBtn" type="button" aria-label="Buka menu" aria-expanded="false">☰</button> </div> </header>
+<div class="dk-actions">
+   <div class="dk-search-wrap" id="dkSearchWrap">
+  <button type="button" class="dk-search-icon-btn" id="searchIconBtn" aria-label="Buka pencarian">🔍</button>
+  <div class="dk-search-bar">
+    <div class="dk-search-input-box">
+      <span class="search-icon-inside">🔍</span>
+      <input id="gameSearch" type="search" placeholder="Cari Game..." autocomplete="off">
+      <button type="button" class="dk-search-close-btn" id="searchCloseBtn">✕</button>
+    </div>
+  </div>
+  </div>
+  <div class="dk-currency">
+    <span id="currencyFlag" aria-hidden="true">🇮🇩</span>
+    <select id="currency" aria-label="Negara dan mata uang">
+      <option value="IDR" selected>ID / IDR</option>
+      <option value="MYR">MY / MYR</option>
+      <option value="SGD">SG / SGD</option>
+      <option value="USD">US / USD</option>
+      <option value="PHP">PH / PHP</option>
+      <option value="THB">TH / THB</option>
+    </select>
+  </div> <button class="dk-icon-btn" id="menuBtn" type="button" aria-label="Buka menu" aria-expanded="false">☰</button> </div> </header>
 
 <!-- Sidebar menu EMBA Store --> <div class="dk-overlay" id="dkOverlay"></div> <aside class="dk-sidebar" id="dkSidebar" aria-label="Menu utama" aria-hidden="true" inert> <div class="dk-sidebar-head"> <a class="dk-sidebar-brand" href="/" aria-label="EMBA Store Beranda"> <img src="/Images/emba-store.png" alt="Logo EMBA Store"> <span>EMBA <span class="dk-gold">Store</span></span> </a> <button type="button" class="dk-sidebar-close" id="dkClose" aria-label="Tutup menu">×</button> </div> <nav class="dk-sidebar-nav" aria-label="Navigasi EMBA Store"> <a href="#games-title"><span>Top Up</span><span class="dk-sidebar-icon" aria-hidden="true">♧</span></a> <a href="#help"><span>Cek Transaksi</span><span class="dk-sidebar-icon" aria-hidden="true">⌕</span></a> <a href="#leaderboard"><span>Leaderboard</span><span class="dk-sidebar-icon" aria-hidden="true">♙</span></a> <a href="#artikel"><span>Artikel</span><span class="dk-sidebar-icon" aria-hidden="true">♧</span></a> <a href="#kalkulator"><span>Kalkulator</span><span class="dk-sidebar-icon" aria-hidden="true">→</span></a> <a href="#masuk"><span>Masuk</span><span class="dk-sidebar-icon" aria-hidden="true">↪</span></a> <a href="#daftar"><span>Daftar</span><span class="dk-sidebar-icon" aria-hidden="true">♙</span></a> </nav> </aside>
 
