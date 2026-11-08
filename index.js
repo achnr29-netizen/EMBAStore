@@ -213,6 +213,7 @@ if (document.readyState === 'loading') {
   initPage();
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('searchIconBtn');
   const popup = document.getElementById('dkSearchWrap');
@@ -220,56 +221,63 @@ document.addEventListener('DOMContentLoaded', () => {
   const close = document.getElementById('searchCloseBtn');
   const gamesContainer = document.getElementById('games');
 
-  if (!toggle || !popup || !input || !gamesContainer) {
-    console.warn('EMBA Search: Elemen tidak ditemukan');
+  // Pastikan tombol dan popup tersedia
+  if (!toggle || !popup) {
+    console.warn('EMBA Search: Tombol atau popup tidak ditemukan');
     return;
   }
 
-  const games = Array.from(
-    gamesContainer.querySelectorAll('.game')
-  );
-
-  // Buka dan tutup pencarian
+  // Buka dan tutup popup
   toggle.addEventListener('click', (e) => {
+    e.preventDefault();
     e.stopPropagation();
 
-    const opened = popup.classList.toggle('is-open');
+    const opened = !popup.classList.contains('is-open');
 
+    popup.classList.toggle('is-open', opened);
     toggle.setAttribute('aria-expanded', String(opened));
 
-    if (opened) {
-      setTimeout(() => input.focus(), 100);
+    if (opened && input) {
+      input.focus();
     }
   });
 
-  // Fungsi mencari game
-  function filterGames() {
-    const keyword = input.value
-      .trim()
-      .toLowerCase();
+  // Cari game jika input dan daftar game tersedia
+  if (input && gamesContainer) {
+    const games = Array.from(
+      gamesContainer.querySelectorAll('.game')
+    );
 
-    games.forEach((game) => {
-      const name = (
-        game.dataset.game ||
-        game.textContent
-      ).toLowerCase();
+    function filterGames() {
+      const keyword = input.value.trim().toLowerCase();
 
-      game.hidden = !name.includes(keyword);
-    });
+      games.forEach((game) => {
+        const name = (
+          game.dataset.game || game.textContent
+        ).toLowerCase();
+
+        game.hidden = !name.includes(keyword);
+      });
+    }
+
+    input.addEventListener('input', filterGames);
+
+    // Reset pencarian
+    if (close) {
+      close.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        input.value = '';
+        filterGames();
+
+        popup.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    }
   }
 
-  input.addEventListener('input', filterGames);
-
-  // Tombol tutup pencarian
-  close.addEventListener('click', () => {
-    input.value = '';
-    filterGames();
-
-    popup.classList.remove('is-open');
-    toggle.setAttribute('aria-expanded', 'false');
-  });
-
-  // Tutup ketika klik di luar
+  // Tutup ketika klik di luar popup
   document.addEventListener('click', (e) => {
     if (
       !popup.contains(e.target) &&
@@ -280,12 +288,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Tutup dengan Escape
+  // Tutup dengan tombol Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       popup.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
     }
   });
-
 });
