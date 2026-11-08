@@ -217,16 +217,11 @@ const searchBtn = document.querySelector('.dk-search-icon-btn');
 const searchCloseBtn = document.querySelector('#searchCloseBtn');
 const gameSearchInput = document.querySelector('#gameSearch');
 
-if (searchBtn && searchWrap) {
-  searchBtn.addEventListener('click', () => {
-    searchWrap.classList.add('active');
-    if (gameSearchInput) gameSearchInput.focus();
-  });
-}
+searchButton?.addEventListener("click", () => {
+  searchPopup.classList.add("show");
+  gameSearch.focus();
+});
 
-if (searchCloseBtn && searchWrap) {
-  searchCloseBtn.addEventListener('click', () => {
-    searchWrap.classList.remove('active');
-    if (gameSearchInput) gameSearchInput.value = '';
-  });
-}
+searchClose?.addEventListener("click", () => {
+  searchPopup.classList.remove("show");
+});
