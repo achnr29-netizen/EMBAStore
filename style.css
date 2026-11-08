@@ -317,44 +317,41 @@ img {
 }
 
 /* ===== SEARCH ===== */
-.dk-header {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 3000;
-}
-
-.dk-search-wrap {
-  position: center !important;
-  display: inline-block !important;
-}
-
+/* Bar pencarian horizontal penuh di dalam header */
 .dk-search-bar {
   display: none;
   position: absolute !important;
-  top: -6px !important;
-  right: -6px !important;
-  height: 52px !important;
-  max-width: 320px !important; /* Menyesuaikan lebar area header */
+  top: 6px !important;                 /* Mengatur posisi vertikal agar pas di tengah header */
+  right: 0 !important;
+  height: 42px !important;
   background: #0d1a2d !important;
-  border: 1px solid rgba(24, 217, 255, 0.5) !important;
+  border: 1.5px solid #18d9ff !important;
   border-radius: 12px !important;
-  padding: 4px 8px !important;
+  padding: 0 8px !important;
   box-sizing: border-box !important;
-  z-index: 6000 !important;
+  z-index: 9999 !important;
   align-items: center !important;
   gap: 8px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6) !important;
+  
+  /* Lebar awal sebelum diklik */
+  width: 42px !important;
+  transition: width 0.2s ease-in-out;
 }
 
+/* Ketika aktif, membentang ke samping kiri dengan pas */
 .dk-search-wrap.active .dk-search-bar {
   display: flex !important;
+  width: 260px !important;             /* Lebar mendatar yang pas menutupi area kanan header */
 }
 
+/* Sembunyikan kaca pembesar kecil saat terbuka */
 .dk-search-wrap.active .dk-search-icon-btn {
-  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
+/* Input di dalam bar */
 .dk-search-bar input {
   flex: 1 !important;
   background: transparent !important;
@@ -362,9 +359,11 @@ img {
   color: #fff !important;
   font-size: 14px !important;
   outline: none !important;
-  padding: 6px !important;
+  padding: 0 !important;
+  width: 100% !important;
 }
 
+/* Tombol silang (X) agar sejajar rapi di dalam bar */
 .dk-search-close-btn {
   background: #1c3254 !important;
   border: none !important;
@@ -376,6 +375,7 @@ img {
   display: grid !important;
   place-items: center !important;
   cursor: pointer !important;
+  flex-shrink: 0 !important;
 }
 
 
