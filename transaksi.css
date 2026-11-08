@@ -709,56 +709,6 @@ main {
 /* =================================
    EMBA STORE - SEARCH POPUP HEADER
 ================================= */
-
-.dk-header .dk-actions {
-  display: flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  position: relative;
-}
-
-.dk-header .dk-search-toggle {
-  width: 42px !important;
-  height: 42px !important;
-  min-width: 42px !important;
-  flex: 0 0 42px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 !important;
-  border: 1px solid #30445f !important;
-  border-radius: 12px !important;
-  background: #111a2d !important;
-  color: #53e7ff !important;
-  cursor: pointer !important;
-}
-
-.dk-header .dk-search-toggle svg {
-  width: 24px;
-  height: 24px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.dk-header .dk-currency {
-  height: 42px !important;
-  min-height: 42px !important;
-  box-sizing: border-box !important;
-  margin: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-.dk-header #menuBtn {
-  width: 42px !important;
-  height: 42px !important;
-  flex: 0 0 42px !important;
-}
-
-/* Popup pencarian */
 .dk-header .dk-search-wrap {
   display: none !important;
   position: fixed !important;
@@ -766,14 +716,15 @@ main {
   left: 12px !important;
   right: 12px !important;
   width: auto !important;
-  max-width: none !important;
-  padding: 10px !important;
+
+  padding: 0 !important;
   margin: 0 !important;
-  box-sizing: border-box !important;
-  background: #101b32 !important;
-  border: 1px solid #29c9ff !important;
-  border-radius: 14px !important;
-  box-shadow: 0 12px 35px #000a !important;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+
   z-index: 5000 !important;
 }
 
@@ -781,44 +732,47 @@ main {
   display: block !important;
 }
 
-.dk-header .dk-search {
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-  box-sizing: border-box !important;
+/* Satu-satunya border pencarian */
+.dk-header .dk-search-wrap .dk-search {
   display: flex !important;
   align-items: center !important;
-  padding: 0 12px !important;
+  width: 100% !important;
+  min-height: 54px !important;
+  box-sizing: border-box !important;
+
+  padding: 0 14px !important;
+  margin: 0 !important;
+
+  background: #111c32 !important;
+  border: 1px solid #27cfff !important;
+  border-radius: 14px !important;
+
+  box-shadow: 0 5px 20px #0006 !important;
 }
 
-.dk-header .dk-search input {
-  display: block !important;
+/* Hilangkan border bawaan input */
+.dk-header .dk-search-wrap input,
+.dk-header .dk-search-wrap input:focus {
+  flex: 1 !important;
   width: 100% !important;
   min-width: 0 !important;
-  opacity: 1 !important;
-  padding: 12px 4px !important;
-  color: #fff !important;
+
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+  color: #ffffff !important;
+  font-size: 15px !important;
 }
 
+/* Tampilan HP */
 @media (max-width: 600px) {
-  .dk-header .dk-actions {
-    gap: 7px !important;
-  }
-
-  .dk-header .dk-search-toggle,
-  .dk-header #menuBtn {
-    width: 40px !important;
-    height: 40px !important;
-    min-width: 40px !important;
-    flex-basis: 40px !important;
-  }
-
-  .dk-header .dk-currency {
-    height: 40px !important;
-    min-height: 40px !important;
-  }
-
   .dk-header .dk-search-wrap {
-    top: 76px !important;
+    top: 84px !important;
+  }
+
+  .dk-header .dk-search-wrap .dk-search {
+    min-height: 50px !important;
   }
 }
