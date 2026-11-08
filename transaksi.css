@@ -615,3 +615,93 @@ main {
   cursor: pointer !important;
   white-space: nowrap !important;
 }
+
+/* HEADER EMBA STORE */
+.dk-header {
+  position: relative;
+  z-index: 1000;
+}
+
+.dk-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* TOMBOL SEARCH */
+.dk-search-icon-btn {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: #101a2b;
+  border: 1px solid #24516a;
+  border-radius: 14px;
+  font-size: 27px;
+  cursor: pointer;
+}
+
+/* POPUP DI BAWAH HEADER */
+.dk-search-wrap {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 14px 4%;
+  box-sizing: border-box;
+  background: #101521;
+  border-bottom: 1px solid #34404e;
+  box-shadow: 0 8px 18px #0008;
+  display: none;
+  z-index: 1001;
+}
+
+.dk-search-wrap.show {
+  display: block;
+}
+
+.dk-search-input-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 54px;
+  padding: 0 14px;
+  box-sizing: border-box;
+  background: #50565d;
+  border: 2px solid #c1a17a;
+  border-radius: 14px;
+}
+
+.dk-search-input-box input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  color: white;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.search-icon-inside {
+  color: white;
+  font-size: 24px;
+}
+
+.dk-search-close-btn {
+  flex: 0 0 auto;
+  color: white;
+  background: #263c5b;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 19px;
+}
