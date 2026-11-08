@@ -137,15 +137,20 @@ function initBannerSlider() {
 
   const slides = [...track.children];
   const dots = [...dotsBox.children];
+
+  if (slides.length === 0) return;
+
   let current = 0;
   let autoSlide;
 
   function goTo(index) {
     current = (index + slides.length) % slides.length;
+
     track.scrollTo({
       left: slides[current].offsetLeft,
       behavior: 'smooth'
     });
+
     dots.forEach((dot, i) => {
       dot.classList.toggle('active', i === current);
     });
@@ -172,17 +177,12 @@ function initBannerSlider() {
     startAuto();
   });
 
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
-      goTo(i);
-      startAuto();
-    });
-  });
-
   track.addEventListener('scroll', () => {
     const width = track.clientWidth;
     if (!width) return;
+
     const index = Math.round(track.scrollLeft / width);
+
     if (index !== current && index >= 0 && index < slides.length) {
       current = index;
       dots.forEach((dot, i) => {
@@ -199,35 +199,20 @@ function initBannerSlider() {
   startAuto();
 }
 
-function initPage() {
-  loadExchangeRates();
-  initCurrency();
-  initGameNavigation();
-  initEmbaMainMenu();
-  initBannerSlider();
-}
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initPage);
-} else {
-  initPage();
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
+// FUNGSI PENCARIAN EMBA STORE
+function initEmbaSearch() {
   const toggle = document.getElementById('searchIconBtn');
   const popup = document.getElementById('dkSearchWrap');
   const input = document.getElementById('gameSearch');
   const close = document.getElementById('searchCloseBtn');
   const gamesContainer = document.getElementById('games');
 
-  // Pastikan tombol dan popup tersedia
   if (!toggle || !popup) {
     console.warn('EMBA Search: Tombol atau popup tidak ditemukan');
     return;
   }
 
-  // Buka dan tutup popup
   toggle.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -237,12 +222,9 @@ document.addEventListener('DOMContentLoaded', () => {
     popup.classList.toggle('is-open', opened);
     toggle.setAttribute('aria-expanded', String(opened));
 
-    if (opened && input) {
-      input.focus();
-    }
+    if (opened && input) input.focus();
   });
 
-  // Cari game jika input dan daftar game tersedia
   if (input && gamesContainer) {
     const games = Array.from(
       gamesContainer.querySelectorAll('.game')
@@ -262,37 +244,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     input.addEventListener('input', filterGames);
 
-    // Reset pencarian
-    if (close) {
-      close.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+    close?.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-        input.value = '';
-        filterGames();
+      input.value = '';
+      filterGames();
 
-        popup.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    }
+      popup.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
   }
 
-  // Tutup ketika klik di luar popup
   document.addEventListener('click', (e) => {
-    if (
-      !popup.contains(e.target) &&
-      !toggle.contains(e.target)
-    ) {
+    if (!popup.contains(e.target) && !toggle.contains(e.target)) {
       popup.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
     }
   });
 
-  // Tutup dengan tombol Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       popup.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
     }
   });
-});
+}
+
+
+// MENJALANKAN SEMUA FUNGSI
+function initPage() {
+  loadExchangeRates();
+  initCurrency();
+  initGameNavigation();
+  initEmbaMainMenu();
+  initBannerSlider();
+  initEmbaSearch();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPage);
+} else {
+  initPage();
+}
+
+      
