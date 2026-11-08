@@ -16,16 +16,31 @@
     <img class="dk-logo-img" src="/Images/emba-store.png" alt="Logo EMBA Store">
     <span>EMBA<span class="dk-gold">Store</span></span>
    </div>
-  <div class="dk-actions">
-   <button type="button" class="dk-search-icon-btn" id="searchIconBtn" aria-label="Buka pencarian">⌕</button>
+  
+<div class="dk-actions">
+  <button type="button"
+          class="dk-search-toggle"
+          id="searchToggleBtn"
+          aria-label="Buka pencarian"
+          aria-expanded="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="10.8" cy="10.8" r="6.8"></circle>
+      <path d="m16 16 5 5"></path>
+    </svg>
+  </button>
   <div class="dk-search-wrap" id="dkSearchWrap">
-   <div class="dk-search-bar">
-    <div class="dk-search-input-box">
-      <span class="search-icon-inside">⌕</span>
-      <input id="gameSearch" type="search" placeholder="Cari Game..." autocomplete="off">
-      <button type="button" class="dk-search-close-btn" id="searchCloseBtn">✕</button>
-    </div>
-  </div>
+    <label class="dk-search">
+      <span aria-hidden="true">⌕</span>
+      <input id="gameSearch"
+             type="search"
+             placeholder="Cari Mobile Legends, Free Fire..."
+             autocomplete="off"
+             aria-label="Cari game">
+      <button id="clearSearch"
+              type="button"
+              aria-label="Hapus pencarian"
+              hidden>×</button>
+    </label>
   </div>
     <div class="dk-currency">
       <span id="currencyFlag" aria-hidden="true">🇮🇩</span>
