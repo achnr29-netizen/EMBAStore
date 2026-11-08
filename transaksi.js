@@ -370,25 +370,46 @@ setInterval(() => {
   }
 }, 300);
 
-// Script interaksi Tombol Pencarian (Pop-up dropdown)
-const searchWrap = document.querySelector('.dk-search-wrap');
-const searchBtn = document.querySelector('.dk-search-icon-btn'); 
 
-if (searchBtn && searchWrap) {
-  searchBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    searchWrap.classList.toggle('active');
-    
-    const searchInput = searchWrap.querySelector('input');
-    if (searchInput && searchWrap.classList.contains('active')) {
+document.addEventListener('DOMContentLoaded', () => {
+  const searchToggle = document.getElementById('searchToggleBtn');
+  const searchWrap = document.getElementById('dkSearchWrap');
+  const searchInput = document.getElementById('gameSearch');
+
+  if (!searchToggle || !searchWrap) return;
+
+  // Buka dan tutup popup search
+  searchToggle.addEventListener('click', (event) => {
+    event.stopPropagation();
+
+    const isOpen = searchWrap.classList.toggle('is-open');
+
+    searchToggle.setAttribute(
+      'aria-expanded',
+      String(isOpen)
+    );
+
+    if (isOpen && searchInput) {
       searchInput.focus();
     }
   });
 
-  document.addEventListener('click', (e) => {
-    if (!searchWrap.contains(e.target)) {
-      searchWrap.classList.remove('active');
+  // Klik di luar popup untuk menutup
+  document.addEventListener('click', (event) => {
+    if (
+      !searchWrap.contains(event.target) &&
+      !searchToggle.contains(event.target)
+    ) {
+      searchWrap.classList.remove('is-open');
+      searchToggle.setAttribute('aria-expanded', 'false');
     }
   });
-  }
-      
+
+  // Tutup dengan tombol Escape
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      searchWrap.classList.remove('is-open');
+      searchToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
