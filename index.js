@@ -212,16 +212,80 @@ if (document.readyState === 'loading') {
 } else {
   initPage();
 }
-const searchWrap = document.querySelector('.dk-search-wrap');
-const searchBtn = document.querySelector('.dk-search-icon-btn');
-const searchCloseBtn = document.querySelector('#searchCloseBtn');
-const gameSearchInput = document.querySelector('#gameSearch');
 
-searchButton?.addEventListener("click", () => {
-  searchPopup.classList.add("show");
-  gameSearch.focus();
-});
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.getElementById('searchIconBtn');
+  const popup = document.getElementById('dkSearchWrap');
+  const input = document.getElementById('gameSearch');
+  const close = document.getElementById('searchCloseBtn');
+  const gamesContainer = document.getElementById('games');
 
-searchClose?.addEventListener("click", () => {
-  searchPopup.classList.remove("show");
+  if (!toggle || !popup || !input || !gamesContainer) {
+    console.warn('EMBA Search: Elemen tidak ditemukan');
+    return;
+  }
+
+  const games = Array.from(
+    gamesContainer.querySelectorAll('.game')
+  );
+
+  // Buka dan tutup pencarian
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    const opened = popup.classList.toggle('is-open');
+
+    toggle.setAttribute('aria-expanded', String(opened));
+
+    if (opened) {
+      setTimeout(() => input.focus(), 100);
+    }
+  });
+
+  // Fungsi mencari game
+  function filterGames() {
+    const keyword = input.value
+      .trim()
+      .toLowerCase();
+
+    games.forEach((game) => {
+      const name = (
+        game.dataset.game ||
+        game.textContent
+      ).toLowerCase();
+
+      game.hidden = !name.includes(keyword);
+    });
+  }
+
+  input.addEventListener('input', filterGames);
+
+  // Tombol tutup pencarian
+  close.addEventListener('click', () => {
+    input.value = '';
+    filterGames();
+
+    popup.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  });
+
+  // Tutup ketika klik di luar
+  document.addEventListener('click', (e) => {
+    if (
+      !popup.contains(e.target) &&
+      !toggle.contains(e.target)
+    ) {
+      popup.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Tutup dengan Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      popup.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
 });
