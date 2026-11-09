@@ -8,18 +8,51 @@ body { padding-top: 76px !important; margin: 0; }
 
 <header class="dk-header"> <div class="dk-brand" aria-label="EMBA Store"> <img class="dk-logo-img" src="/Images/emba-store.png" alt="Logo EMBA Store"> <span>EMBA<span class="dk-gold">Store</span></span> </div>
 
-<div class="dk-actions">
-   <button type="button" class="dk-search-icon-btn" id="searchIconBtn" aria-label="Buka pencarian"onclick="document.getElementById('dkSearchWrap').classList.toggle('active')">⌕</button>
+<div class="dk-actions">   
+<!-- Tombol Search EMBA Store -->
+<div class="dk-search-container">
+ <button
+    type="button"
+    class="dk-search-icon-btn"
+    id="searchIconBtn"
+    aria-label="Buka pencarian"
+    aria-expanded="false"
+    aria-controls="dkSearchWrap"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="10.8" cy="10.8" r="6.8"></circle>
+      <path d="m16 16 5 5"></path>
+    </svg>
+  </button>
   <div class="dk-search-wrap" id="dkSearchWrap">
-   <div class="dk-search-bar">
-    <div class="dk-search-input-box">
-      <span class="search-icon-inside">⌕</span>
-      <input id="gameSearch" type="search" placeholder="Cari Game..." autocomplete="off">
-      <button type="button" class="dk-search-close-btn" id="searchClosBtn"aria-lable="Tutup pencarian"onclick="document.getElementById('dkSearchWrap').classList.remove('active')"
-        >✕</button>
+    <div class="dk-search-bar">
+      <svg class="dk-search-input-icon"
+           viewBox="0 0 24 24"
+           aria-hidden="true">
+        <circle cx="10.8" cy="10.8" r="6.8"></circle>
+        <path d="m16 16 5 5"></path>
+      </svg>
+      <input
+        type="search"
+        id="dkSearchInput"
+        placeholder="Cari Game..."
+        autocomplete="off"
+        aria-label="Cari game"
+      >
+      <button
+        type="button"
+        class="dk-search-close"
+        id="dkSearchClose"
+        aria-label="Tutup pencarian"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6 18 18"></path>
+          <path d="M18 6 6 18"></path>
+        </svg>
+      </button>
     </div>
   </div>
-  </div>
+</div>
   <div class="dk-currency">
     <span id="currencyFlag" aria-hidden="true">🇮🇩</span>
     <select id="currency" aria-label="Negara dan mata uang">
