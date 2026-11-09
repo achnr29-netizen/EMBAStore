@@ -200,92 +200,78 @@ function initBannerSlider() {
 }
 
 
-// FUNGSI PENCARIAN EMBA STORE
-function initEmbaSearch() {
-  const toggle = document.getElementById('searchIconBtn');
-  const popup = document.getElementById('dkSearchWrap');
-  const input = document.getElementById('gameSearch');
-  const close = document.getElementById('searchCloseBtn');
-  const gamesContainer = document.getElementById('games');
+/* ========================================
+   EMBA STORE SEARCH TOGGLE FIX
+======================================== */
 
-  if (!toggle || !popup) {
-    console.warn('EMBA Search: Tombol atau popup tidak ditemukan');
+document.addEventListener("DOMContentLoaded", function () {
+
+  const searchIconBtn = document.getElementById("searchIconBtn");
+  const searchWrap = document.getElementById("dkSearchWrap");
+  const searchClose = document.getElementById("dkSearchClose");
+  const searchInput = document.getElementById("dkSearchInput");
+
+  if (!searchIconBtn || !searchWrap || !searchClose) {
+    console.warn("EMBA Store: Elemen search tidak ditemukan.");
     return;
   }
 
-  toggle.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  // Buka pencarian
+  function openSearch() {
+    searchWrap.classList.add("active");
 
-    const opened = !popup.classList.contains('is-open');
+    searchIconBtn.setAttribute("aria-expanded", "true");
 
-    popup.classList.toggle('is-open', opened);
-    toggle.setAttribute('aria-expanded', String(opened));
+    searchIconBtn.style.visibility = "hidden";
+    searchIconBtn.style.pointerEvents = "none";
 
-    if (opened && input) input.focus();
-  });
-
-  if (input && gamesContainer) {
-    const games = Array.from(
-      gamesContainer.querySelectorAll('.game')
-    );
-
-    function filterGames() {
-      const keyword = input.value.trim().toLowerCase();
-
-      games.forEach((game) => {
-        const name = (
-          game.dataset.game || game.textContent
-        ).toLowerCase();
-
-        game.hidden = !name.includes(keyword);
-      });
+    if (searchInput) {
+      setTimeout(function () {
+        searchInput.focus();
+      }, 100);
     }
-
-    input.addEventListener('input', filterGames);
-
-    close?.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      input.value = '';
-      filterGames();
-
-      popup.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
   }
 
-  document.addEventListener('click', (e) => {
-    if (!popup.contains(e.target) && !toggle.contains(e.target)) {
-      popup.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
+  // Tutup pencarian
+  function closeSearch() {
+    searchWrap.classList.remove("active");
+
+    searchIconBtn.setAttribute("aria-expanded", "false");
+
+    searchIconBtn.style.visibility = "visible";
+    searchIconBtn.style.pointerEvents = "auto";
+
+    if (searchInput) {
+      searchInput.value = "";
+
+      // Memicu event input jika ada filter pencarian
+      searchInput.dispatchEvent(
+        new Event("input", { bubbles: true })
+      );
+    }
+  }
+
+  // Klik tombol search
+  searchIconBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    openSearch();
+  });
+
+  // Klik tombol X
+  searchClose.addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    closeSearch();
+  });
+
+  // Escape untuk menutup search
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && searchWrap.classList.contains("active")) {
+      closeSearch();
     }
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      popup.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-    }
-  });
-}
-
-
-// MENJALANKAN SEMUA FUNGSI
-function initPage() {
-  loadExchangeRates();
-  initCurrency();
-  initGameNavigation();
-  initEmbaMainMenu();
-  initBannerSlider();
-  initEmbaSearch();
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initPage);
-} else {
-  initPage();
-}
-
+});
+        
       
