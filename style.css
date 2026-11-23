@@ -378,6 +378,14 @@ main {
   margin-bottom: 24px;
 }
 
+.popular-desktop .section-head {
+  margin-bottom: 12px;
+}
+
+.popular-desktop .heading {
+  margin: 0;
+}
+
 .popular-games {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -927,6 +935,72 @@ footer {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@media (min-width: 761px) {
+  .desktop-nav {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 max(24px, calc((100vw - 1280px) / 2));
+    border-bottom: 1px solid var(--border);
+    background: rgba(11, 16, 36, 0.82);
+  }
+
+  .desktop-nav-links,
+  .desktop-nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .desktop-nav-links a,
+  .desktop-nav-auth button {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 10px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #dce5f5;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .desktop-nav-links a:hover,
+  .desktop-nav-links a.active,
+  .desktop-nav-auth button:hover {
+    background: rgba(96, 179, 255, 0.08);
+    color: var(--cyan);
+  }
+
+  .dk-header #menuBtn {
+    display: none;
+  }
+
+  .dk-header .dk-actions {
+    margin-left: auto;
+  }
+
+  .dk-header .dk-search-container {
+    width: 42px;
+  }
+
+  .popular-desktop {
+    margin-bottom: 24px;
+  }
+
+  .popular-games {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .games {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 1100px) {
   .games {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1002,6 +1076,8 @@ footer {
 
   .emba-banner-section {
     display: block;
+    width: 100%;
+    margin-bottom: 16px;
   }
 
   .emba-banner-slider {
