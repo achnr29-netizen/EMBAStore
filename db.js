@@ -1,6 +1,6 @@
 import Database from 'better-sqlite3';
 
-const dbPath = process.env.DB_PATH || '/tmp/diamondku.sqlite';
+const dbPath = process.env.DB_PATH || '/tmp/ancastore.sqlite';
 
 export const db = new Database(dbPath);
 
