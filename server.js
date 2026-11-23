@@ -153,6 +153,39 @@ app.get('/api/products', (_req,res) => {
   const rows = db.prepare('SELECT sku,game,name,currency,amount,price_idr FROM products WHERE active=1 ORDER BY game, amount').all();
   res.json({ products: rows });
 });
+app.get('/api/vip-services', (_req,res) => {
+  const apiId = process.env.VIP_API_ID;
+  const apiKey = process.env.VIP_API_KEY;
+
+  if (!apiId || !apiKey) {
+    return res.status(500).json({ error: 'VIP_API_ID atau VIP_API_KEY belum diatur di environment.' });
+  }
+     try {
+      const sign = crypto.createHash('md5').update('${apiId}${apiKey}').digest('hex');
+     
+      if (typeof req.query?.game !=== 'string' && req.query?.game.trim() !== '') {
+        params.append(`filter_type`, 'game');
+        params.append(`filter_value`, req.query.game.trim());
+      }
+      const response = await fetch(`https://vip-reseller.co.id/api/game-feature', {
+
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: param.toString()
+    });
+
+    cost data = await response.json();
+    return res.json(data);
+  } catch (error) {
+    console.error('VIP Reseller service error:', err);
+    return res.status(502).json({ 
+    error: 'Gagal mengambil daftar layanan dari VIP Reseller.',
+      });
+  }
+      });
+ 
 app.post('/api/orders', (req,res) => {
   const { player_id, server_id='', buyer_contact='', sku, payment_method='online' } = req.body || {};
   if (typeof player_id !== 'string' || !/^[a-zA-Z0-9#][a-zA-Z0-9 _#.-]{2,39}$/.test(player_id.trim())) return res.status(400).json({ error:'ID pemain wajib diisi (3–40 karakter yang valid).' });
