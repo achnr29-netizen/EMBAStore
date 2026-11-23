@@ -105,6 +105,48 @@ function initMenu() {
   }
 }
 
+function initBannerSlider() {
+  const track = $('embaBannerTrack');
+  const previous = $('embaBannerPrev');
+  const next = $('embaBannerNext');
+  const dotsContainer = $('embaBannerDots');
+  if (!track || !previous || !next || !dotsContainer) return;
+
+  const slides = [...track.querySelectorAll('.emba-banner-slide')];
+  const dots = [...dotsContainer.querySelectorAll('button')];
+  if (!slides.length) return;
+
+  let activeIndex = 0;
+
+  function updateActiveDot() {
+    if (!track.clientWidth) return;
+    activeIndex = Math.max(0, Math.min(
+      slides.length - 1,
+      Math.round(track.scrollLeft / track.clientWidth)
+    ));
+    dots.forEach((dot, index) => {
+      const active = index === activeIndex;
+      dot.classList.toggle('active', active);
+      if (active) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+  }
+
+  function showSlide(index) {
+    activeIndex = (index + slides.length) % slides.length;
+    track.scrollTo({ left: activeIndex * track.clientWidth, behavior: 'smooth' });
+  }
+
+  previous.addEventListener('click', () => showSlide(activeIndex - 1));
+  next.addEventListener('click', () => showSlide(activeIndex + 1));
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => showSlide(index));
+  });
+  track.addEventListener('scroll', updateActiveDot, { passive: true });
+  window.addEventListener('resize', updateActiveDot);
+  updateActiveDot();
+}
+
 function initSearch() {
   const container = document.querySelector('.dk-search-container');
   const button = $('searchIconBtn');
@@ -377,6 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadRates();
   initCurrency();
   initMenu();
+  initBannerSlider();
   initSearch();
   initGameNavigation();
   initAuth();
