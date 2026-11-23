@@ -434,62 +434,110 @@ main {
 .games {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
 }
 
 .game {
-  min-height: 170px;
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 0.82;
+  flex-direction: column;
+  justify-content: flex-end;
   overflow: hidden;
-  border: 1px solid rgba(96, 179, 255, 0.16);
-  border-radius: 14px;
-  background: linear-gradient(145deg, #151a32, #0e1327);
+  isolation: isolate;
+  padding: 0 15px 16px;
+  border: 1px solid rgba(126, 158, 255, 0.22);
+  border-radius: 20px;
+  background: #10152b;
   color: var(--ink);
   text-align: left;
-  transition: .18s ease;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
 }
 
 .game:nth-child(3n + 1) {
-  background: linear-gradient(145deg, #14284a, #10152d);
+  --game-accent: var(--cyan);
 }
 
 .game:nth-child(3n + 2) {
-  background: linear-gradient(145deg, #191a45, #11152e);
+  --game-accent: #bb8bff;
 }
 
 .game:nth-child(3n) {
-  background: linear-gradient(145deg, #21143f, #11152e);
+  --game-accent: #8ca7ff;
 }
 
-.game:hover,
-.game.active {
-  border-color: var(--cyan);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(69, 223, 255, 0.10);
+.game::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 9, 26, 0.02) 18%, rgba(8, 9, 26, 0.2) 48%, rgba(8, 9, 26, 0.96) 100%),
+    linear-gradient(135deg, rgba(69, 223, 255, 0.1), transparent 48%);
+  content: "";
+  pointer-events: none;
+}
+
+.game::after {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  right: 14px;
+  width: 9px;
+  height: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+  background: var(--game-accent, var(--cyan));
+  box-shadow: 0 0 14px var(--game-accent, var(--cyan));
+  content: "";
+}
+
+.game:hover {
+  border-color: var(--game-accent, var(--cyan));
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.34), 0 0 0 1px var(--game-accent, var(--cyan));
+}
+
+.game:focus-visible {
+  outline: 3px solid var(--game-accent, var(--cyan));
+  outline-offset: 3px;
 }
 
 .game .gicon {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
   width: 100%;
-  height: 118px;
-  display: block;
+  height: 100%;
   object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.game:hover .gicon {
+  transform: scale(1.06);
 }
 
 .game strong,
 .game small {
+  position: relative;
+  z-index: 2;
   display: block;
-  padding-inline: 10px;
+  padding: 0;
 }
 
 .game strong {
-  padding-top: 9px;
-  font-size: 14px;
+  min-height: 2.3em;
+  font-size: 15px;
+  line-height: 1.2;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
 
 .game small {
-  padding-top: 3px;
-  padding-bottom: 8px;
-  color: var(--muted);
-  font-size: 12px;
+  margin-top: 5px;
+  color: #c3cae2;
+  font-size: 11px;
 }
 
 .standalone-view {
@@ -569,7 +617,6 @@ main {
 }
 
 .anca-calculator {
-  display: grid;
   gap: 14px;
   margin-top: 34px;
   padding: 18px;
@@ -1139,24 +1186,32 @@ footer {
   }
 
   .games {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .game {
-    min-height: 0;
+    min-height: 140px;
+    aspect-ratio: 0.74;
+    padding: 0 10px 12px;
+    border-radius: 16px;
+  }
+
+  .game::after {
+    top: 10px;
+    right: 10px;
   }
 
   .game .gicon {
-    height: auto;
-    aspect-ratio: 1;
+    height: 100%;
   }
 
   .game strong {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .game small {
+    margin-top: 4px;
     font-size: 10px;
   }
 
@@ -1236,12 +1291,7 @@ footer {
   }
 
   .game {
-    min-height: 170px;
-  }
-
-  .game .gicon {
-    width: 100%;
-    height: 118px;
+    min-height: 0;
   }
 
   .joki-price-list {

@@ -106,11 +106,12 @@ function initMenu() {
 }
 
 function initSearch() {
+  const container = document.querySelector('.dk-search-container');
   const button = $('searchIconBtn');
   const wrap = $('dkSearchWrap');
   const input = $('dkSearchInput');
   const close = $('dkSearchClose');
-  if (!button || !wrap || !input || !close) return;
+  if (!container || !button || !wrap || !input || !close) return;
 
   function open() {
     wrap.classList.add('active');
@@ -122,10 +123,19 @@ function initSearch() {
     wrap.classList.remove('active');
     button.setAttribute('aria-expanded', 'false');
     input.value = '';
+    document.querySelectorAll('#games .game').forEach(game => {
+      game.hidden = false;
+    });
   }
 
-  button.addEventListener('click', open);
+  button.addEventListener('click', () => {
+    if (wrap.classList.contains('active')) closeSearch();
+    else open();
+  });
   close.addEventListener('click', closeSearch);
+  document.addEventListener('click', event => {
+    if (!container.contains(event.target)) closeSearch();
+  });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') closeSearch();
   });
