@@ -115,12 +115,14 @@ function initSearch() {
 
   function open() {
     wrap.classList.add('active');
+    container.classList.add('is-open');
     button.setAttribute('aria-expanded', 'true');
     setTimeout(() => input.focus(), 100);
   }
 
   function closeSearch() {
     wrap.classList.remove('active');
+    container.classList.remove('is-open');
     button.setAttribute('aria-expanded', 'false');
     input.value = '';
     document.querySelectorAll('#games .game').forEach(game => {

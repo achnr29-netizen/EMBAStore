@@ -96,16 +96,30 @@ img {
 }
 
 .dk-actions {
+  flex: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
-  margin-left: auto;
+  margin-left: 0;
 }
 
 .dk-search-container {
   position: relative;
   width: 42px;
+  min-width: 0;
+  flex: 0 0 42px;
+  transition: flex-grow 0.22s ease, width 0.22s ease;
+}
+
+.dk-search-container.is-open {
+  width: auto;
+  flex: 1 1 0;
+}
+
+.dk-search-container.is-open .dk-search-icon-btn {
+  display: none;
 }
 
 .dk-search-icon-btn,
@@ -154,6 +168,22 @@ img {
   transform: translateY(0) scale(1);
 }
 
+.dk-search-container .dk-search-wrap {
+  position: static;
+  display: none;
+  width: 100%;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+  transition: none;
+  z-index: auto;
+}
+
+.dk-search-container .dk-search-wrap.active {
+  display: block;
+}
+
 .dk-search-bar,
 .dk-search {
   height: 58px;
@@ -165,6 +195,12 @@ img {
   border-radius: 14px;
   background: #11182e;
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.38);
+}
+
+.dk-search-container .dk-search-bar {
+  height: 42px;
+  padding: 0 12px;
+  border-radius: 10px;
 }
 
 .dk-search-input-icon {
@@ -1028,7 +1064,7 @@ footer {
   }
 
   .dk-header .dk-actions {
-    margin-left: auto;
+    margin-left: 0;
   }
 
   .dk-header .dk-search-container {
@@ -1086,9 +1122,15 @@ footer {
     font-size: 14px;
   }
 
-  .desktop-nav,
-  #menuBtn {
+  .desktop-nav {
     display: none !important;
+  }
+
+  .dk-header #menuBtn {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
   }
 
   .dk-actions {
@@ -1101,6 +1143,20 @@ footer {
     width: 40px;
   }
 
+  .dk-search-container {
+    position: static;
+    flex-basis: 40px;
+  }
+
+  .dk-search-container.is-open {
+    width: 40px;
+    flex: 0 0 40px;
+  }
+
+  .dk-search-container.is-open .dk-search-icon-btn {
+    display: grid;
+  }
+
   .dk-currency {
     width: 92px;
     height: 40px;
@@ -1110,11 +1166,13 @@ footer {
     width: 58px;
   }
 
-  .dk-search-wrap {
-    top: 64px;
+  .dk-search-container .dk-search-wrap {
+    position: absolute;
+    top: calc(100% + 8px);
     right: 10px;
     left: 10px;
     width: auto;
+    z-index: 1100;
   }
 
   main {
@@ -1186,7 +1244,7 @@ footer {
   }
 
   .games {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
   }
 
