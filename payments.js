@@ -18,6 +18,19 @@ export async function createMidtransPayment(order) {
   }
 
   const basic = Buffer.from(`${key}:`).toString('base64');
+  const enabledPaymentsByMethod = {
+    online: ['qris', 'bank_transfer', 'gopay', 'dana'],
+    qris: ['qris'],
+    bank_transfer: ['bank_transfer'],
+    bca: ['bank_transfer'],
+    bca_va: ['bank_transfer'],
+    gopay: ['gopay'],
+    dana: ['dana']
+  };
+  const enabledPayments = enabledPaymentsByMethod[order.payment_method];
+  if (!enabledPayments) {
+    throw new Error('Metode pembayaran tidak didukung.');
+  }
 
   const response = await fetch(`${apiBase}/snap/v1/transactions`, {
     method: 'POST',
@@ -38,10 +51,10 @@ export async function createMidtransPayment(order) {
         name: String(order.product_name).slice(0, 50)
       }],
       customer_details: {
-        first_name: 'Pelanggan EMBAStore',
+        first_name: 'Pelanggan ANCAStore',
         phone: order.buyer_contact || undefined
       },
-      enabled_payments: ['qris', 'bank_transfer', 'gopay', 'dana'],
+      enabled_payments: enabledPayments,
       callbacks: {
         finish: `${process.env.BASE_URL}/?order=${encodeURIComponent(order.id)}`
       }

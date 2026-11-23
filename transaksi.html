@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#070b18">
-<meta name="description" content="EMBA Store — top up game dengan mudah dan aman.">
-<title>Transaksi — EMBA Store</title>
+<meta name="description" content="ANCA Store — top up game dengan mudah dan aman.">
+<title>Transaksi — ANCA Store</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="transaksi.css">
 </head>
 <body class="transaction-view">
 
 <header class="dk-header">
-  <div class="dk-brand" aria-label="EMBA Store">
-    <img class="dk-logo-img" src="/Images/emba-store.png" alt="Logo EMBA Store">
-    <span>EMBA<span class="dk-gold">Store</span></span>
+  <div class="dk-brand" aria-label="ANCA Store">
+    <img class="dk-logo-img" src="Images/anca-logo.png" alt="Logo ANCA Store">
+    <span class="dk-brand-name">ANCA STORE</span>
    </div>
   
 <div class="dk-actions">
@@ -41,10 +41,11 @@
               aria-label="Hapus pencarian"
               hidden>×</button>
     </label>
+    <div class="transaction-search-results" id="transactionSearchResults" aria-live="polite"></div>
   </div>
     <div class="dk-currency">
-      <span id="currencyFlag" aria-hidden="true">🇮🇩</span>
-      <select id="currency" aria-label="Negara dan mata uang">
+      <img id="currencyFlag" src="Images/flag-id.svg" alt="" aria-hidden="true">
+      <select id="currency" aria-label="Negara dan mata uang" aria-haspopup="dialog">
         <option value="IDR" selected>ID / IDR</option>
         <option value="MYR">MY / MYR</option>
         <option value="SGD">SG / SGD</option>
@@ -57,19 +58,38 @@
   </div>
 </header>
 
-<!-- Sidebar menu EMBA Store -->
+<dialog class="location-dialog" id="locationDialog" aria-labelledby="locationDialogTitle">
+  <div class="location-dialog-head">
+    <h2 id="locationDialogTitle">Lokasi</h2>
+    <button type="button" class="location-close" id="locationClose" aria-label="Tutup">×</button>
+  </div>
+  <div class="location-grid" aria-label="Pilih lokasi">
+    <button type="button" class="location-option active" data-currency="IDR"><span class="location-flag"><img src="Images/flag-id.svg" alt="Indonesia"></span><span>Indonesia (IDR)</span><span class="location-check">✓</span></button>
+    <button type="button" class="location-option" data-currency="MYR"><span class="location-flag"><img src="Images/flag-my.svg" alt="Malaysia"></span><span>Malaysia (MYR)</span><span class="location-check">✓</span></button>
+    <button type="button" class="location-option" data-currency="PHP"><span class="location-flag"><img src="Images/flag-ph.svg" alt="Philippines"></span><span>Philippines (PHP)</span><span class="location-check">✓</span></button>
+    <button type="button" class="location-option" data-currency="SGD"><span class="location-flag"><img src="Images/flag-sg.svg" alt="Singapore"></span><span>Singapore (SGD)</span><span class="location-check">✓</span></button>
+    <button type="button" class="location-option" data-currency="THB"><span class="location-flag"><img src="Images/flag-th.svg" alt="Thailand"></span><span>Thailand (THB)</span><span class="location-check">✓</span></button>
+  </div>
+  <h3 class="language-title">Bahasa</h3>
+  <div class="language-grid" aria-label="Pilih bahasa">
+    <button type="button" class="language-option active" data-language="id"><span class="location-flag">🇮🇩</span><span>ID</span><span class="location-check">✓</span></button>
+    <button type="button" class="language-option" data-language="en"><span class="location-flag">🇬🇧</span><span>EN</span><span class="location-check">✓</span></button>
+  </div>
+</dialog>
+
+<!-- Sidebar menu ANCA Store -->
 <div class="dk-overlay" id="dkOverlay"></div>
 <aside class="dk-sidebar" id="dkSidebar" aria-label="Menu utama" aria-hidden="true" inert>
   <div class="dk-sidebar-head">
-    <a class="dk-sidebar-brand" href="/" aria-label="EMBA Store Beranda">
-      <img src="/Images/emba-store.png" alt="Logo EMBA Store">
-      <span>EMBA <span class="dk-gold">Store</span></span>
+    <a class="dk-sidebar-brand" href="/" aria-label="ANCA Store Beranda">
+      <img src="Images/anca-logo.png" alt="Logo ANCA Store">
+      <span class="dk-brand-name">ANCA STORE</span>
     </a>
     <button type="button" class="dk-sidebar-close" id="dkClose" aria-label="Tutup menu">×</button>
   </div>
-  <nav class="dk-sidebar-nav" aria-label="Navigasi EMBA Store">
+  <nav class="dk-sidebar-nav" aria-label="Navigasi ANCA Store">
     <a href="index.html#games-title"><span>Top Up</span><span class="dk-sidebar-icon" aria-hidden="true">♧</span></a>
-    <a href="index.html#help"><span>Cek Transaksi</span><span class="dk-sidebar-icon" aria-hidden="true">⌕</span></a>
+    <a href="index.html#cek-transaksi"><span>Cek Transaksi</span><span class="dk-sidebar-icon" aria-hidden="true">⌕</span></a>
     <a href="index.html#leaderboard"><span>Leaderboard</span><span class="dk-sidebar-icon" aria-hidden="true">♙</span></a>
     <a href="index.html#artikel"><span>Artikel</span><span class="dk-sidebar-icon" aria-hidden="true">♧</span></a>
     <a href="index.html#kalkulator"><span>Kalkulator</span><span class="dk-sidebar-icon" aria-hidden="true">→</span></a>
@@ -109,7 +129,7 @@
         <input id="server" maxlength="40" placeholder="Masukkan Server ID" autocomplete="off">
       </div>
     </div>
-    <p class="emba-safe-note">🔒 EMBA Store tidak pernah meminta password akun game.</p>
+    <p class="emba-safe-note">🔒 ANCA Store tidak pernah meminta password akun game.</p>
   </section>
 
   <section class="section emba-panel" id="packagestitle" aria-labelledby="packages-title">
@@ -134,34 +154,38 @@
     </div>
   </div>
 
-  <div class="emba-payment-category-title">QRIS</div>
-  <div class="emba-payment-grid">
+  <div class="emba-payment-categories" role="group" aria-label="Kategori pembayaran">
+    <button type="button" class="emba-payment-category active" data-payment-category="qris" aria-pressed="true">QRIS</button>
+    <button type="button" class="emba-payment-category" data-payment-category="ewallet" aria-pressed="false">E-Wallet</button>
+    <button type="button" class="emba-payment-category" data-payment-category="bank" aria-pressed="false">Bank VA</button>
+  </div>
+  <div class="emba-payment-grid emba-payment-options" data-payment-options="qris">
     <button type="button" class="emba-payment-card active" data-method="qris" aria-pressed="true">
       <div class="pay-top"><b class="pay-logo">QRIS</b></div>
-      <div class="pay-nominal" id="qrisPrice">Rp0</div>
-      <small class="pay-status">Proses Otomatis</small>
+      <small class="pay-status">Bayar dengan QRIS dari bank atau e-wallet.</small>
     </button>
+  </div>
+  <div class="emba-payment-grid emba-payment-options" data-payment-options="ewallet" hidden>
     <button type="button" class="emba-payment-card" data-method="dana" aria-pressed="false">
       <div class="pay-top"><b class="pay-logo">DANA</b></div>
-      <div class="pay-nominal" id="danaPrice">Rp0</div>
-      <small class="pay-status">Proses Otomatis</small>
-    </button>
-    <button type="button" class="emba-payment-card" data-method="bca_va" aria-pressed="false">
-      <div class="pay-top"><b class="pay-logo">BCA VA</b></div>
-      <div class="pay-nominal" id="bcaPrice">Rp0</div>
-      <small class="pay-status">Proses Otomatis</small>
+      <small class="pay-status">Bayar menggunakan DANA.</small>
     </button>
     <button type="button" class="emba-payment-card" data-method="gopay" aria-pressed="false">
       <div class="pay-top"><b class="pay-logo">GoPay</b></div>
-      <div class="pay-nominal" id="gopayPrice">Rp0</div>
-      <small class="pay-status">Proses Otomatis</small>
+      <small class="pay-status">Bayar menggunakan GoPay.</small>
+    </button>
+  </div>
+  <div class="emba-payment-grid emba-payment-options" data-payment-options="bank" hidden>
+    <button type="button" class="emba-payment-card" data-method="bank_transfer" aria-pressed="false">
+      <div class="pay-top"><b class="pay-logo">Semua Bank VA</b></div>
+      <small class="pay-status">Pilih bank yang tersedia di halaman pembayaran Midtrans.</small>
     </button>
   </div>
   <select id="method" class="emba-method-hidden" style="display: none;">
     <option value="qris" selected>QRIS</option>
     <option value="dana">DANA</option>
-    <option value="bca_va">BCA VA</option>
     <option value="gopay">GoPay</option>
+    <option value="bank_transfer">Bank VA</option>
   </select>
 </section>
 
@@ -181,10 +205,20 @@
     <div class="field">
       <label for="contact">No. WhatsApp</label>
       <div class="whatsapp-row">
-        <span class="wa-prefix">🇮🇩 +62</span>
-        <input id="contact" maxlength="30" placeholder="812 3456 7890" inputmode="tel" autocomplete="tel">
+        <div class="wa-country-picker">
+          <img id="phoneCountryFlag" src="Images/flag-id.svg" alt="" aria-hidden="true">
+          <select id="phoneCountry" aria-label="Negara dan kode WhatsApp">
+            <option value="+62" data-flag="Images/flag-id.svg" selected>ID +62</option>
+            <option value="+60" data-flag="Images/flag-my.svg">MY +60</option>
+            <option value="+65" data-flag="Images/flag-sg.svg">SG +65</option>
+            <option value="+1" data-flag="Images/flag-us.svg">US +1</option>
+            <option value="+63" data-flag="Images/flag-ph.svg">PH +63</option>
+            <option value="+66" data-flag="Images/flag-th.svg">TH +66</option>
+          </select>
+        </div>
+        <input id="contact" type="tel" maxlength="20" placeholder="Nomor WhatsApp" inputmode="tel" autocomplete="off">
       </div>
-      <small class="sub" style="margin-top:6px; display:block;">**Nomor ini akan dihubungi jika terjadi masalah</small>
+      <small class="sub" style="margin-top:6px; display:block;">Masukkan nomor tanpa kode negara. Nomor ini akan dihubungi jika terjadi masalah.</small>
     </div>
   </div>
 </section>
@@ -207,7 +241,7 @@
   <section class="checkout emba-total-panel" id="checkoutsection" aria-label="Ringkasan pesanan">
     <div class="emba-total-left">
       <div class="total-label">TOTAL PEMBAYARAN</div>
-      <div class="total" id="total">Rp0</div>
+      <div class="total" id="total">Belum dipilih</div>
       <div class="muted" id="summary" aria-live="polite">Pilih paket untuk melihat ringkasan.</div>
     </div>
     <div class="emba-trust"><span>🛡️</span><div>✓ Transaksi aman<br>✓ Proses terverifikasi<br>✓ Top up setelah pembayaran</div></div>
@@ -221,7 +255,7 @@
   <button type="button" class="btn" id="orderBtn">Bayar Sekarang <span aria-hidden="true">→</span></button>
 </div>
 
-<footer>© 2026 EMBA Store • All right reserved.</footer>
+<footer>© 2026 ANCA Store • All right reserved.</footer>
 
 <!-- Panggil file JavaScript terpisah -->
 <script src="transaksi.js"></script>

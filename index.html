@@ -1,15 +1,23 @@
-<!doctype html> <html lang="id"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <meta name="theme-color" content="#070b18"> <meta name="description" content="EMBA Store — top up game dengan mudah dan aman."> <title>EMBA Store — Top Up Game</title> <link rel="stylesheet" href="style.css"> <style> .dk-header { position: fixed !important; top: 0 !important; left: 0; right: 0; width: 100%; height: 76px; z-index: 2000 !important; background: #10131d !important; }
-
-body { padding-top: 76px !important; margin: 0; }
-
-#playersection, #packagestitle, #checkoutsection { scroll-margin-top: 88px; }
-
-/* Fallback menu fix agar sidebar & tombol menu berfungsi normal */ #menuBtn { position: relative !important; z-index: 2010 !important; pointer-events: auto !important; touch-action: manipulation; } #dkOverlay { z-index: 2020 !important; } #dkSidebar { z-index: 2021 !important; } #dkSidebar.is-open { visibility: visible !important; pointer-events: auto !important; transform: translateX(0) !important; } #dkOverlay.is-open { visibility: visible !important; pointer-events: auto !important; } </style> </head> <body>
-
-<header class="dk-header"> <div class="dk-brand" aria-label="EMBA Store"> <img class="dk-logo-img" src="/Images/emba-store.png" alt="Logo EMBA Store"> <span>EMBA<span class="dk-gold">Store</span></span> </div>
+<!doctype html>
+<html lang="id" data-google-client-id="">
+   <head>
+     <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+       <meta name="theme-color" content="#070b18">
+        <meta name="description" content="ANCA Store — top up game dengan mudah dan aman.">
+         <title>ANCA Store — Top Up Game</title>
+          <link rel="stylesheet" href="style.css">
+            </head>
+<body>
+  <header class="dk-header">
+   <div class="dk-brand" aria-label="ANCA Store">
+     <img class="dk-logo-img" src="Images/anca-logo.png" alt="Logo ANCA Store">
+      <span class="dk-brand-name">ANCA STORE</span>
+    
+  </div>
 
 <div class="dk-actions">   
-<!-- Tombol Search EMBA Store -->
+
 <div class="dk-search-container">
  <button
     type="button"
@@ -54,8 +62,8 @@ body { padding-top: 76px !important; margin: 0; }
   </div>
 </div>
   <div class="dk-currency">
-    <span id="currencyFlag" aria-hidden="true">🇮🇩</span>
-    <select id="currency" aria-label="Negara dan mata uang">
+    <img id="currencyFlag" src="Images/flag-id.svg" alt="" aria-hidden="true">
+    <select id="currency" aria-label="Negara dan mata uang" aria-haspopup="dialog">
       <option value="IDR" selected>ID / IDR</option>
       <option value="MYR">MY / MYR</option>
       <option value="SGD">SG / SGD</option>
@@ -65,15 +73,86 @@ body { padding-top: 76px !important; margin: 0; }
     </select>
   </div> <button class="dk-icon-btn" id="menuBtn" type="button" aria-label="Buka menu" aria-expanded="false">☰</button> </div> </header>
 
-<!-- Sidebar menu EMBA Store --> <div class="dk-overlay" id="dkOverlay"></div> <aside class="dk-sidebar" id="dkSidebar" aria-label="Menu utama" aria-hidden="true" inert> <div class="dk-sidebar-head"> <a class="dk-sidebar-brand" href="/" aria-label="EMBA Store Beranda"> <img src="/Images/emba-store.png" alt="Logo EMBA Store"> <span>EMBA <span class="dk-gold">Store</span></span> </a> <button type="button" class="dk-sidebar-close" id="dkClose" aria-label="Tutup menu">×</button> </div> <nav class="dk-sidebar-nav" aria-label="Navigasi EMBA Store"> <a href="#games-title"><span>Top Up</span><span class="dk-sidebar-icon" aria-hidden="true">♧</span></a> <a href="#help"><span>Cek Transaksi</span><span class="dk-sidebar-icon" aria-hidden="true">⌕</span></a> <a href="#leaderboard"><span>Leaderboard</span><span class="dk-sidebar-icon" aria-hidden="true">♙</span></a> <a href="#artikel"><span>Artikel</span><span class="dk-sidebar-icon" aria-hidden="true">♧</span></a> <a href="#kalkulator"><span>Kalkulator</span><span class="dk-sidebar-icon" aria-hidden="true">→</span></a> <a href="#masuk"><span>Masuk</span><span class="dk-sidebar-icon" aria-hidden="true">↪</span></a> <a href="#daftar"><span>Daftar</span><span class="dk-sidebar-icon" aria-hidden="true">♙</span></a> </nav> </aside>
+<nav class="desktop-nav" aria-label="Navigasi ANCA Store">
+  <div class="desktop-nav-links">
+    <a href="#games-title" data-desktop-view="topup"><span aria-hidden="true">▣</span>Top Up</a>
+    <a href="#cek-transaksi" data-desktop-view="transactions"><span aria-hidden="true">▢</span>Cek Transaksi</a>
+    <a href="#leaderboard" data-desktop-view="leaderboard"><span aria-hidden="true">♙</span>Leaderboard</a>
+    <a href="#artikel" data-desktop-view="artikel"><span aria-hidden="true">▤</span>Artikel</a>
+    <a href="#kalkulator" data-desktop-view="calculator"><span aria-hidden="true">⚖</span>Kalkulator</a>
+  </div>
+  <div class="desktop-nav-auth">
+    <button type="button" data-auth="login"><span aria-hidden="true">↪</span>Masuk</button>
+    <button type="button" data-auth="register"><span aria-hidden="true">♙</span>Daftar</button>
+  </div>
+</nav>
 
-<main> <!-- EMBA STORE PROMO BANNER SLIDER --> <section class="emba-banner-section" aria-label="Promo EMBA Store"> <div class="emba-banner-slider" id="embaBannerSlider"> <div class="emba-banner-track" id="embaBannerTrack"> <a class="emba-banner-slide" href="#games-title"> <img src="Images/banner-1.png" alt="Promo EMBA Store 1"> </a> <a class="emba-banner-slide" href="#games-title"> <img src="Images/banner-2.png" alt="Promo EMBA Store 2"> </a> <a class="emba-banner-slide" href="#games-title"> <img src="Images/banner-3.png" alt="Promo EMBA Store 3"> </a> <a class="emba-banner-slide" href="#games-title"> <img src="Images/banner-4.png" alt="Promo EMBA Store 4"> </a> </div>
+<dialog class="location-dialog" id="locationDialog" aria-labelledby="locationDialogTitle">
+  <div class="location-dialog-head">
+    <h2 id="locationDialogTitle">Lokasi</h2>
+    <button type="button" class="location-close" id="locationClose" aria-label="Tutup">×</button>
+  </div>
+  <div class="location-grid" aria-label="Pilih lokasi">
+    <button type="button" class="location-option active" data-currency="IDR"><span class="location-flag"><img src="Images/flag-id.svg" alt="Indonesia"></span><span>Indonesia (IDR)</span><span class="location-check">✓</span></button>
+    <button type="button" class="location-option" data-currency="MYR"><span class="location-flag"><img src="Images/flag-my.svg" alt="Malaysia"></span><span>Malaysia (MYR)</span><span class="location-check">✓</span></button>
+    <button type="button" class="location-option" data-currency="PHP"><span class="location-flag"><img src="Images/flag-ph.svg" alt="Philippines"></span><span>Philippines (PHP)</span><span class="location-check">✓</span></button>
+    <button type="button" class="location-option" data-currency="SGD"><span class="location-flag"><img src="Images/flag-sg.svg" alt="Singapore"></span><span>Singapore (SGD)</span><span class="location-check">✓</span></button>
+    <button type="button" class="location-option" data-currency="THB"><span class="location-flag"><img src="Images/flag-th.svg" alt="Thailand"></span><span>Thailand (THB)</span><span class="location-check">✓</span></button>
+  </div>
+  <h3 class="language-title">Bahasa</h3>
+  <div class="language-grid" aria-label="Pilih bahasa">
+    <button type="button" class="language-option active" data-language="id"><span class="location-flag">🇮🇩</span><span>ID</span><span class="location-check">✓</span></button>
+    <button type="button" class="language-option" data-language="en"><span class="location-flag">🇬🇧</span><span>EN</span><span class="location-check">✓</span></button>
+  </div>
+</dialog>
+
+<!-- Sidebar menu ANCA Store --> 
+ <div class="dk-overlay" id="dkOverlay"></div> 
+ <aside class="dk-sidebar" id="dkSidebar" aria-label="Menu utama" aria-hidden="true" inert> <div class="dk-sidebar-head"> <a class="dk-sidebar-brand" href="/" aria-label="ANCA Store Beranda"> <img src="Images/anca-logo.png" alt="Logo ANCA Store"> <span class="dk-brand-name">ANCA STORE</span>
+ </a> 
+ <button type="button" class="dk-sidebar-close" id="dkClose" aria-label="Tutup menu">×</button> 
+</div>
+<nav class="dk-sidebar-nav" aria-label="Navigasi ANCA Store">
+  <a href="#games-title" data-view="topup"><span>Top Up</span><span class="dk-sidebar-icon" aria-hidden="true">♧</span></a>
+  <a href="#cek-transaksi" data-view="transactions"><span>Cek Transaksi</span><span class="dk-sidebar-icon" aria-hidden="true">⌕</span></a>
+  <a href="#leaderboard" data-view="leaderboard"><span>Leaderboard</span><span class="dk-sidebar-icon" aria-hidden="true">♙</span></a>
+  <a href="#artikel" data-view="artikel"><span>Artikel</span><span class="dk-sidebar-icon" aria-hidden="true">♧</span></a>
+  <a href="#kalkulator" data-view="calculator"><span>Kalkulator</span><span class="dk-sidebar-icon" aria-hidden="true">→</span></a>
+  <a href="#masuk" data-auth="login"><span>Masuk</span><span class="dk-sidebar-icon" aria-hidden="true">↪</span></a>
+  <a href="#daftar" data-auth="register"><span>Daftar</span><span class="dk-sidebar-icon" aria-hidden="true">♙</span></a>
+</nav>
+</aside>
+
+<main>
+<section class="app-view active" data-view-panel="topup">
+<!-- ANCA STORE PROMO BANNER SLIDER --> <section class="emba-banner-section" aria-label="Promo ANCA Store"> <div class="emba-banner-slider" id="embaBannerSlider"> <div class="emba-banner-track" id="embaBannerTrack"> <a class="emba-banner-slide" href="#games-title"> <img src="Images/banner-1.png" alt="Promo ANCA Store 1"> </a> <a class="emba-banner-slide" href="#games-title"> <img src="Images/banner-2.png" alt="Promo ANCA Store 2"> </a> <a class="emba-banner-slide" href="#games-title"> <img src="Images/banner-3.png" alt="Promo ANCA Store 3"> </a> <a class="emba-banner-slide" href="#games-title"> <img src="Images/banner-4.png" alt="Promo ANCA Store 4"> </a> </div>
 
 <button class="emba-banner-arrow prev" type="button" id="embaBannerPrev" aria-label="Banner sebelumnya">‹</button> <button class="emba-banner-arrow next" type="button" id="embaBannerNext" aria-label="Banner berikutnya">›</button> </div>
 
-<div class="emba-banner-dots" id="embaBannerDots"> <button class="active" aria-label="Banner 1"></button> <button aria-label="Banner 2"></button> <button aria-label="Banner 3"></button> </div> </section> <!-- END EMBA STORE PROMO BANNER -->
+<div class="emba-banner-dots" id="embaBannerDots"> <button class="active" aria-label="Banner 1"></button> <button aria-label="Banner 2"></button> <button aria-label="Banner 3"></button> <button aria-label="Banner 4"></button> </div> </section> <!-- END ANCA STORE PROMO BANNER -->
 
-<section class="section" aria-labelledby="games-title"> <div class="section-head"> <div><h2 class="heading" id="games-title">Pilih game</h2></div> </div> <div class="games" id="games"> <button type="button" class="game active" data-game="Mobile Legends" aria-pressed="true"> <img class="gicon" src="Images/mobile-legends.png" alt="Mobile Legends"> <strong>Mobile Legends</strong> <small>Moonton</small> </button>
+<section class="popular-desktop mobile-popular" aria-labelledby="popular-title">
+  <div class="section-head">
+    <h2 class="heading" id="popular-title">🔥 Populer Saat Ini</h2>
+  </div>
+  <div class="popular-games">
+    <button type="button" class="popular-game" data-game="Mobile Legends">
+      <img src="Images/mobile-legends.png" alt="Mobile Legends">
+      <span><strong>Mobile Legends</strong><small>Moonton</small></span>
+    </button>
+    <button type="button" class="popular-game" data-game="Honor of Kings">
+      <img src="Images/honor-of-kings.png" alt="Honor of Kings">
+      <span><strong>Honor of Kings</strong><small>Level Infinite</small></span>
+    </button>
+    <button type="button" class="popular-game" data-game="PUBG Mobile">
+      <img src="Images/pubg-mobile.png" alt="PUBG Mobile">
+      <span><strong>PUBG Mobile</strong><small>Tencent Games</small></span>
+    </button>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="games-title"> <div class="section-head"> <div><h2 class="heading" id="games-title">Pilih Game</h2></div> </div> <div class="games" id="games"> 
+<button type="button" class="game active" data-game="Mobile Legends" aria-pressed="true"> <img class="gicon" src="Images/mobile-legends.png" alt="Mobile Legends"> <strong>Mobile Legends</strong> <small>Moonton</small> </button>
 
 <button type="button" class="game" data-game="Free Fire" aria-pressed="false"> <img class="gicon" src="Images/free-fire.png" alt="Free Fire"> <strong>Free Fire</strong> <small>Garena</small> </button>
 
@@ -89,10 +168,186 @@ body { padding-top: 76px !important; margin: 0; }
 
 <button type="button" class="game" data-game="League of legends Wild Rift" aria-pressed="false"> <img class="gicon" src="Images/league-of-legends-wild-rift.png" alt="League of Legends wild rift"> <strong>League of Legends Wild Rift</strong> <small>Riot Games</small> </button>
 
-<button type="button" class="game" data-game="Clash of Clans" aria-pressed="false"> <img class="gicon" src="Images/clash-of-clans.png" alt="Clash of Clans"> <strong>Clash of Clans</strong> <small>Supercell</small> </button>
-  
-</div> </section> </main>
+<button type="button" class="game" data-game="Clash of Clans" aria-pressed="false"> <img class="gicon" src="Images/clash-of-clans.png" alt="Clash of Clans"> <strong>Clash of Clans</strong> <small>Supercell</small></button>  
 
-<footer>© 2026 EMBA Store • All right reserved.</footer>
+</div>
+</section>
+</section>
 
-<script src="index.js"></script> </body> </html>
+<section class="app-view standalone-view" data-view-panel="transactions">
+  <article class="anca-info-card standalone-card" id="cek-transaksi">
+    <h2>Cek Transaksi</h2>
+    <p>Masukkan nomor pesanan untuk melihat status pembayaran dan proses top up.</p>
+    <form class="anca-inline-form" id="transactionCheckForm">
+      <input id="transactionOrderId" placeholder="Contoh: ANCA-123456" autocomplete="off">
+      <button type="submit" class="btn">Cek</button>
+    </form>
+    <p class="anca-form-result" id="transactionCheckResult" aria-live="polite"></p>
+  </article>
+
+</section>
+
+<section class="app-view standalone-view" data-view-panel="leaderboard">
+  <article class="anca-info-card standalone-card" id="leaderboard">
+    <h2>Leaderboard</h2>
+    <p>Pengguna dan pesanan teratas akan ditampilkan di sini.</p>
+  </article>
+</section>
+
+<section class="app-view standalone-view" data-view-panel="artikel">
+  <article class="anca-info-card standalone-card" id="artikel">
+    <h2>Artikel</h2>
+    <p>Tips top up, keamanan akun, dan informasi promo game terbaru.</p>
+  </article>
+</section>
+
+<section class="app-view standalone-view anca-calculator" data-view-panel="calculator" id="kalkulator" aria-labelledby="calculator-title">
+  <div class="joki-calculator-head">
+    <h2 id="calculator-title">Kalkulator Joki Rank</h2>
+    <p>Hitung estimasi biaya push rank per bintang sebelum memesan joki.</p>
+  </div>
+
+  <div class="joki-price-list">
+    <button type="button" class="joki-price-card" data-tier="master_epic">
+      <span class="joki-tier-badge">Tier Awal</span>
+      <strong>Master - Epic</strong>
+      <small>Master IV-I sampai Epic V-I</small>
+      <b>Rp 3.000 <span>/ star</span></b>
+    </button>
+    <button type="button" class="joki-price-card" data-tier="legend">
+      <span class="joki-tier-badge">Populer</span>
+      <strong>Legends</strong>
+      <small>Legend V sampai Legend I</small>
+      <b>Rp 5.000 <span>/ star</span></b>
+    </button>
+    <button type="button" class="joki-price-card" data-tier="mythic">
+      <span class="joki-tier-badge">Mythic</span>
+      <strong>Mythic</strong>
+      <small>Mythic 1-25 Bintang</small>
+      <b>Rp 10.000 <span>/ star</span></b>
+    </button>
+    <button type="button" class="joki-price-card" data-tier="mythic_honor">
+      <span class="joki-tier-badge">Honor</span>
+      <strong>Mythic Honor</strong>
+      <small>Mythic Honor 25-50 Bintang</small>
+      <b>Rp 15.000 <span>/ star</span></b>
+    </button>
+    <button type="button" class="joki-price-card" data-tier="mythical_glory">
+      <span class="joki-tier-badge">Top Tier</span>
+      <strong>Mythical Glory</strong>
+      <small>Mythical Glory 50+ Bintang</small>
+      <b>Rp 20.000 <span>/ star</span></b>
+    </button>
+  </div>
+
+  <div class="joki-calculator-layout">
+    <div class="joki-calculator-form">
+      <div class="joki-mode-tabs">
+        <button type="button" class="active" id="jokiModeRank">Rank ke Rank</button>
+        <button type="button" id="jokiModeStar">Eceran / Per Bintang</button>
+      </div>
+
+      <div id="jokiRankPanel" class="joki-mode-panel">
+        <label>Rank Awal
+          <select id="jokiStartRank"></select>
+        </label>
+        <label>Bintang Awal
+          <input id="jokiStartStar" type="number" min="0" value="3">
+        </label>
+        <label>Rank Tujuan
+          <select id="jokiTargetRank"></select>
+        </label>
+        <label>Bintang Tujuan
+          <input id="jokiTargetStar" type="number" min="0" value="2">
+        </label>
+        <p class="joki-validation" id="jokiValidation" aria-live="polite"></p>
+      </div>
+
+      <div id="jokiStarPanel" class="joki-mode-panel" hidden>
+        <label>Kategori Tier
+          <select id="jokiStarTier">
+            <option value="master_epic">Master - Epic (Rp 3.000 / star)</option>
+            <option value="legend">Legends (Rp 5.000 / star)</option>
+            <option value="mythic">Mythic 1-25 (Rp 10.000 / star)</option>
+            <option value="mythic_honor">Mythic Honor 25-50 (Rp 15.000 / star)</option>
+            <option value="mythical_glory">Mythical Glory 50+ (Rp 20.000 / star)</option>
+          </select>
+        </label>
+        <label>Jumlah Bintang
+          <input id="jokiStarCount" type="number" min="1" max="500" value="5">
+        </label>
+        <div class="joki-star-chips">
+          <button type="button" data-stars="3">+3</button>
+          <button type="button" data-stars="5">+5</button>
+          <button type="button" data-stars="10">+10</button>
+          <button type="button" data-stars="15">+15</button>
+          <button type="button" data-stars="25">+25</button>
+        </div>
+      </div>
+
+      <div class="joki-account-panel">
+        <h3>Data Akun &amp; Request</h3>
+        <div class="joki-account-grid">
+          <label>Email Akun
+            <input id="jokiPlayerId" type="email" maxlength="120" placeholder="Masukkan Email Akun" autocomplete="username">
+          </label>
+          <label>Login Via
+            <select id="jokiLoginVia">
+              <option>Moonton</option>
+              <option>TikTok</option>
+              <option>VK</option>
+              <option>Facebook</option>
+              <option>Google Play</option>
+            </select>
+          </label>
+          <label>Request Hero
+            <input id="jokiHero" maxlength="120" placeholder="Contoh: Ling, Fanny">
+          </label>
+          <label>Nomor WhatsApp
+            <input id="jokiContact" type="tel" maxlength="40" placeholder="Contoh: 628123456789">
+          </label>
+          <label>Catatan
+            <input id="jokiNote" maxlength="500" placeholder="Catatan tambahan">
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <aside class="joki-summary">
+      <h3>Rincian Estimasi</h3>
+      <div class="joki-summary-row"><span>Mode</span><strong id="jokiSummaryMode">Rank ke Rank</strong></div>
+      <div class="joki-summary-route" id="jokiSummaryRoute">Epic II ★3 → Legend IV ★2</div>
+      <div class="joki-breakdown" id="jokiBreakdown"></div>
+      <div class="joki-summary-total"><span>Total Bintang</span><strong id="jokiSummaryStars">0 Bintang</strong></div>
+      <div class="joki-summary-price" id="jokiSummaryPrice">Rp 0</div>
+      <button type="button" class="btn" id="jokiOrderButton">Pesan Joki</button>
+      <p class="joki-order-message" id="jokiOrderMessage" aria-live="polite"></p>
+    </aside>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 ANCA Store • All right reserved.</footer>
+
+<dialog class="anca-auth-dialog" id="ancaAuthDialog" aria-labelledby="authTitle">
+  <div class="anca-auth-head">
+    <h2 id="authTitle">Masuk</h2>
+    <button type="button" id="authClose" aria-label="Tutup">×</button>
+  </div>
+  <form id="authForm">
+    <input id="authName" placeholder="Nama pengguna" autocomplete="name" hidden>
+    <input id="authEmail" type="email" placeholder="Email" autocomplete="email" required>
+    <input id="authPassword" type="password" placeholder="Password" autocomplete="current-password" minlength="6" required>
+    <button type="submit" class="btn" id="authSubmit">Masuk</button>
+  </form>
+  <div class="auth-divider"><span>atau</span></div>
+  <button type="button" class="google-auth-button" id="googleAuthButton">
+    <span class="google-mark" aria-hidden="true">G</span>
+    <span id="googleAuthLabel">Masuk dengan Google</span>
+  </button>
+  <p id="authMessage" aria-live="polite"></p>
+</dialog>
+
+<script src="index.js"></script>
+</body>
+</html>

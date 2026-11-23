@@ -1,6 +1,4 @@
 import Database from 'better-sqlite3';
-import fs from 'node:fs';
-import path from 'node:path';
 
 const dbPath = process.env.DB_PATH || '/tmp/diamondku.sqlite';
 
@@ -9,6 +7,16 @@ export const db = new Database(dbPath);
 db.pragma('journal_mode = WAL');
 db.pragma('foreign_keys = ON');
 db.exec(`
+CREATE TABLE IF NOT EXISTS users (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  password_hash TEXT,
+  google_subject TEXT UNIQUE,
+  picture TEXT,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
 CREATE TABLE IF NOT EXISTS products (
   sku TEXT PRIMARY KEY, game TEXT NOT NULL, name TEXT NOT NULL,
   currency TEXT NOT NULL, amount INTEGER NOT NULL, price_idr INTEGER NOT NULL,
@@ -25,6 +33,22 @@ CREATE TABLE IF NOT EXISTS orders (
 );
 CREATE TABLE IF NOT EXISTS webhook_events (
   event_key TEXT PRIMARY KEY, received_at TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS joki_orders (
+  id TEXT PRIMARY KEY,
+  game TEXT NOT NULL,
+  unit TEXT NOT NULL,
+  from_value INTEGER NOT NULL,
+  to_value INTEGER NOT NULL,
+  rate_idr INTEGER NOT NULL,
+  estimated_price INTEGER NOT NULL,
+  player_id TEXT NOT NULL,
+  server_id TEXT,
+  buyer_contact TEXT,
+  note TEXT,
+  status TEXT NOT NULL DEFAULT 'waiting_confirmation',
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
 );
 `);
 
