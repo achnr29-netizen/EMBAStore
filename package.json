@@ -2,7 +2,7 @@
   "name": "ancastore-starter",
   "version": "1.0.0",
   "private": true,
-  "description": "Starter website top-up game DiamondKu dengan proses manual",
+  "description": "Starter website top-up game ANCA store dengan proses manual",
   "type": "module",
   "main": "server.js",
   "scripts": {
